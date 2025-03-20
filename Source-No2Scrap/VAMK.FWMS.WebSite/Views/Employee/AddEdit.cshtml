@@ -1,0 +1,343 @@
+﻿@{
+    Layout = null;
+}
+<style>
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+        display: none !important;
+    }
+</style>
+<link href="~/assets/global/css/dualmultiselect.css" rel="stylesheet" />
+<script src="~/assets/global/scripts/dualmultiselect.js"></script>
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a ui-sref="employeeList">Employees</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a ui-sref="addEditemployee">{{pageTitle}}</a>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+        <span class="col-md-1 glyphicon glyphicon-arrow-left" style="margin-top:.25em; font-size:1.5em;cursor:pointer; color:#23527c" ui-sref="employeeList"></span>
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" dropdown-menu-hover data-delay="1000" data-close-others="true">
+                Actions
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul class="dropdown-menu pull-right" role="menu">
+                <li>
+                    <a href="#" ng-click="delete(employee)">
+                        <i class="icon-trash" style="font-weight:bold;"></i> Delete
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div class="note note-success">
+    <h3>{{headerTitle}}</h3>
+    <p>{{headerDescription}}</p>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PORTLET-->
+        <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i>Employee Details
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <!-- BEGIN FORM-->
+                <form action="#" name="frmEmployeeAddEdit" class="form-horizontal form-bordered">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Title</label>
+                            <div class="col-md-4">
+                                <select class="form-control select2" ng-model="employee.title">
+                                    <option value="Mr">Mr</option>
+                                    <option value="Mrs">Mrs</option>
+                                    <option value="Miss">Miss</option>
+                                    <option value="Ms">Ms</option>
+                                    <option value="Dr">Dr</option>
+                                    <option value="Prof">Prof</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Code</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="code_input" ng-model="employee.code" maxlength="10" required code-mask>
+                                <span class="fieldError" ng-cloak ng-show="frmEmployeeAddEdit.code_input.$dirty && frmEmployeeAddEdit.code_input.$invalid">
+                                    <span ng-show="frmEmployeeAddEdit.code_input.$error.required">Code is required</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">First Name</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="firstName_input" ng-model="employee.firstName" maxlength="200" required>
+                                <span class="fieldError" ng-cloak ng-show="frmEmployeeAddEdit.firstName_input.$dirty && frmEmployeeAddEdit.firstName_input.$invalid">
+                                    <span ng-show="frmEmployeeAddEdit.firstName_input.$error.required">First Name is required</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Last Name</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="lastName_input" ng-model="employee.lastName" maxlength="200" required>
+                                <span class="fieldError" ng-cloak ng-show="frmEmployeeAddEdit.lastName_input.$dirty && frmEmployeeAddEdit.lastName_input.$invalid">
+                                    <span ng-show="frmEmployeeAddEdit.lastName_input.$error.required">Last Name is required</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Extension</label>
+                            <div class="col-md-4">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" ng-model="employee.extension" maxlength="20">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Phone</label>
+                            <div class="col-md-4">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" ng-model="employee.phone" maxlength="20">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Mobile</label>
+                            <div class="col-md-4">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" ng-model="employee.mobile" maxlength="20">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Email</label>
+                            <div class="col-md-4">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" ng-model="employee.email" maxlength="200">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Company</label>
+                            <div class="col-md-4">
+                                <div class="input-icon right">
+                                    <select class="form-control select2" ng-model="selectedCompany" ng-options="obj.name for obj in companies track by obj.id"></select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Job Category</label>
+                            <div class="col-md-4">
+                                <div class="input-icon right">
+                                    <select class="form-control select2" ng-model="selectedJobCategory" ng-options="obj.name for obj in jobCategories track by obj.id"></select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Active</label>
+                            <div class="col-md-4">
+                                <div class="input-icon right">
+                                    <input type="checkbox" ng-model="employee.isActive">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Eligibility For Medical Claims</label>
+                            <div class="col-md-4">
+                                <div class="input-icon right">
+                                    <input type="checkbox" ng-model="employee.eligibleForMedicalClaims">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <!-- Begin: User Details -->
+                        <div class="portlet light bordered">
+                            <div class="portlet-title" style="border-bottom:none; margin-bottom:0">
+                                <div class="caption font-green-sharp">
+                                    <i class="icon-settings font-green-sharp"></i>
+                                    <span class="caption-subject bold uppercase">User Details</span>
+                                </div>
+                                <div class="tools">
+                                    <a href="" class="collapse"> </a>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">User Name</label>
+                                    <div class="col-md-4">
+                                        <div class="input-icon right">
+                                            <input type="text" class="form-control" name="userName_input" ng-model="employee.userName" maxlength="20" required>
+                                            <span class="fieldError" ng-cloak ng-show="frmEmployeeAddEdit.userName_input.$dirty && frmEmployeeAddEdit.userName_input.$invalid">
+                                                <span ng-show="frmEmployeeAddEdit.userName_input.$error.required">User Name is required</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End: User Details -->
+                    </div>
+                    <div class="form-group">
+                        <!-- Begin: Roles In Funnel -->
+                        <div class="portlet light bordered">
+                            <div class="portlet-title" style="border-bottom:none; margin-bottom:0">
+                                <div class="caption font-green-sharp">
+                                    <i class="icon-settings font-green-sharp"></i>
+                                    <span class="caption-subject bold uppercase">Role(s) In Funnel</span>
+                                </div>
+                                <div class="tools">
+                                    <a href="" class="collapse"> </a>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Account Manager</label>
+                                    <div class="col-md-1">
+                                        <div class="input-icon right">
+                                            <input type="checkbox" ng-model="employee.isRelationshipManager">
+                                        </div>
+                                    </div>
+                                    <label class="control-label col-md-2">Sales Manager</label>
+                                    <div class="col-md-1">
+                                        <div class="input-icon right">
+                                            <input type="checkbox" ng-model="employee.isSalesManager">
+                                        </div>
+                                    </div>
+                                    <label class="control-label col-md-2">Sales Engineer</label>
+                                    <div class="col-md-1">
+                                        <div class="input-icon right">
+                                            <input type="checkbox" ng-model="employee.isSalesEngineer">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Pre-Sales Engineer</label>
+                                    <div class="col-md-1">
+                                        <div class="input-icon right">
+                                            <input type="checkbox" ng-model="employee.isPreSaleEngineer">
+                                        </div>
+                                    </div>
+                                    <label class="control-label col-md-2">Project Manager</label>
+                                    <div class="col-md-1">
+                                        <div class="input-icon right">
+                                            <input type="checkbox" ng-model="employee.isProjectManager">
+                                        </div>
+                                    </div>
+                                    <label class="control-label col-md-2">Product Manager</label>
+                                    <div class="col-md-1">
+                                        <div class="input-icon right">
+                                            <input type="checkbox" ng-model="employee.isBizDeveloper">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Technical Person</label>
+                                    <div class="col-md-1">
+                                        <div class="input-icon right">
+                                            <input type="checkbox" ng-model="employee.isTechnicalPerson">
+                                        </div>
+                                    </div>
+                                    <label class="control-label col-md-2">Legal Officer</label>
+                                    <div class="col-md-1">
+                                        <div class="input-icon right">
+                                            <input type="checkbox" ng-model="employee.isLeagalOfficer">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End: User Details -->
+                    </div>
+                    <div class="form-group">
+                        <!-- Begin: User Projects -->
+                        <div class="portlet light bordered">
+                            <div class="portlet-title" style="border-bottom:none; margin-bottom:0">
+                                <div class="caption font-green-sharp">
+                                    <i class="icon-settings font-green-sharp"></i>
+                                    <span class="caption-subject bold uppercase">Project Details</span>
+                                </div>
+                                <div class="tools">
+                                    <a href="" class="collapse"> </a>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <dualmultiselect options="multiPrjectOptions"> </dualmultiselect>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End: User Details -->
+                    </div>
+                    <div class="form-group">
+                        <!-- Begin: User Units -->
+                        <div class="portlet light bordered">
+                            <div class="portlet-title" style="border-bottom:none; margin-bottom:0">
+                                <div class="caption font-green-sharp">
+                                    <i class="icon-settings font-green-sharp"></i>
+                                    <span class="caption-subject bold uppercase">Unit Details</span>
+                                </div>
+                                <div class="tools">
+                                    <a href="" class="collapse"> </a>
+                                </div>
+                            </div>
+                            <div class="portlet-body">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <dualmultiselect options="multiUnitOptions"> </dualmultiselect>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End: User Details -->
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="button" class="btn purple" ng-click="save(employee,frmEmployeeAddEdit)" ng-disabled="frmEmployeeAddEdit.$invalid">
+                                    <i class="fa fa-check"></i> Submit
+                                </button>
+                                <button type="button" class="btn default" ng-click="cancel()">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- END FORM-->
+            </div>
+        </div>
+        <!-- END PORTLET-->
+    </div>
+</div>
+<span ng-bind="name"></span>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS-->
+<script>
+    ComponentsFormTools.init(); // init todo page
+    ComponentsSelect2.init(); // init todo page
+    ComponentsBootstrapSelect.init(); // init todo page
+</script>
+<!-- BEGIN MAIN JS -->
+

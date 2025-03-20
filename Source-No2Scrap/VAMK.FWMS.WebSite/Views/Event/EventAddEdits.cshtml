@@ -1,0 +1,530 @@
+﻿@{
+    Layout = null;
+}
+<style type="text/css">
+    _:-moz-tree-row(hover), .icon-magnifier {
+        margin-top: -22px !important;
+    }
+</style>
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a ui-sref="eventList">Events</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a ui-sref="eventAddEdit">{{title}}</a>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+        <span class="col-md-1 glyphicon glyphicon-arrow-left" style="margin-top:.25em; font-size:1.5em;cursor:pointer; color:#23527c" ui-sref="eventList"></span>
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" dropdown-menu-hover data-delay="1000" data-close-others="true">
+                Actions
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul class="dropdown-menu pull-right" role="menu">
+                <li>
+                    <a href="#">
+                        <i class="icon-trash" style="font-weight:bold;"></i> Delete
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div class="note note-success">
+    <h3>{{msgEventName}}</h3>
+    <p>{{msgEventDescription}}</p>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PORTLET-->
+        <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i>Event Details
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <!-- BEGIN FORM-->
+                <form action="#" id="frmEventAddEdit" name="frmEventAddEdit" class="form-horizontal form-bordered">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Name</label>
+                            <div class="col-md-4">
+                                <div class="input-icon right">
+                                    <input type="text" class="form-control" name="frmEventHomeName" id="frmEventHomeName" ng-model="event.name" required
+                                           ng-maxlength="200">
+                                    <span class="fieldError" ng-cloak ng-show="frmEventAddEdit.frmEventHomeName.$dirty && frmEventAddEdit.frmEventHomeName.$invalid">
+                                        <span ng-show="frmEventAddEdit.frmEventHomeName.$error.required">Name is required</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Date</label>
+                            <div class="col-md-4">
+                                <div class="input-group" style="text-align:left">
+                                    @* Date *@
+                                    <p class="input-group">
+                                        <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="event.date" is-open="popup2.opened"
+                                               datepicker-options="dateOptions"
+                                               ng-required="true" close-text="Close" />
+                                        <span class="input-group-btn">
+                                            <button type="button" class="btn btn-default" ng-click="openDatePicker()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Time</label>
+                            <div class="col-md-4">
+                                <div uib-timepicker ng-model="event.timeFrom" hour-step="1" minute-step="1" show-meridian="false" show-spinners="false" name="frmEventHomeTimeFrom"></div>
+                                <div uib-timepicker ng-model="event.timeTo" hour-step="1" minute-step="1" show-meridian="false" show-spinners="false" name="frmEventHomeTimeTo"></div>
+                                <p ng-show="frmEventAddEdit.frmEventHomeTimeFrom.$error.required" class="fieldError">Time is required</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Venue</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="frmEventHomeVenue" id="frmEventHomeVenue" ng-model="event.venueName" required
+                                       ng-maxlength="200">
+                                <span class="fieldError" ng-cloak ng-show="frmEventAddEdit.frmEventHomeVenue.$dirty && frmEventAddEdit.frmEventHomeVenue.$invalid">
+                                    <span ng-show="frmEventAddEdit.frmEventHomeVenue.$error.required">Venue is required</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Address</label>
+                            <div class="col-md-4">
+                                <div class="input-group" style="text-align:left">
+                                    <input type="text" class="form-control" name="frmEventHomeAddress1" id="frmEventHomeAddress2" ng-model="event.venueAddressLine1" style="margin-bottom:1.5em">
+                                    <input type="text" class="form-control" name="frmEventHomeAddress2" id="frmEventHomeAddress2" ng-model="event.venueAddressLine2" style="margin-bottom:1.5em">
+                                    <input type="text" class="form-control" name="frmEventHomeAddress3" id="frmEventHomeAddress3" ng-model="event.venueAddressLine3">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Online Registration</label>
+                            <div class="col-md-4">
+                                @*<input type="checkbox" checked class="make-switch" data-size="small" name="frmEventHomeOnlineRegistration" id="frmEventHomeOnlineRegistration" ng-model="event.enableOnlineRegistration">
+                                <p ng-show="frmEventAddEdit.frmEventHomeOnlineRegistration.$error.required" class="fieldError">Required</p>*@
+                                <label class="checkbox-inline"><input type="radio" ng-value=true ng-model="event.enableOnlineRegistration">Yes</label>
+                                <label class="checkbox-inline"><input type="radio" ng-value=false ng-model="event.enableOnlineRegistration">No</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Hosted By</label>
+                            <div class="col-md-4">
+                                <div class="margin-bottom-5" ng-repeat="host in event.hostCompanyList">
+                                    <label for="frmEventHome-FWMS" class="col-md-10">{{host.name}}</label>
+                                    <input id="frmEventHomeFWMS" type="checkbox" name="frmEventHomeFWMS" class="make-switch" value="1" ng-model="host.selected" data-size="small">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Notes</label>
+                            <div class="col-md-4">
+                                <textarea class="form-control" name="frmEventHomeNote" id="frmEventHomeNote" ng-model="event.note"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <!-- BEGIN: ACCORDION CHECKLIST -->
+                            <div class="portlet light bordered">
+                                <div class="portlet-title" style="border-bottom:none; margin-bottom:0">
+                                    <div class="caption font-green-sharp">
+                                        <i class="icon-settings font-green-sharp"></i>
+                                        <span class="caption-subject bold uppercase">Check List</span>
+                                    </div>
+                                    <div class="tools">
+                                        <a href="" class="collapse"> </a>
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <div ng-repeat="check in event.checkList">
+                                        <ng-form name="frmCheckList">
+                                            <div class="row form-group" style="border:none">
+                                                <div class="row-container">
+                                                    <div class="row">
+                                                        <button type="button" class="close pull-right row-container-close"
+                                                                data-dismiss="modal" aria-label="Close"
+                                                                ng-click="deleteCheckListItem(check)">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" style="text-align:left;padding-top:0 !important">Task</label>
+                                                            <input class="form-control" ng-model="check.task" name="task" required />
+                                                            <span class="fieldError" ng-cloak ng-show="frmCheckList.task.$dirty && frmCheckList.task.$invalid">
+                                                                <span ng-show="frmCheckList.task.$error.required">Task is required</span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" style="text-align:left;padding-top:0">Due Date (dd/mm/yyyy)</label>
+                                                            <input class="form-control form-control-inline date-picker" type="text" value=""
+                                                                   ng-model="check.dueDate" name="dueDate" 
+                                                                   ng-pattern="/^(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[0-2])\/(19|20)\d{2}$/" required />
+                                                            <span class="fieldError" ng-cloak ng-show="frmCheckList.dueDate.$dirty && frmCheckList.dueDate.$invalid">
+                                                                <span ng-show="frmCheckList.dueDate.$error.required">Due Date is required</span>
+                                                                <span ng-show="frmCheckList.dueDate.$error.pattern">Invalid</span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" style="text-align:left;padding-top:0 !important">Assignee</label>
+                                                            <select name="assignee" id="assignee" class="form-control "
+                                                                    ng-model="check.assigneeID" type="number" required>
+                                                                @foreach (var item in ViewBag.CheckListAssignes)
+                                                                {
+                                                                    <option value="@item.ID">@item.FirstName @item.LastName</option>
+                                                                }
+                                                            </select>
+                                                            <span class="fieldError" ng-cloak ng-show="frmCheckList.assignee.$dirty && frmCheckList.assignee.$invalid">
+                                                                <span ng-show="frmCheckList.assignee.$error.required">Assignee is required</span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" style="text-align:left;padding-top:0">Notes</label>
+                                                            <input class="form-control" ng-model="check.notes" name="notes" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-form>
+                                    </div>
+                                    <div style="margin-top:1em; margin-bottom:1em">
+                                        <a style="cursor:pointer;" ng-click="addNewCheckListItem()">
+                                            <div>
+                                                <span>New Item</span>
+                                                <span class="glyphicon glyphicon-plus pull-left" aria-hidden="true" style="color: #0a6aa1;margin-right:.5em"></span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END: ACCORDION CHECKLIST -->
+                            <!-- BEGIN: ACCORDION SPONSOR -->
+                            <div class="portlet light bordered">
+                                <div class="portlet-title" style="border-bottom:none;margin-bottom:0">
+                                    <div class="caption font-green-sharp">
+                                        <i class="icon-settings font-green-sharp"></i>
+                                        <span class="caption-subject bold uppercase">Sponsors</span>
+                                    </div>
+                                    <div class="tools">
+                                        <a href="" class="collapse"> </a>
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <div ng-repeat="spon in event.sponsorList">
+                                        <ng-form name="frmSponsor">
+                                            <div class="row form-group" style="border:none">
+                                                <div class="row-container">
+                                                    <div class="row">
+                                                        <button type="button" class="close pull-right row-container-close"
+                                                                data-dismiss="modal" aria-label="Close"
+                                                                ng-click="deleteSponsor(spon)">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" style="text-align:left;padding-top:0 !important">Name</label>
+                                                            <input class="form-control" ng-model="spon.name" name="sponsorName" required />
+                                                            <span class="fieldError" ng-cloak ng-show="frmSponsor.sponsorName.$dirty && frmSponsor.sponsorName.$invalid">
+                                                                <span ng-show="frmSponsor.sponsorName.$error.required">Name is required</span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" style="text-align:left;padding-top:0 !important">Category</label>
+                                                            <input class="form-control" ng-model="spon.category" name="sponsorCategory" required />
+                                                            <span class="fieldError" ng-cloak ng-show="frmSponsor.sponsorCategory.$dirty && frmSponsor.sponsorCategory.$invalid">
+                                                                <span ng-show="frmSponsor.sponsorCategory.$error.required">Category is required</span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" style="text-align:left;padding-top:0 !important">Contact Person</label>
+                                                            <input class="form-control" ng-model="spon.contactPerson" name="sponsorContactPerson" />
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" style="text-align:left;padding-top:0 !important">Phone</label>
+                                                            <input class="form-control" ng-model="spon.phone" name="sponsrPhone" />
+                                                        </div>
+                                                        @*<div class="col-md-2">
+                                                                <label class="control-label"
+                                                                       style="text-align:left;padding-top:0 !important">Logo</label>
+                                                                <input class="form-control" ng-model="spon.logoURL" name="sponsorLogoUrl" type="url" required />
+                                                                <span class="fieldError" ng-cloak ng-show="frmSponsor.sponsorLogoUrl.$dirty && frmSponsor.sponsorLogoUrl.$invalid">
+                                                                    <span ng-show="frmSponsor.sponsorLogoUrl.$error.required">Required</span>
+                                                                    <span ng-show="frmSponsor.sponsorLogoUrl.$error.url">Invalid URL</span>
+                                                                </span>
+                                                            </div>*@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-form>
+                                    </div>
+                                    <div style="margin-top:1em; margin-bottom:1em">
+                                        <a style="cursor:pointer;" ng-click="addNewSponsor()">
+                                            <div>
+                                                <span>New Sponsor</span>
+                                                <span class="glyphicon glyphicon-plus pull-left" aria-hidden="true" style="color: #0a6aa1;margin-right:.5em"></span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END: ACCORDION SPONSOR -->
+                            <!-- BEGIN: ACCORDION VENDER/PRINCIPALS -->
+                            <div class="portlet light bordered">
+                                <div class="portlet-title" style="border-bottom:none; margin-bottom:0">
+                                    <div class="caption font-green-sharp">
+                                        <i class="icon-settings font-green-sharp"></i>
+                                        <span class="caption-subject bold uppercase">Vendors/Principals</span>
+                                    </div>
+                                    <div class="tools">
+                                        <a href="" class="collapse"> </a>
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <div ng-repeat="ven in event.vendorInformationList">
+                                        <ng-form name="frmVendor">
+                                            <div class="row form-group" style="border:none">
+                                                <div class="row-container">
+                                                    <div class="row">
+                                                        <button type="button" class="close pull-right row-container-close"
+                                                                data-dismiss="modal" aria-label="Close"
+                                                                ng-click="deleteVendor(ven)">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label"
+                                                                   style="text-align:left;padding-top:0">Name</label>
+                                                            <input class="form-control" ng-model="ven.name" name="venderName" required />
+                                                            <span class="fieldError" ng-cloak ng-show="frmVendor.venderName.$dirty && frmVendor.venderName.$invalid">
+                                                                <span ng-show="frmVendor.venderName.$error.required">Name is required</span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label class="control-label"
+                                                                   style="text-align:left;padding-top:0">Description</label>
+                                                            <input class="form-control" ng-model="ven.description" name="venderDescription" />
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label class="control-label"
+                                                                   style="text-align:left;padding-top:0">Website</label>
+                                                            <input class="form-control" ng-model="ven.website" name="venderWebsite" type="text" />
+                                                        </div>
+                                                        @*<div class="col-md-3">
+                                                                <label class="control-label"
+                                                                       style="text-align:left;padding-top:0">Logo</label>
+                                                                <input class="form-control" ng-model="ven.logoURL" name="venderLogoUrl" type="url" />
+                                                                <span class="fieldError" ng-cloak ng-show="frmVendor.venderLogoUrl.$dirty && frmVendor.venderLogoUrl.$invalid">
+                                                                    <span ng-show="frmVendor.venderLogoUrl.$error.required">Invalid URL</span>
+                                                                </span>
+                                                            </div>*@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-form>
+                                    </div>
+                                    <div style="margin-top:1em; margin-bottom:1em">
+                                        <a style="cursor:pointer;" ng-click="addNewVendor()">
+                                            <div>
+                                                <span>New Vendor</span>
+                                                <span class="glyphicon glyphicon-plus pull-left" aria-hidden="true" style="color: #0a6aa1;margin-right:.5em"></span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END: ACCORDION VENDER/PRINCIPALS -->
+                            <!-- BEGIN: SESSIONS AND TRACKS -->
+                            <div class="portlet light bordered">
+                                <div class="portlet-title" style="border-bottom:none;margin-bottom:0">
+                                    <div class="caption font-green-sharp">
+                                        <i class="icon-settings font-green-sharp"></i>
+                                        <span class="caption-subject bold uppercase">Sessions and Tracks</span>
+                                    </div>
+                                    <div class="tools">
+                                        <a href="" class="collapse"> </a>
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <!-- START FLEX BOX-->
+                                    <div class="">
+                                        <div class="pull-right">
+                                            <a style="cursor:pointer;" ng-click="addTrack()">
+                                                <div style="padding-bottom:2.5em">
+                                                    <span class="glyphicon glyphicon-plus pull-left"
+                                                          aria-hidden="true" style="color: #0a6aa1;margin-right:.5em">
+                                                    </span>
+                                                    <span class="pull-right">New Track</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="desktopTitle1">
+                                            <ul class="eventSession top" id="top" style="overflow:hidden">
+                                                <li class="eventtrack">
+                                                    <div class="session">
+                                                    </div>
+                                                </li>
+                                                <li class="eventtrack" ng-repeat="tra in event.trackList">
+                                                    <button type="button" class="close pull-right row-container-close"
+                                                            data-dismiss="modal" aria-label="Close"
+                                                            style="margin-top:5px !important"
+                                                            ng-click="deleteTrack(tra)">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                    <div class="session">
+                                                        <ul style="list-style:none">
+                                                            <li><label>Title (Track)</label></li>
+                                                            <li><input class="form-control" type="text" ng-model="tra.name" /></li>
+                                                            <li>Description (Track)</li>
+                                                            <li><input class="form-control" type="text" ng-model="tra.description" /></li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <ul class="eventSession bottom" ng-repeat="ses in event.sessionList" id="bottom">
+                                            <li class="eventtrack">
+                                                <div class="session">
+                                                    <button type="button" class="close pull-right row-container-close"
+                                                            data-dismiss="modal" aria-label="Close"
+                                                            ng-click="deleteSession(ses)">
+                                                        <span aria-hidden="true">×</span>
+                                                    </button>
+                                                    <label>Time</label>
+                                                    <div>
+                                                        <div uib-timepicker ng-model="ses.timeFrom" hour-step="1" minute-step="1"
+                                                             show-meridian="false" show-spinners="false" name="frmEventHomeSessionTimeFrom"></div>
+                                                        <div uib-timepicker ng-model="ses.timeTo" hour-step="1" minute-step="1"
+                                                             show-meridian="false" show-spinners="false" name="frmEventHomeSessionTimeTo"></div>
+                                                    </div>
+                                                    @*  <label>Track Wise</label>*@
+                                                </div>
+                                            </li>
+                                            <li class="eventtrack" ng-repeat="stra in ses.trackSessionList">
+                                                <button type="button" class="close pull-right row-container-close"
+                                                        data-dismiss="modal" aria-label="Close"
+                                                        style="margin-top:5px !important"
+                                                        ng-click="deleteTrack(tra)">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                                <div class="session">
+                                                    <ul style="list-style:none; background-color:#b7b5b5; padding:5px" class="mobileTitle">
+                                                        <li><label>Track</label></li>
+                                                        <li><input class="form-control" type="text" ng-model="event.trackList[$index].name" /></li>
+                                                        <li><label>Description</label></li>
+                                                        <li><input class="form-control" type="text" ng-model="event.trackList[$index].description" /></li>
+                                                    </ul>
+                                                    <ul style="list-style:none">
+                                                        <li><label>Title (Session)</label></li>
+                                                        <li><input class="form-control" type="text" ng-model="stra.title" /></li>
+                                                        <li><label>Description (Session)</label></li>
+                                                        <li><input class="form-control" type="text" ng-model="stra.description" /></li>
+                                                        <li>
+                                                            <label>Room/Hall</label>
+                                                        </li>
+                                                        <li><input class="form-control" type="text" ng-model="stra.roomName" /></li>
+                                                        <li><hr /></li>
+                                                        <li><label>Speaker</label></li>
+                                                        <li>
+                                                            <input class="form-control" type="text" ng-model="stra.speakerName" />
+                                                        </li>
+                                                        <li><label>Description (Speaker)</label></li>
+                                                        <li>
+                                                            <input class="form-control" type="text" ng-model="stra.speakerDescription" />
+                                                        </li>
+                                                        <li><label>Coordinator 1</label></li>
+                                                        <li>
+                                                            <select class="form-control" type="text" ng-model="stra.coordinator1ID">
+                                                                @foreach (var item in ViewBag.CheckListAssignes)
+                                                                {
+                                                                    <option value="@item.ID">@item.FirstName @item.LastName</option>
+                                                                }
+                                                            </select>
+                                                        </li>
+                                                        <li>
+                                                            <label>Coordinator 2</label>
+                                                        </li>
+                                                        <li>
+                                                            <select class="form-control" type="text" ng-model="stra.coordinator2ID">
+                                                                @foreach (var item in ViewBag.CheckListAssignes)
+                                                                {
+                                                                    <option class="form-control" value="@item.ID">@item.FirstName @item.LastName</option>
+                                                                }
+                                                            </select>
+                                                        </li>
+                                                    </ul>
+
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div style="margin-top:1em; margin-bottom:1em">
+                                        <a style="cursor:pointer;" ng-click="addSession()">
+                                            <div>
+                                                <span>New Session</span>
+                                                <span class="glyphicon glyphicon-plus pull-left" aria-hidden="true" style="color: #0a6aa1;margin-right:.5em"></span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <!-- END   FLEX BOX-->
+                                </div>
+                                <!-- END: SESSIONS AND TRACKS-->
+
+                            </div>
+
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <button type="button" class="btn purple" ng-click="saveEventAddEdit(event,frmEventAddEdit)"
+                                                ng-disabled="frmEventAddEdit.$invalid">
+                                            <i class="fa fa-check"></i> Submit
+                                        </button>
+                                        <button type="button" class="btn default">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- END FORM-->
+            </div>
+        </div>
+        <!-- END PORTLET-->
+    </div>
+</div>
+<span ng-bind="name"></span>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS-->
+<script>
+    ComponentsDateTimePickers.init(); // init todo page
+    ComponentsFormTools.init(); // init todo page
+    ComponentsSelect2.init(); // init todo page
+    ComponentsBootstrapSelect.init(); // init todo page
+    setTimeout(function () {
+        $('.bottom').on('scroll', function () {
+            $('.top').scrollLeft($(this).scrollLeft());
+        });
+        $('.top').on('scroll', function () {
+            $('.bottom').scrollLeft($(this).scrollLeft());
+        });
+    }, 9000);
+</script>
+<!-- BEGIN MAIN JS -->

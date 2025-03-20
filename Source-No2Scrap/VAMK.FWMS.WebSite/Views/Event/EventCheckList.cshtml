@@ -1,0 +1,104 @@
+﻿@{
+    Layout = null;
+}
+<style>
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+        display: none !important;
+    }
+</style>
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a ui-sref="eventList">Events</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a ui-sref="eventHome({eventId: {{eventId}}})">Event Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a ui-sref="eventCheckList">Event Check List</a>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+        <span class="col-md-1 glyphicon glyphicon-arrow-left" style="margin-top:.25em; font-size:1.5em;cursor:pointer; color:#23527c" ui-sref="eventHome({eventId: {{eventId}}})"></span>
+        <div class="btn-group pull-right">
+        </div>
+    </div>
+</div>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div class="note note-success">
+    <h3>Event Check List</h3>
+    <p>{{eventName}}</p>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PORTLET-->
+        <div class="portlet box blue-hoki" style="border-top: 1px solid #869ab3">
+            <div class="portlet-body form">
+                <!-- BEGIN FORM-->
+                <div style="padding-bottom:0px;padding-top:20px;padding-left:30px">
+                    <button type="button" class="btn blue-dark" ng-click="updateCheckList()">Update Ckeck List</button>
+                </div>
+                <div class="portlet-body form-body">
+                    <div style="padding: 10px" class="datagrid">
+                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="eventCheckList_dataTable">
+                            <thead>
+                                <tr>
+                                    <th> </th>
+                                    <th> Task </th>
+                                    <th> Assignee </th>
+                                    <th> Due Date </th>
+                                    <th> Notes </th>
+                                    <th> Completed Date (dd/mm/yyyy)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="odd gradeX" ng-repeat="row in checkList">
+                                    <td style="vertical-align:middle">
+                                        <input type="checkbox" ng-model="row.hasCompleted">
+                                    </td>
+                                    <td style="vertical-align:middle">{{row.task}}</td>
+                                    <td style="vertical-align:middle">{{row.assigneeName}}</td>
+                                    <td style="vertical-align:middle">{{row.dueDate}}</td>
+                                    <td><input type="text" class="form-control" ng-model="row.notes"></td>
+                                    <td>
+                                        <input type="text" class="form-control" ng-model="row.dateCompleted">
+                                        @*<p class="input-group">
+                                                <input type="text" class="form-control" uib-datepicker-popup ng-model="row.dateCompleted" is-open="popup2.opened"
+                                                       datepicker-options="dateOptions"
+                                                       ng-required="true" close-text="Close" />
+                                                <span class="input-group-btn">
+                                                    <button type="button" class="btn btn-default" ng-click="openDatePicker()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                                </span>
+                                            </p>*@
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- END FORM-->
+            </div>
+        </div>
+        <!-- END PORTLET-->
+    </div>
+</div>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS-->
+<script>
+    ComponentsFormTools.init(); // init todo page
+    ComponentsSelect2.init(); // init todo page
+    ComponentsBootstrapSelect.init(); // init todo page
+
+    $('#advanceSearch').click(function () {
+        $('#advanceSearchArea').collapse('toggle');
+    });
+</script>
+<!-- BEGIN MAIN JS -->

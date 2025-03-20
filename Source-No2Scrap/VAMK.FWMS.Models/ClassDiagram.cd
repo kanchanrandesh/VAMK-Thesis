@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="VAMK.FWMS.Models.Doner">
+    <Position X="2.75" Y="1" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIgAgQAAAAAAAACAAAAAAAgAAA=</HashCode>
+      <FileName>Doner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VAMK.FWMS.Models.EntityBase" Collapsed="true">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAABAACAAAAAgAAAAAAAKAQAAAAAAAAAAAAEBAAAAAA=</HashCode>
+      <FileName>EntityBase.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="VAMK.FWMS.Models.Recipient">
+    <Position X="0.5" Y="1" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAgQAAAAAAAACAAAAAAAgAAA=</HashCode>
+      <FileName>Recipient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VAMK.FWMS.Models.ContactPerson">
+    <Position X="7.75" Y="0.5" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAgQAQAAAAAAACgAAAAAAAgAAI=</HashCode>
+      <FileName>ContactPerson.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VAMK.FWMS.Models.Donation">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIEAAAAAAAAwAAAAAAAAAACAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Donations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VAMK.FWMS.Models.Item">
+    <Position X="4" Y="4" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAACAgAAQAQAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VAMK.FWMS.Models.DonationItem">
+    <Position X="2.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAggAAAAAEgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DonationItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VAMK.FWMS.Models.Request">
+    <Position X="8.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAggAAAAAAAAAAAAAAAAAQBAAAgAAAAAAA=</HashCode>
+      <FileName>Request.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VAMK.FWMS.Models.RequestItem">
+    <Position X="10" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAIAACAQAgAAAAAAEAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>RequestItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VAMK.FWMS.Models.CoordinatorIntentoryItem">
+    <Position X="11.75" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAgAAAAAAEAAgAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>CoordinatorIntentoryItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VAMK.FWMS.Models.UnitOfMeasurement">
+    <Position X="6.25" Y="4.25" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAIAAAAAAAAAgAAA=</HashCode>
+      <FileName>UnitOfMeasurement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="VAMK.FWMS.Models.Interfaces.IEntityBase">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAACAAAAAgAAAAAAAIAQAAAAAAAAAAAAEBAAAAAA=</HashCode>
+      <FileName>Interfaces\IEntityBase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="VAMK.FWMS.Models.Enums.ContactPersonType">
+    <Position X="8.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\ContactPersonType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="VAMK.FWMS.Models.Enums.DonationSatus">
+    <Position X="4.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\DonationSatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="VAMK.FWMS.Models.Enums.ItemCategory">
+    <Position X="9.75" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAAwAAAAgAAIAAAASABAQAAAAAAAAABAAIAAMAAAA=</HashCode>
+      <FileName>Enums\ItemCategory.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="VAMK.FWMS.Models.Enums.InventoryEffectedby">
+    <Position X="6.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\InventoryEffectedby.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="VAMK.FWMS.Models.Enums.RequestStatus">
+    <Position X="2.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAEACAAAAAAAAAAAAAAAgAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Enums\RequestStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
