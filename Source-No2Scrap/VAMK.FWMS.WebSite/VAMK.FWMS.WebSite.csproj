@@ -6312,7 +6312,6 @@
     <Content Include="tpl\quick-sidebar.html" />
     <Content Include="tpl\sidebar.html" />
     <Content Include="tpl\theme-panel.html" />
-    <Content Include="Uploads\1KKl77wViU4qaA3U~IMG_20170216_140435.jpg" />
     <Content Include="Views\blank.html" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Country\Index.cshtml" />
@@ -6396,6 +6395,7 @@
     <Folder Include="assets\apps\img\" />
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="ReportModels\" />
+    <Folder Include="Uploads\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

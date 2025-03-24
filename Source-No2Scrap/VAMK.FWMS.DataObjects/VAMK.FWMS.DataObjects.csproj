@@ -140,10 +140,6 @@
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IRepositoryContext.cs" />
     <Compile Include="Mappers\UserRightsMapper.cs" />
-    <Compile Include="Migrations\202503210954384_20250321-1154.cs" />
-    <Compile Include="Migrations\202503210954384_20250321-1154.designer.cs">
-      <DependentUpon>202503210954384_20250321-1154.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecipientRepository.cs" />
@@ -169,11 +165,6 @@
       <Project>{d3be1510-3997-4cee-803a-55876ba2b3ee}</Project>
       <Name>VAMK.FWMS.Models</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202503210954384_20250321-1154.resx">
-      <DependentUpon>202503210954384_20250321-1154.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

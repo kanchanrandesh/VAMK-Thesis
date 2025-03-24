@@ -10,7 +10,7 @@ namespace VAMK.FWMS.DataObjects.Interfaces
 {
     public interface IRecipientRepository : IRepository<Recipient>
     {
-        /// <summary>
+        /// <summary> 
         /// Search all Recipient
         /// </summary>
         /// <param name="query"></param>

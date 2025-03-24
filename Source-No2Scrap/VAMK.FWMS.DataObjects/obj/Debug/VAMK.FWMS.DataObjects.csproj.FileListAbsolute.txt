@@ -46,6 +46,8 @@ C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\test 1\VAMK.FW
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\test 1\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.csproj.CopyComplete
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\test 1\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.dll
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\test 1\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.pdb
+C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.csproj.AssemblyReference.cache
+C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.csproj.CoreCompileInputs.cache
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\bin\Debug\VAMK.FWMS.DataObjects.dll.config
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\bin\Debug\VAMK.FWMS.DataObjects.dll
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\bin\Debug\VAMK.FWMS.DataObjects.pdb
@@ -64,10 +66,6 @@ C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\So
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\bin\Debug\EntityFramework.SqlServer.xml
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\bin\Debug\log4net.xml
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\bin\Debug\Newtonsoft.Json.xml
-C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.csproj.AssemblyReference.cache
-C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.csproj.CoreCompileInputs.cache
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.csproj.CopyComplete
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.dll
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.pdb
-C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.Migrations._202503211154.resources
-C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.csproj.GenerateResource.cache
