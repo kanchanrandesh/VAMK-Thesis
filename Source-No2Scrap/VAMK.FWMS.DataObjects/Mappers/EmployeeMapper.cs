@@ -54,8 +54,6 @@ namespace VAMK.FWMS.DataObjects.Mappers
 
             HasOptional(t => t.Company).WithMany().HasForeignKey(t => t.CompanyID).WillCascadeOnDelete(false);
 
-
-
             #endregion
         }
     }

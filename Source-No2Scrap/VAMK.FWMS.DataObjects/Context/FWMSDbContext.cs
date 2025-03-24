@@ -64,6 +64,9 @@ namespace VAMK.FWMS.DataObjects.Context
             modelBuilder.Configurations.Add(new RequestMapper());
             modelBuilder.Configurations.Add(new RequestItemMapper());
             modelBuilder.Configurations.Add(new CoordinatorIntentoryItemMapper());
+            modelBuilder.Configurations.Add(new SystemUserMapper());
+            modelBuilder.Configurations.Add(new UserRightsMapper());
+            modelBuilder.Configurations.Add(new SecureAccessFormMapper());
         }
 
         public IDbSet<TimeZone> TimeZones { get; set; }
@@ -92,6 +95,9 @@ namespace VAMK.FWMS.DataObjects.Context
         public IDbSet<Request> Request { get; set; }
         public IDbSet<RequestItem> RequestItem { get; set; }
         public IDbSet<CoordinatorIntentoryItem> CoordinatorIntentoryItem { get; set; }
-        
+        public IDbSet<SystemUser> SystemUser { get; set; }
+        public IDbSet<UserRights> UserRights { get; set; }
+        public IDbSet<SecureAccessForm> SecureAccessForm { get; set; }
+
     }
 }

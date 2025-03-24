@@ -20,13 +20,18 @@ namespace VAMK.FWMS.DataObjects.Mappers
 
             Property(t => t.Email).HasColumnName("Email").HasColumnType("nvarchar").HasMaxLength(200);
             Property(t => t.ContactPersonType).HasColumnName("ContactPersonTypeID").HasColumnType("int");
-            Property(t => t.ContactableSourceID).HasColumnName("ContactableSourceID").HasColumnType("int").IsOptional(); ;
+            Property(t => t.RecepientID).HasColumnName("RecepientID").HasColumnType("int").IsOptional(); ;
+            Property(t => t.DonerID).HasColumnName("DonerID").HasColumnType("int").IsOptional(); ;
 
             Property(t => t.User).HasColumnName("UserCreated").HasColumnType("nvarchar").HasMaxLength(50);
             Property(t => t.DateCreated).HasColumnName("DateCreated").HasColumnType("datetime");
             Property(t => t.DateModified).HasColumnName("DateModified").HasColumnType("datetime");
             Ignore(t => t.AuditReference);
             Ignore(t => t.State);
+
+            #endregion
+
+            #region Relations
 
             #endregion
         }

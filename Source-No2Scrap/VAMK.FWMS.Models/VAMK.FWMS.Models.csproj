@@ -83,6 +83,7 @@
     <Compile Include="Enums\IndividualTitle.cs" />
     <Compile Include="Enums\OrganizationType.cs" />
     <Compile Include="Enums\RequestStatus.cs" />
+    <Compile Include="Enums\SystemUserType.cs" />
     <Compile Include="GroupEmployee.cs" />
     <Compile Include="GroupRule.cs" />
     <Compile Include="Item.cs" />
@@ -106,11 +107,14 @@
     <Compile Include="SearchQueries\RuleSearchQuery.cs" />
     <Compile Include="SearchQueries\TimeZoneSearchQuery.cs" />
     <Compile Include="SearchQueries\UnitSearchQuery.cs" />
+    <Compile Include="SecureAccessForm.cs" />
     <Compile Include="SentMail.cs" />
     <Compile Include="SystemConfiguration.cs" />
     <Compile Include="TimeZone.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="UnitOfMeasurement.cs" />
+    <Compile Include="SystemUser.cs" />
+    <Compile Include="UserRights.cs" />
     <Compile Include="Util\EmailTemplates.cs" />
     <Compile Include="Util\FunctionURLs.cs" />
     <Compile Include="Util\JsonConverter.cs" />

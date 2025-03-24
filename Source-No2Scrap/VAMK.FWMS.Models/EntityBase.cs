@@ -4,7 +4,7 @@ using System;
 
 namespace VAMK.FWMS.Models
 {
-    public abstract class EntityBase : IEntityBase
+    public abstract class EntityBase
     {
         private State _state = State.Unchanged;
 

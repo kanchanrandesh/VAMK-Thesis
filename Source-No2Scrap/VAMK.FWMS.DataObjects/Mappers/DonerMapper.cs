@@ -24,6 +24,10 @@ namespace VAMK.FWMS.DataObjects.Mappers
             Ignore(t => t.AuditReference);
 
             #endregion
+
+            #region Relations
+            HasMany(t => t.ContactPersonList).WithOptional(l => l.Doner).HasForeignKey(t => t.DonerID).WillCascadeOnDelete(true);
+            #endregion
         }
     }
 }

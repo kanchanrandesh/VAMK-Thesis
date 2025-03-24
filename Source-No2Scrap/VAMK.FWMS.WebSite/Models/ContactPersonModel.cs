@@ -12,13 +12,12 @@ namespace VAMK.FWMS.WebSite.Models
         public string id { get; set; }
         public string code { get; set; }
         public string name { get; set; }       
-        public string phoneNumber { get; set; }
-      
-        public string mobile { get; set; }
-       
+        public string phoneNumber { get; set; }      
+        public string mobile { get; set; }       
         public string email { get; set; }
         public ContactPersonType contactPersonType { get; set; }
-        public int? contactableSourceID { get; set; }
+        public int? donerID { get; set; }
+        public int? recipientID { get; set; }
         public string timeStamp { get; set; }
         public bool status { get; set; }
         public string message { get; set; }
@@ -34,7 +33,8 @@ namespace VAMK.FWMS.WebSite.Models
                 Mobile = e.mobile,
                 Email = e.email,
                 ContactPersonType = e.contactPersonType,
-                ContactableSourceID = e.contactableSourceID,
+                DonerID = e.donerID,
+                RecepientID = e.recipientID,
                 TimeStamp = e.id != null ? Utility.StringToTimeStamp(e.timeStamp) : new byte[8],
             };
         }

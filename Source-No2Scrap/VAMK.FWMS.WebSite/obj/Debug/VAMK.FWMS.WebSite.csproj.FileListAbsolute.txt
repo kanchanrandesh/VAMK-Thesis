@@ -234,3 +234,6 @@ C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\test 1\VAMK.FW
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\test 1\VAMK.FWMS.WebSite\obj\Debug\VAMK.FWMS.WebSite.csproj.CopyComplete
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\test 1\VAMK.FWMS.WebSite\obj\Debug\VAMK.FWMS.WebSite.dll
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\test 1\VAMK.FWMS.WebSite\obj\Debug\VAMK.FWMS.WebSite.pdb
+C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\Quartz.dll
+C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\Quartz.xml
+C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\obj\Debug\VAMK.FWMS.WebSite.dll

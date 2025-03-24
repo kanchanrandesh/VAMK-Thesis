@@ -23,7 +23,10 @@ namespace VAMK.FWMS.Models
         public string PhoneNumber { get; set; }
         public string Mobile { get; set; }
         public ContactPersonType ContactPersonType { get; set; }
-        public int? ContactableSourceID { get; set; }
+        public Recipient Recipient { get; set; }
+        public int? RecepientID { get; set; }
+        public Doner Doner { get; set; }
+        public int? DonerID { get; set; }
 
     }
 }
