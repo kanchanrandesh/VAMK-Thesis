@@ -68,11 +68,7 @@
                                             <div class="col-md-4">
                                                 <label>Name</label>
                                                 <input class="form-control" ng-model="searchQuery.name" />
-                                            </div>
-                                            <div class="col-md-4">
-                                                <label>Department</label>
-                                                <select class="form-control select2" ng-model="searchQuery.department" ng-options="obj.name for obj in departments track by obj.id"></select>
-                                            </div>
+                                            </div>                                           
                                         </div>
                                     </div>
                                     <div class="row">
@@ -96,9 +92,7 @@
                                 <tr>
                                     <th> </th>
                                     <th> Code </th>
-                                    <th> Name </th>
-                                    <th> Department </th>
-                                    <th> Authorized Officer </th>
+                                    <th> Name </th>                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -108,9 +102,7 @@
                                               data-toggle="modal" ui-sref="unitAddEdit({pageTitle :'Edit Unit', id : row.id })"></span>
                                     </td>
                                     <td>{{row.code}}</td>
-                                    <td>{{row.name}}</td>
-                                    <td>{{row.departmentName}}</td>
-                                    <td>{{row.authorizedOfficerName}}</td>
+                                    <td>{{row.name}}</td>                                   
                                 </tr>
                             </tbody>
                         </table>

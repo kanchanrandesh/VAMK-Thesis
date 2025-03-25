@@ -77,19 +77,7 @@
                                     <span ng-show="frmUnitAddEdit.name_input.$error.required">Name is required</span>
                                 </span>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Department</label>
-                            <div class="col-md-4">
-                                <select class="form-control select2" ng-model="selectedDepartment" ng-options="obj as obj.name for obj in departments track by obj.id"></select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Authorized Officer</label>
-                            <div class="col-md-4">
-                                <select class="form-control select2" ng-model="selectedAuthorizedOfficer" ng-options="obj as obj.displayName for obj in employees track by obj.id"></select>
-                            </div>
-                        </div>
+                        </div>                        
                     </div>
                     <div class="form-actions">
                         <div class="row">

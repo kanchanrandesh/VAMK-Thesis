@@ -20,7 +20,6 @@ C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\So
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.Models\bin\Debug\VAMK.FWMS.Models.pdb
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.Models\bin\Debug\Newtonsoft.Json.dll
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.Models\bin\Debug\Newtonsoft.Json.xml
-C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.Models\obj\Debug\VAMK.FWMS.Models.csproj.AssemblyReference.cache
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.Models\obj\Debug\VAMK.FWMS.Models.csproj.CoreCompileInputs.cache
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.Models\obj\Debug\VAMK.FWMS.Models.csproj.CopyComplete
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.Models\obj\Debug\VAMK.FWMS.Models.dll

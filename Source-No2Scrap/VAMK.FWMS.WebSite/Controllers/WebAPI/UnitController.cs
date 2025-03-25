@@ -65,20 +65,6 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
         [HttpAuthorizeAccessRule(Rule = "UNITADDEDT")]
         public IHttpActionResult Save(UnitOfMeasurementModel model)
         {
-            if (string.IsNullOrEmpty(model.departmentId))
-            {
-                model.status = false;
-                model.message = "Department needs to be selected";
-                return Ok(model);
-            }
-
-            if (string.IsNullOrEmpty(model.authorizedOfficerId))
-            {
-                model.status = false;
-                model.message = "Authorized Officer needs to be selected";
-                return Ok(model);
-            }
-
             var identity = (ClaimsIdentity)User.Identity;
             var userid = identity.FindFirst(ClaimTypes.Sid).Value.ToString();
             var user = BizObjectFactory.GetEmployeeBO().GetProxy(int.Parse(userid));

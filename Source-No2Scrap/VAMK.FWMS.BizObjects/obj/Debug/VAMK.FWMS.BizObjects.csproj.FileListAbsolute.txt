@@ -130,8 +130,6 @@ C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\test 1\VAMK.FW
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\test 1\VAMK.FWMS.BizObjects\obj\Debug\VAMK.FWMS.BizObjects.csproj.CopyComplete
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\test 1\VAMK.FWMS.BizObjects\obj\Debug\VAMK.FWMS.BizObjects.dll
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\test 1\VAMK.FWMS.BizObjects\obj\Debug\VAMK.FWMS.BizObjects.pdb
-C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.BizObjects\obj\Debug\VAMK.FWMS.BizObjects.csproj.AssemblyReference.cache
-C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.BizObjects\obj\Debug\VAMK.FWMS.BizObjects.csproj.CoreCompileInputs.cache
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.BizObjects\bin\Debug\VAMK.FWMS.BizObjects.dll
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.BizObjects\bin\Debug\VAMK.FWMS.BizObjects.pdb
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.BizObjects\bin\Debug\Humanizer.dll
@@ -193,6 +191,8 @@ C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\So
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.BizObjects\bin\Debug\zh-CN\Humanizer.resources.dll
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.BizObjects\bin\Debug\zh-Hans\Humanizer.resources.dll
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.BizObjects\bin\Debug\zh-Hant\Humanizer.resources.dll
+C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.BizObjects\obj\Debug\VAMK.FWMS.BizObjects.csproj.AssemblyReference.cache
+C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.BizObjects\obj\Debug\VAMK.FWMS.BizObjects.csproj.CoreCompileInputs.cache
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.BizObjects\obj\Debug\VAMK.FWMS.BizObjects.csproj.CopyComplete
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.BizObjects\obj\Debug\VAMK.FWMS.BizObjects.dll
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.BizObjects\obj\Debug\VAMK.FWMS.BizObjects.pdb

@@ -8,11 +8,6 @@ namespace VAMK.FWMS.WebSite.Models
         public string timeStamp { get; set; }
         public string code { get; set; }
         public string name { get; set; }
-        public string authorizedOfficerId { get; set; }
-        public string departmentId { get; set; }
-
-        public string authorizedOfficerName { get; set; }
-        public string departmentName { get; set; }
         public bool status { get; set; }
         public string message { get; set; }
 

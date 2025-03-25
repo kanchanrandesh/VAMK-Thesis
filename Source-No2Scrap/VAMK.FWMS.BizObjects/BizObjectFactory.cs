@@ -88,5 +88,9 @@ namespace VAMK.FWMS.BizObjects
         {
             return new DonerBO();
         }
+        public static IItem GetItemBO()
+        {
+            return new ItemBO();
+        }
     }
 }

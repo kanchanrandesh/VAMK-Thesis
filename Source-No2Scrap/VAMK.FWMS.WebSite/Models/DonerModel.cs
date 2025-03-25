@@ -9,8 +9,7 @@ namespace VAMK.FWMS.WebSite.Models
         public string code { get; set; }
         public string name { get; set; }
         public string address { get; set; }
-        public string locationCoordinates { get; set; }
-        public string authorizedOfficerName { get; set; }
+        public string locationCoordinates { get; set; }       
         public bool status { get; set; }
         public string message { get; set; }
 

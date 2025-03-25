@@ -100,6 +100,7 @@
     <Compile Include="SearchQueries\ContactSearchQuery.cs" />
     <Compile Include="SearchQueries\CountrySearchQuery.cs" />
     <Compile Include="SearchQueries\DepartmentSearchQuery.cs" />
+    <Compile Include="SearchQueries\ItemSearchQuery.cs" />
     <Compile Include="SearchQueries\DonerSearchQuery.cs" />
     <Compile Include="SearchQueries\EmployeeSearchQuery.cs" />
     <Compile Include="SearchQueries\GroupSearchQuery.cs" />
