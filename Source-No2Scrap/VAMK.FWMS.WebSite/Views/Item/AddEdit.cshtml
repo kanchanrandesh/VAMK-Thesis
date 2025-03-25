@@ -77,7 +77,34 @@
                                     <span ng-show="frmItemAddEdit.name_input.$error.required">Name is required</span>
                                 </span>
                             </div>
-                        </div>                       
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Item Type</label>
+                            <div class="col-md-4">
+                                <select class="form-control select2" ng-model="item.itemCategory">
+                                    <option value="BakeryItems">Bakery Items</option>
+                                    <option value="SpicesAndCondiments">Spices and Condiments</option>
+                                    <option value="Fruits">Fruits</option>
+                                    <option value="Vegetables">Vegetables</option>
+                                    <option value="DairyFoods">Dairy Foods</option>
+                                    <option value="MeatAndPoultryFoods">Meat and Poultry Foods</option>
+                                    <option value="Seafoods">Seafoods</option>
+                                    <option value="GrainsAndCereals">Grains and Cereals</option>
+                                    <option value="NutsAndSeeds">Nuts and Seeds</option>
+                                    <option value="LegumesAndBeans">Legumes and Beans</option>
+                                    <option value="ProcessedFoods">Processed Foods</option>
+                                    <option value="Beverages">Beverages</option>
+                                    <option value="SnacksAndConfectioneryFoods">Snacks and Confectionery Foods</option>
+                                    <option value="OtherFoods">Other Foods</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Unit Of Measurement</label>
+                            <div class="col-md-4">
+                                <select class="form-control select2" ng-model="selectedUnit" ng-options="obj as obj.name for obj in units track by obj.id"></select>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-actions">
                         <div class="row">

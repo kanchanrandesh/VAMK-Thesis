@@ -13,7 +13,7 @@ namespace VAMK.FWMS.BizObjects.Impl
     {
         #region Vars
 
-        IItemRepository donerRepository;
+        IItemRepository itemRepository;
 
         #endregion
 
@@ -24,7 +24,7 @@ namespace VAMK.FWMS.BizObjects.Impl
 
         #region Property Fileld
 
-        public IItemRepository Repository { get { return donerRepository; } }
+        public IItemRepository Repository { get { return itemRepository; } }
 
         #endregion
 
@@ -35,7 +35,7 @@ namespace VAMK.FWMS.BizObjects.Impl
         public ItemBO(IItemRepository repository)
             : base(repository)
         {
-            donerRepository = repository;
+            itemRepository = repository;
         }
 
         #endregion

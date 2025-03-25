@@ -1,4 +1,8 @@
 ﻿using VAMK.FWMS.WebSite.Helpers;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
 namespace VAMK.FWMS.WebSite.Models
 {
@@ -7,7 +11,9 @@ namespace VAMK.FWMS.WebSite.Models
         public string id { get; set; }
         public string timeStamp { get; set; }
         public string code { get; set; }
-        public string name { get; set; }      
+        public string name { get; set; }
+        public string itemCategory { get; set; }
+        public string unitID { get; set; }
         public bool status { get; set; }
         public string message { get; set; }
 
@@ -17,7 +23,9 @@ namespace VAMK.FWMS.WebSite.Models
             {
                 ID = Utility.ParseInt(e.id),
                 Code = e.code,
-                Name = e.name,                
+                Name = e.name,
+                ItemCategory = (VAMK.FWMS.Models.Enums.ItemCategory)Enum.Parse(typeof(VAMK.FWMS.Models.Enums.ItemCategory), e.itemCategory),
+                UnitOfMeasurementID = Utility.ParseInt(e.unitID),                
                 TimeStamp = e.id != null ? Utility.StringToTimeStamp(e.timeStamp) : new byte[8]
             };
         }
@@ -28,7 +36,9 @@ namespace VAMK.FWMS.WebSite.Models
             {
                 id = e.ID.Value.ToString(),
                 code = e.Code,
-                name = e.Name,               
+                name = e.Name,
+                itemCategory = e.ItemCategory.ToString(),
+                unitID = e.UnitOfMeasurementID != null ? e.UnitOfMeasurementID.Value.ToString() : string.Empty,
                 timeStamp = Utility.TimeStampToString(e.TimeStamp)
             };
         }

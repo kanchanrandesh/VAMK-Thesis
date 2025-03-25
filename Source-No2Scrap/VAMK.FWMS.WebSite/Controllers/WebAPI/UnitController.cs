@@ -20,10 +20,10 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
         [HttpAuthorizeAccessRule(Rule = "UNITVIEWFN")]
         public IHttpActionResult GetAll()
         {
-            var returnList = new List<UnitOfMeasurementModel>();
+            var returnList = new List<UnitModel>();
             foreach (var item in BizObjectFactory.GetUnitBO().GetAll())
             {
-                var modelObj = (UnitOfMeasurementModel)item;
+                var modelObj = (UnitModel)item;
                 returnList.Add(modelObj);
             }
 
@@ -38,10 +38,10 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
             if (query == null)
                 query = new UnitSearchQuery();
 
-            var returnList = new List<UnitOfMeasurementModel>();
+            var returnList = new List<UnitModel>();
             foreach (var item in BizObjectFactory.GetUnitBO().Search(query))
             {
-                var modelObj = (UnitOfMeasurementModel)item;
+                var modelObj = (UnitModel)item;
                 returnList.Add(modelObj);
             }
 
@@ -53,9 +53,9 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
         [HttpAuthorizeAccessRule(Rule = "UNITVIEWFN")]
         public IHttpActionResult GetById(int id)
         {
-            var unit = new UnitOfMeasurementModel();
+            var unit = new UnitModel();
             if (id != 0)
-                unit = (UnitOfMeasurementModel)BizObjectFactory.GetUnitBO().GetSingle(id);
+                unit = (UnitModel)BizObjectFactory.GetUnitBO().GetSingle(id);
 
             return Ok(unit);
         }
@@ -63,7 +63,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
         [HttpPost]
         [Route("save")]
         [HttpAuthorizeAccessRule(Rule = "UNITADDEDT")]
-        public IHttpActionResult Save(UnitOfMeasurementModel model)
+        public IHttpActionResult Save(UnitModel model)
         {
             var identity = (ClaimsIdentity)User.Identity;
             var userid = identity.FindFirst(ClaimTypes.Sid).Value.ToString();

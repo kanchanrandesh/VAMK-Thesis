@@ -20,6 +20,7 @@ namespace VAMK.FWMS.Models.Enums
         LegumesAndBeans = 10,
         ProcessedFoods = 11,
         Beverages = 12,
-        SnacksAndConfectioneryFoods = 13         
+        SnacksAndConfectioneryFoods = 13,      
+        OtherFoods=14
     }
 }

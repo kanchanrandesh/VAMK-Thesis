@@ -922,7 +922,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
         .state('unitAddEdit', {
             url: "/UnitAddEdit/:pageTitle/:id/",
-            templateUrl: "../unit/AddEdit",
+            templateUrl: "../Unit/AddEdit",
             data: { pageTitle: '', id: 0 },
             controller: "UnitAddEditCtrl",
             resolve: {
@@ -972,7 +972,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                             '../Scripts/app/directive/modeldirective.js',
                             '../Scripts/app/services/EmployeeService.js',
                             '../Scripts/app/services/DepartmentService.js',
-                            '../Scripts/app/services/UnitService.js',
+                            '../Scripts/app/services/UnitService.js', 
                             '../Scripts/app/controllers/UnitAddEditCtrl.js',
                             '../Scripts/app/services/NotificationMsgService.js',
                         ]

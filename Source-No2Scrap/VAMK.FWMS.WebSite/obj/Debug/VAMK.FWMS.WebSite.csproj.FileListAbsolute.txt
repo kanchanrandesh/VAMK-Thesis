@@ -234,13 +234,11 @@ C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\test 1\VAMK.FW
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\test 1\VAMK.FWMS.WebSite\obj\Debug\VAMK.FWMS.WebSite.csproj.CopyComplete
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\test 1\VAMK.FWMS.WebSite\obj\Debug\VAMK.FWMS.WebSite.dll
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\test 1\VAMK.FWMS.WebSite\obj\Debug\VAMK.FWMS.WebSite.pdb
-C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\Quartz.pdb
-C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\Quartz.xml
+C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\roslyn\csc.exe
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\roslyn\Microsoft.CSharp.Core.targets
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\roslyn\Microsoft.VisualBasic.Core.targets
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\roslyn\System.Collections.Immutable.dll
@@ -331,6 +329,8 @@ C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\So
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\Newtonsoft.Json.xml
+C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\Quartz.pdb
+C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\Quartz.xml
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\System.IdentityModel.Tokens.Jwt.pdb
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\System.IdentityModel.Tokens.Jwt.xml
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\System.Net.Http.Formatting.xml

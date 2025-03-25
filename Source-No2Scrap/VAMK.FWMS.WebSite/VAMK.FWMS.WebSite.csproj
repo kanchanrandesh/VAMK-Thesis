@@ -351,7 +351,7 @@
     <Compile Include="Models\SelectObjectModel.cs" />
     <Compile Include="Models\SessionListModel.cs" />
     <Compile Include="Models\TimeZoneModel.cs" />
-    <Compile Include="Models\UnitModel.cs" />
+    <Compile Include="Models\UnitOfMeasurementModel.cs" />
     <Compile Include="Context\LoginContextHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -6163,15 +6163,7 @@
     <Content Include="Scripts\app\controllers\GroupListCtrl.js" />
     <Content Include="Scripts\app\controllers\GroupRulesCtrl.js" />
     <Content Include="Scripts\app\controllers\GroupUsersCtrl.js" />
-    <Content Include="Scripts\app\controllers\OpportunityHomeCtrl.js" />
-    <Content Include="Scripts\app\controllers\OpportunityListCtrl.js" />
-    <Content Include="Scripts\app\controllers\OrganizationCategoryAddEditCtrl.js" />
-    <Content Include="Scripts\app\controllers\OrganizationCategoryListCtrl.js" />
     <Content Include="Scripts\app\controllers\LoginCtrl.js" />
-    <Content Include="Scripts\app\controllers\ModalInstanceCtrl.js" />
-    <Content Include="Scripts\app\controllers\OnlineConfirmationCtrl.js" />
-    <Content Include="Scripts\app\controllers\OrganizationAddEditCtrl.js" />
-    <Content Include="Scripts\app\controllers\OrganizationListCtrl.js" />
     <Content Include="Scripts\app\controllers\SystemConfigurationAddEditCtrl.js" />
     <Content Include="Scripts\app\controllers\TimeSheetListCtrl.js" />
     <Content Include="Scripts\app\controllers\TodoController.js" />
@@ -6286,8 +6278,6 @@
     <Content Include="Views\Group\AddEdit.cshtml" />
     <Content Include="Views\Group\Users.cshtml" />
     <Content Include="Views\Group\Rules.cshtml" />
-    <Content Include="Views\Unit\Index.cshtml" />
-    <Content Include="Views\Unit\AddEdit.cshtml" />
     <Content Include="Views\HomeComponents\SideBar.cshtml" />
     <Content Include="Views\HomeComponents\werwrwerw.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
@@ -6296,6 +6286,8 @@
     <Content Include="Views\Doner\Index.cshtml" />
     <Content Include="Views\Item\Index.cshtml" />
     <Content Include="Views\Item\AddEdit.cshtml" />
+    <Content Include="Views\Unit\AddEdit.cshtml" />
+    <Content Include="Views\Unit\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\FileUploads\" />

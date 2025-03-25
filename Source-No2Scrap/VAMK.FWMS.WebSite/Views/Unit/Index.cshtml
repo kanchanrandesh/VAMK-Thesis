@@ -1,7 +1,5 @@
 ﻿
-@{
-    Layout = null;
-}
+@{ Layout = null; }
 <!-- BEGIN PAGE HEADER-->
 <div class="page-bar">
     <ul class="page-breadcrumb">
@@ -10,7 +8,7 @@
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a ui-sref="unitList">Units</a>
+            <a ui-sref="unitList">Unit of Measurements</a>
         </li>
     </ul>
     <div class="page-toolbar">
@@ -33,9 +31,9 @@
 <!-- END PAGE HEADER-->
 <!-- BEGIN MAIN CONTENT -->
 <div class="note note-success">
-    <h3>Units</h3>
+    <h3>Unit of Measurements</h3>
     <p>
-        Use to define the Units of FWMS
+        Use to define the Unit of Measurements of No2Scrap System
     </p>
 </div>
 <div class="row">
@@ -68,7 +66,7 @@
                                             <div class="col-md-4">
                                                 <label>Name</label>
                                                 <input class="form-control" ng-model="searchQuery.name" />
-                                            </div>                                           
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -92,7 +90,7 @@
                                 <tr>
                                     <th> </th>
                                     <th> Code </th>
-                                    <th> Name </th>                                    
+                                    <th> Name </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -102,7 +100,7 @@
                                               data-toggle="modal" ui-sref="unitAddEdit({pageTitle :'Edit Unit', id : row.id })"></span>
                                     </td>
                                     <td>{{row.code}}</td>
-                                    <td>{{row.name}}</td>                                   
+                                    <td>{{row.name}}</td>
                                 </tr>
                             </tbody>
                         </table>

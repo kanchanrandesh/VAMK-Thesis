@@ -2,7 +2,7 @@
 
 namespace VAMK.FWMS.WebSite.Models
 {
-    public class UnitOfMeasurementModel
+    public class UnitModel
     {
         public string id { get; set; }
         public string timeStamp { get; set; }
@@ -11,7 +11,7 @@ namespace VAMK.FWMS.WebSite.Models
         public bool status { get; set; }
         public string message { get; set; }
 
-        public static implicit operator VAMK.FWMS.Models.UnitOfMeasurement(UnitOfMeasurementModel e)
+        public static implicit operator VAMK.FWMS.Models.UnitOfMeasurement(UnitModel e)
         {
             return new VAMK.FWMS.Models.UnitOfMeasurement()
             {
@@ -22,9 +22,9 @@ namespace VAMK.FWMS.WebSite.Models
             };
         }
 
-        public static explicit operator UnitOfMeasurementModel(VAMK.FWMS.Models.UnitOfMeasurement e)
+        public static explicit operator UnitModel(VAMK.FWMS.Models.UnitOfMeasurement e)
         {
-            return new UnitOfMeasurementModel()
+            return new UnitModel()
             {
                 id = e.ID.Value.ToString(),
                 code = e.Code,

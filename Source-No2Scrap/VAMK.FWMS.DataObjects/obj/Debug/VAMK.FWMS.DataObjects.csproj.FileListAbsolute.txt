@@ -65,8 +65,6 @@ C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\So
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\bin\Debug\log4net.xml
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\bin\Debug\Newtonsoft.Json.xml
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.csproj.AssemblyReference.cache
-C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.Migrations._123.resources
-C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.csproj.GenerateResource.cache
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.csproj.CoreCompileInputs.cache
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.csproj.CopyComplete
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.dll

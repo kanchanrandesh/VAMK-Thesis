@@ -54,11 +54,11 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
         [Route("getById/{id}")]
         public IHttpActionResult GetById(int id)
         {
-            var department = new ItemModel();
+            var item = new ItemModel();
             if (id != 0)
-                department = (ItemModel)BizObjectFactory.GetItemBO().GetSingle(id);
+                item = (ItemModel)BizObjectFactory.GetItemBO().GetSingle(id);
 
-            return Ok(department);
+            return Ok(item);
         }
 
         [HttpPost]
