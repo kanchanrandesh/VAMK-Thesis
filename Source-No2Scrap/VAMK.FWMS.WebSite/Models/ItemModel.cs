@@ -14,6 +14,7 @@ namespace VAMK.FWMS.WebSite.Models
         public string name { get; set; }
         public string itemCategory { get; set; }
         public string unitID { get; set; }
+        public string unitName { get; set; }
         public bool status { get; set; }
         public string message { get; set; }
 
@@ -25,7 +26,7 @@ namespace VAMK.FWMS.WebSite.Models
                 Code = e.code,
                 Name = e.name,
                 ItemCategory = (VAMK.FWMS.Models.Enums.ItemCategory)Enum.Parse(typeof(VAMK.FWMS.Models.Enums.ItemCategory), e.itemCategory),
-                UnitOfMeasurementID = Utility.ParseInt(e.unitID),                
+                UnitID = Utility.ParseInt(e.unitID),
                 TimeStamp = e.id != null ? Utility.StringToTimeStamp(e.timeStamp) : new byte[8]
             };
         }
@@ -38,7 +39,8 @@ namespace VAMK.FWMS.WebSite.Models
                 code = e.Code,
                 name = e.Name,
                 itemCategory = e.ItemCategory.ToString(),
-                unitID = e.UnitOfMeasurementID != null ? e.UnitOfMeasurementID.Value.ToString() : string.Empty,
+                unitID = e.UnitID != null ? e.UnitID.Value.ToString() : string.Empty,
+                //    unitName = e.UnitID != null ? e.Unit.UnitName : string.Empty,               
                 timeStamp = Utility.TimeStampToString(e.TimeStamp)
             };
         }

@@ -92,7 +92,9 @@
                                 <tr>
                                     <th> </th>
                                     <th> Code </th>
-                                    <th> Name </th>                                                                 
+                                    <th> Name </th>
+                                    <th> Item Category </th>
+                                    <th> Units </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -102,7 +104,9 @@
                                               data-toggle="modal" ui-sref="itemAddEdit({pageTitle :'Edit Item', id : row.id })"></span>
                                     </td>
                                     <td>{{row.code}}</td>
-                                    <td>{{row.name}}</td>                                   
+                                    <td>{{row.name}}</td>
+                                    <td>{{row.itemCategory}}</td>
+                                   
                                 </tr>
                             </tbody>
                         </table>

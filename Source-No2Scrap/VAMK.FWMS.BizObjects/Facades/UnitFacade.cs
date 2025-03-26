@@ -6,9 +6,9 @@ using System.Transactions;
 
 namespace VAMK.FWMS.BizObjects.Facades
 {
-    public class UnitOfMeasurementFacade
+    public class UnitFacade
     {
-        public TransferObject<UnitOfMeasurement> Save(UnitOfMeasurement unit)
+        public TransferObject<Unit> Save(Unit unit)
         {
             AuditTrail auditTrail = null;
             if (unit.ID == null)
@@ -19,7 +19,7 @@ namespace VAMK.FWMS.BizObjects.Facades
                 auditTrail = Resources.Utility.CreateAuditTrail(dbUnit, unit, Models.Enums.AuditTrailAction.Update, new List<string>(), 0);
             }
 
-            var transferObject = new TransferObject<UnitOfMeasurement>();
+            var transferObject = new TransferObject<Unit>();
             var options = new TransactionOptions();
             options.Timeout = TimeSpan.FromMinutes(1);
             options.IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted;

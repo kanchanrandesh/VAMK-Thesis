@@ -351,7 +351,7 @@
     <Compile Include="Models\SelectObjectModel.cs" />
     <Compile Include="Models\SessionListModel.cs" />
     <Compile Include="Models\TimeZoneModel.cs" />
-    <Compile Include="Models\UnitOfMeasurementModel.cs" />
+    <Compile Include="Models\UnitModel.cs" />
     <Compile Include="Context\LoginContextHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -5227,7 +5227,7 @@
     <Content Include="assets\layouts\layout\img\logo-big.png" />
     <Content Include="assets\layouts\layout\img\logo-invert.png" />
     <Content Include="assets\layouts\layout\img\logo.png" />
-    <Content Include="assets\layouts\layout\img\main_logo.jpg" />
+    <Content Include="assets\layouts\layout\img\main_logo.png" />
     <Content Include="assets\layouts\layout\img\menu-toggler.png" />
     <Content Include="assets\layouts\layout\img\photo1.jpg" />
     <Content Include="assets\layouts\layout\img\photo2.jpg" />

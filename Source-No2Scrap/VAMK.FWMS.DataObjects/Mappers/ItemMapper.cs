@@ -16,7 +16,7 @@ namespace VAMK.FWMS.DataObjects.Mappers
             Property(t => t.Code).HasColumnName("Description").HasColumnType("nvarchar").HasMaxLength(50);
             Property(t => t.Name).HasColumnName("Name").HasColumnType("nvarchar").HasMaxLength(200);
             Property(t => t.ItemCategory).HasColumnName("ItemCategory").HasColumnType("int").IsOptional();
-            Property(t => t.UnitOfMeasurementID).HasColumnName("UnitOfMeasurementID").HasColumnType("int");
+            Property(t => t.UnitID).HasColumnName("UnitID").HasColumnType("int");
 
             Property(t => t.User).HasColumnName("UserCreated").HasColumnType("nvarchar").HasMaxLength(50);
             Property(t => t.DateCreated).HasColumnName("DateCreated").HasColumnType("datetime");

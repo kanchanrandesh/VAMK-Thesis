@@ -6,22 +6,22 @@ using System.Collections.Generic;
 
 namespace VAMK.FWMS.BizObjects.Impl
 {
-    public class UnitBO : BizObjectBase<UnitOfMeasurement>, IUnitOfMeasurement
+    public class UnitBO : BizObjectBase<Unit>, IUnit
     {
         #region Vars
 
-        IUnitOfMeasurementRepository unitRepository;
+        IUnitRepository unitRepository;
 
         #endregion
 
-        public override UnitOfMeasurement Create()
+        public override Unit Create()
         {
-            return new UnitOfMeasurement();
+            return new Unit();
         }
 
         #region Property Fileld
 
-        public IUnitOfMeasurementRepository Repository { get { return unitRepository; } }
+        public IUnitRepository Repository { get { return unitRepository; } }
 
         #endregion
 
@@ -29,7 +29,7 @@ namespace VAMK.FWMS.BizObjects.Impl
 
         public UnitBO() : this(new UnitOfMeasurementRepository()) { }
 
-        public UnitBO(IUnitOfMeasurementRepository repository)
+        public UnitBO(IUnitRepository repository)
             : base(repository)
         {
             unitRepository = repository;
@@ -44,7 +44,7 @@ namespace VAMK.FWMS.BizObjects.Impl
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public IList<UnitOfMeasurement> Search(Models.SearchQueries.UnitSearchQuery query)
+        public IList<Unit> Search(Models.SearchQueries.UnitSearchQuery query)
         {
             return Repository.Search(query);
         }

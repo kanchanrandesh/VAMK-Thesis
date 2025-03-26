@@ -78,7 +78,7 @@ namespace VAMK.FWMS.BizObjects
         {
             return new RuleBO();
         }
-        public static IUnitOfMeasurement GetUnitBO()
+        public static IUnit GetUnitBO()
         {
             return new UnitBO();
         }

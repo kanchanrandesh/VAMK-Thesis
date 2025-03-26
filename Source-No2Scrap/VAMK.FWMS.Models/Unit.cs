@@ -1,6 +1,6 @@
 ﻿namespace VAMK.FWMS.Models
 {
-    public class UnitOfMeasurement : EntityBase
+    public class Unit : EntityBase
     {
         private string _code;
         public string Code

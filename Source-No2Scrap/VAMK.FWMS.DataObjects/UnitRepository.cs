@@ -6,13 +6,13 @@ using System.Linq;
 
 namespace VAMK.FWMS.DataObjects
 {
-    public class UnitOfMeasurementRepository : RepositoryBase<UnitOfMeasurement>, IUnitOfMeasurementRepository
+    public class UnitOfMeasurementRepository : RepositoryBase<Unit>, IUnitRepository
     {
         public UnitOfMeasurementRepository() : this(new RepositoryContext()) { }
 
         public UnitOfMeasurementRepository(IRepositoryContext context) : base(context) { }
 
-        public IList<UnitOfMeasurement> Search(Models.SearchQueries.UnitSearchQuery query)
+        public IList<Unit> Search(Models.SearchQueries.UnitSearchQuery query)
         {
             if (query == null)
                 return null;

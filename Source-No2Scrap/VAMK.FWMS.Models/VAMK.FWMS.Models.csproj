@@ -113,7 +113,7 @@
     <Compile Include="SystemConfiguration.cs" />
     <Compile Include="TimeZone.cs" />
     <Compile Include="Group.cs" />
-    <Compile Include="UnitOfMeasurement.cs" />
+    <Compile Include="Unit.cs" />
     <Compile Include="SystemUser.cs" />
     <Compile Include="UserRights.cs" />
     <Compile Include="Util\EmailTemplates.cs" />

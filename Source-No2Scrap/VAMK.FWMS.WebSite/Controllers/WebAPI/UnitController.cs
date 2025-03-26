@@ -69,7 +69,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
             var userid = identity.FindFirst(ClaimTypes.Sid).Value.ToString();
             var user = BizObjectFactory.GetEmployeeBO().GetProxy(int.Parse(userid));
 
-            UnitOfMeasurement obj = model;
+            Unit obj = model;
             if (obj.ID == null)
             {
                 obj.State = State.Added;
@@ -82,7 +82,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
             }
             obj.User = user.UserName;
 
-            var transObject = new UnitOfMeasurementFacade().Save(obj);
+            var transObject = new UnitFacade().Save(obj);
 
             model.status = transObject.StatusInfo.Status == Common.Enums.ServiceStatus.Success;
             if (transObject.StatusInfo.Status == Common.Enums.ServiceStatus.DatabaseFailure)

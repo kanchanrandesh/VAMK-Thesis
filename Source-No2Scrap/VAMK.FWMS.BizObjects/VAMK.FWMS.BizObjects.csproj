@@ -128,7 +128,7 @@
     <Compile Include="ISystemConfiguration.cs" />
     <Compile Include="ITemplateContentGenerator.cs" />
     <Compile Include="ITimeZone.cs" />
-    <Compile Include="IUnitOfMeasurementt.cs" />
+    <Compile Include="IUnit.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\AntiForgeryDictionary.cs" />
     <Compile Include="Resources\DashBoardDictionary.cs" />

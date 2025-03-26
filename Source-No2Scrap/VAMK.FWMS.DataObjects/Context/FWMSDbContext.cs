@@ -60,7 +60,7 @@ namespace VAMK.FWMS.DataObjects.Context
             modelBuilder.Configurations.Add(new DonationMapper());
             modelBuilder.Configurations.Add(new DonationItemMapper());
             modelBuilder.Configurations.Add(new ItemMapper());
-            modelBuilder.Configurations.Add(new UnitOfMeasurementMapper());
+            modelBuilder.Configurations.Add(new UnitMapper());
             modelBuilder.Configurations.Add(new RequestMapper());
             modelBuilder.Configurations.Add(new RequestItemMapper());
             modelBuilder.Configurations.Add(new CoordinatorIntentoryItemMapper());
@@ -91,7 +91,7 @@ namespace VAMK.FWMS.DataObjects.Context
         public IDbSet<Donation> Donation { get; set; }
         public IDbSet<DonationItem> DonationItem { get; set; }
         public IDbSet<Item> Item { get; set; }
-        public IDbSet<UnitOfMeasurement> UnitOfMeasurement { get; set; }
+        public IDbSet<Unit> UnitOfMeasurement { get; set; }
         public IDbSet<Request> Request { get; set; }
         public IDbSet<RequestItem> RequestItem { get; set; }
         public IDbSet<CoordinatorIntentoryItem> CoordinatorIntentoryItem { get; set; }

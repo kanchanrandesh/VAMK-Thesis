@@ -108,7 +108,7 @@
     <Compile Include="Interfaces\ISentMailRepository.cs" />
     <Compile Include="Interfaces\ISystemConfigurationRepository.cs" />
     <Compile Include="Interfaces\ITimeZoneRepository.cs" />
-    <Compile Include="Interfaces\IUnitOfMeasurementRepository.cs" />
+    <Compile Include="Interfaces\IUnitRepository.cs" />
     <Compile Include="Mappers\AuditTrailDetailMapper.cs" />
     <Compile Include="Mappers\AuditTrailMapper.cs" />
     <Compile Include="Mappers\CompanyMapper.cs" />
@@ -135,7 +135,7 @@
     <Compile Include="Mappers\SystemConfigurationMapper.cs" />
     <Compile Include="Mappers\SystemUserMapper.cs" />
     <Compile Include="Mappers\TimeZoneMapper.cs" />
-    <Compile Include="Mappers\UnitOfMeasurementMapper.cs" />
+    <Compile Include="Mappers\UnitMapper.cs" />
     <Compile Include="Insfratructures\ContextManager.cs" />
     <Compile Include="Insfratructures\RepositoryContext.cs" />
     <Compile Include="Interfaces\IRepository.cs" />

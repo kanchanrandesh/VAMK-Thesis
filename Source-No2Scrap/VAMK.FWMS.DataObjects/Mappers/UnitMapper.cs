@@ -4,9 +4,9 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace VAMK.FWMS.DataObjects.Mappers
 {
-    internal class UnitOfMeasurementMapper : EntityTypeConfiguration<UnitOfMeasurement>
+    internal class UnitMapper : EntityTypeConfiguration<Unit>
     {
-        public UnitOfMeasurementMapper()
+        public UnitMapper()
         {
             #region Properties
 

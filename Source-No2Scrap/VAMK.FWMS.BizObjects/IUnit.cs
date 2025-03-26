@@ -4,13 +4,13 @@ using System.Collections.Generic;
 
 namespace VAMK.FWMS.BizObjects
 {
-    public interface IUnitOfMeasurement : IBizObjectBase<UnitOfMeasurement>
+    public interface IUnit : IBizObjectBase<Unit>
     {
         /// <summary>
         /// Search all Units
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        IList<UnitOfMeasurement> Search(UnitSearchQuery query);
+        IList<Unit> Search(UnitSearchQuery query);
     }
 }

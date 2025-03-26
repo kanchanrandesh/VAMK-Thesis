@@ -19,8 +19,8 @@ namespace VAMK.FWMS.Models
         }
         public string Name { get; set; }
         public Models.Enums.ItemCategory ItemCategory { get; set; }
-        public UnitOfMeasurement UnitOfMeasurement { get; set; }
-        public int? UnitOfMeasurementID { get; set; }
+        public Unit Unit { get; set; }
+        public int? UnitID { get; set; }
 
     }
 }

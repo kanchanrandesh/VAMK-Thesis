@@ -11,9 +11,9 @@ namespace VAMK.FWMS.WebSite.Models
         public bool status { get; set; }
         public string message { get; set; }
 
-        public static implicit operator VAMK.FWMS.Models.UnitOfMeasurement(UnitModel e)
+        public static implicit operator VAMK.FWMS.Models.Unit(UnitModel e)
         {
-            return new VAMK.FWMS.Models.UnitOfMeasurement()
+            return new VAMK.FWMS.Models.Unit()
             {
                 ID = Utility.ParseInt(e.id),
                 Code = e.code,
@@ -22,7 +22,7 @@ namespace VAMK.FWMS.WebSite.Models
             };
         }
 
-        public static explicit operator UnitModel(VAMK.FWMS.Models.UnitOfMeasurement e)
+        public static explicit operator UnitModel(VAMK.FWMS.Models.Unit e)
         {
             return new UnitModel()
             {
