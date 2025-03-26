@@ -1,4 +1,4 @@
-﻿angular.module('MetronicApp').controller('ItemAddEditCtrl', function ($rootScope, $scope, $http, $timeout, $document, $uibModal, $stateParams, $state, itemService, unitService,notificationMsgService) {
+﻿angular.module('MetronicApp').controller('ItemAddEditCtrl', function ($rootScope, $scope, $http, $timeout, $document, $uibModal, $stateParams, $state, itemService, unitService, notificationMsgService) {
 
     $scope.$on('$viewContentLoaded', function () {
         App.initAjax();
@@ -14,6 +14,8 @@
 
     function loadUnits() {
         var defer = $.Deferred();
+
+        $scope.searchQuery.unit = $stateParams.unitID ? $scope.units.find(x => x.id === $stateParams.unitID) : null;
         unitService.getAll().then(function (res) {
             $scope.units = res;
             defer.resolve();

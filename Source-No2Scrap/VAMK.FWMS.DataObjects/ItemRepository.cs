@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace VAMK.FWMS.DataObjects
 {
@@ -31,6 +32,7 @@ namespace VAMK.FWMS.DataObjects
 
             if (!string.IsNullOrEmpty(query.Name))
                 queryble = queryble.Where(t => t.Name.Contains(query.Name));
+                queryble = queryble.Include(t => t.Unit);
 
             return queryble.OrderBy(t => t.Code).ToList();
         }

@@ -40,7 +40,7 @@ namespace VAMK.FWMS.WebSite.Models
                 name = e.Name,
                 itemCategory = e.ItemCategory.ToString(),
                 unitID = e.UnitID != null ? e.UnitID.Value.ToString() : string.Empty,
-                //    unitName = e.UnitID != null ? e.Unit.UnitName : string.Empty,               
+                unitName = e.UnitID != null ? e.Unit.UnitName : string.Empty,               
                 timeStamp = Utility.TimeStampToString(e.TimeStamp)
             };
         }
