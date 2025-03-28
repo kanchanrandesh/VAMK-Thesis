@@ -12,5 +12,7 @@ namespace VAMK.FWMS.BizObjects
         /// </summary>
         /// <returns></returns>
         IList<ContactPerson> GetAllForExport();
+
+        IList<ContactPerson> GetAllFor(Doner doner);
     }
 }

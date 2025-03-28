@@ -9,15 +9,17 @@ namespace VAMK.FWMS.WebSite.Models
 {
     public class ContactPersonModel
     {
+        public string @doner { get; set; }
         public string id { get; set; }
         public string code { get; set; }
-        public string name { get; set; }       
-        public string phoneNumber { get; set; }      
-        public string mobile { get; set; }       
+        public string name { get; set; }
+        public string phoneNumber { get; set; }
+        public string mobile { get; set; }
         public string email { get; set; }
-        public ContactPersonType contactPersonType { get; set; }
-        public int? donerID { get; set; }
-        public int? recipientID { get; set; }
+        public bool isDoner { get; set; }
+        public string donerId { get; set; }
+        public string recipientId { get; set; }
+        public string dateCreated { get; set; }
         public string timeStamp { get; set; }
         public bool status { get; set; }
         public string message { get; set; }
@@ -32,9 +34,9 @@ namespace VAMK.FWMS.WebSite.Models
                 PhoneNumber = e.phoneNumber,
                 Mobile = e.mobile,
                 Email = e.email,
-                ContactPersonType = e.contactPersonType,
-                DonerID = e.donerID,
-                RecepientID = e.recipientID,
+                IsDoner = true,
+                DonerID = Utility.ParseInt(e.donerId),
+                RecipientID = Utility.ParseInt(e.recipientId),
                 TimeStamp = e.id != null ? Utility.StringToTimeStamp(e.timeStamp) : new byte[8],
             };
         }
@@ -44,36 +46,16 @@ namespace VAMK.FWMS.WebSite.Models
             return new ContactPersonModel()
             {
                 id = e.ID.Value.ToString(),
-                //    contactPersonType = e.ContactPersonType,
-                //    firstName = e.FirstName,
-                //    lastName = e.LastName,
-                //    phone = e.PhoneNumber,
-                //    extension = e.Extension,
-                //    mobile = e.Mobile,
-                //    mobile2 = e.Mobile2,
-                //    email = e.Email,
-                //    email2 = e.Email2,
-                //    secretary = e.Secretary,
-                //    secretaryEmail = e.SecretaryEmail,
-                //    secretaryMobile = e.SecretaryMobile,
-                //    addressLine1 = e.AddressLine1,
-                //    addressLine2 = e.AddressLine2,
-                //    addressLine3 = e.AddressLine3,
-                //    countryId = e.CountryID != null ? e.CountryID.Value.ToString() : string.Empty,
-                //    organizationId = e.OrganizationID != null ? e.OrganizationID.Value.ToString() : string.Empty,
-                //    industryList = e.IndustryList,
-                //    jobRole = e.JobRole,
-                //    department = e.Department,
-                //    designationCategoryId = e.DesignationCategoryID != null ? e.DesignationCategoryID.Value.ToString() : string.Empty,
-                //    accountManagerId = e.AccountManagerID != null ? e.AccountManagerID.Value.ToString() : string.Empty,
-                //    accountManager = e.AccountManager != null ? e.AccountManager.FirstName + " " + e.AccountManager.LastName : string.Empty,
-                //    accountManagerCode = e.AccountManager != null ? e.AccountManager.Code : string.Empty,
-                //    birthYear = e.BirthYear != null ? e.BirthYear.Value.ToString() : string.Empty,
-                //    birthMonth = e.BirthMonth != null ? e.BirthMonth.Value.ToString() : string.Empty,
-                //    birthDate = e.BirthDate != null ? e.BirthDate.Value.ToString() : string.Empty,
-                //    notes = e.Notes,
-                //    photoUrl = e.PhotoURL,
-                //    timeStamp = Utility.TimeStampToString(e.TimeStamp)
+                name = e.Name,
+                code = e.Code,
+                phoneNumber = e.PhoneNumber,
+                mobile = e.Mobile,
+                email = e.Email,
+                isDoner =true,
+                donerId = e.DonerID.Value.ToString(),
+                recipientId = e.RecipientID.Value.ToString(),                
+                timeStamp = Utility.TimeStampToString(e.TimeStamp)        
+
             };
         }
     }

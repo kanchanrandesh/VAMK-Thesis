@@ -51,6 +51,20 @@ namespace VAMK.FWMS.BizObjects.Impl
 
         #endregion
 
+        #region Get All For
+
+        /// <summary>
+        /// Return list of Contact Person for an Doners
+        /// </summary>
+        /// <param name="organization"></param>
+        /// <returns></returns>
+        public IList<ContactPerson> GetAllFor(Doner doner)
+        {
+            return Repository.GetAllFor(doner);
+        }
+
+        #endregion
+
         #region Object Type
 
         protected override Type LogPrefix

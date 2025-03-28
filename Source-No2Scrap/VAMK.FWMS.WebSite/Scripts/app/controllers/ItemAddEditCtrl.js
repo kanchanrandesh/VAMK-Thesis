@@ -13,15 +13,15 @@
     }());
 
     function loadUnits() {
-        var defer = $.Deferred();
-
-        $scope.searchQuery.unit = $stateParams.unitID ? $scope.units.find(x => x.id === $stateParams.unitID) : null;
+        var defer = $.Deferred();       
         unitService.getAll().then(function (res) {
             $scope.units = res;
             defer.resolve();
         });
         return defer;
     };
+
+    
 
     itemService.getById($stateParams.id).then(function (res) {
         $scope.item = res;

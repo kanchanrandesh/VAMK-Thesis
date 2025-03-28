@@ -35,5 +35,14 @@ namespace VAMK.FWMS.DataObjects
             return queryble.OrderBy(t => t.Code).ToList();
         }
 
+        public override Doner GetSingle(System.Linq.Expressions.Expression<System.Func<Doner, bool>> whereCondition)
+        {
+            var returnVal = this.DbSet.Where(whereCondition)
+                .FirstOrDefault();
+
+            returnVal.ContactPersonList = new ContactPersonRepository().GetAllFor(returnVal);
+
+            return returnVal;
+        }
     }
 }

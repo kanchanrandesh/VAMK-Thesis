@@ -265,6 +265,7 @@
     <Compile Include="Controllers\ContactPersonController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\RecipientController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\DonerController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
@@ -282,6 +283,7 @@
     <Compile Include="Controllers\WebAPI\CountryController.cs" />
     <Compile Include="Controllers\WebAPI\DashboardController.cs" />
     <Compile Include="Controllers\WebAPI\DepartmentController.cs" />
+    <Compile Include="Controllers\WebAPI\RecipientController.cs" />
     <Compile Include="Controllers\WebAPI\ItemController.cs" />
     <Compile Include="Controllers\WebAPI\DonerController.cs" />
     <Compile Include="Controllers\WebAPI\EmployeeController.cs" />
@@ -336,6 +338,7 @@
     <Compile Include="Models\CountryModel.cs" />
     <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\DepartmentModel.cs" />
+    <Compile Include="Models\RecipientModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\DonerModel.cs" />
     <Compile Include="Models\EmployeeModel.cs" />
@@ -6151,6 +6154,8 @@
     <Content Include="Scripts\app\controllers\CountryAddEditCtrl.js" />
     <Content Include="Scripts\app\controllers\CountryListCtrl.js" />
     <Content Include="Scripts\app\controllers\DashboardController.js" />
+    <Content Include="Scripts\app\controllers\RecipientAddEditCtrl.js" />
+    <Content Include="Scripts\app\controllers\RecipientListCtrl.js" />
     <Content Include="Scripts\app\controllers\ItemAddEditCtrl.js" />
     <Content Include="Scripts\app\controllers\DonerAddEditCtrl.js" />
     <Content Include="Scripts\app\controllers\ItemListCtrl.js" />
@@ -6181,6 +6186,7 @@
     <Content Include="Scripts\app\services\ContactService.js" />
     <Content Include="Scripts\app\services\CountryService.js" />
     <Content Include="Scripts\app\services\DashboardService.js" />
+    <Content Include="Scripts\app\services\RecipientService.js" />
     <Content Include="Scripts\app\services\ItemService.js" />
     <Content Include="Scripts\app\services\DonerService.js" />
     <Content Include="Scripts\app\services\DepartmentService.js" />
@@ -6288,6 +6294,8 @@
     <Content Include="Views\Item\AddEdit.cshtml" />
     <Content Include="Views\Unit\AddEdit.cshtml" />
     <Content Include="Views\Unit\Index.cshtml" />
+    <Content Include="Views\Recipient\AddEdit.cshtml" />
+    <Content Include="Views\Recipient\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\FileUploads\" />

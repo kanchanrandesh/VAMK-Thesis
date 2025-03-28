@@ -32,7 +32,8 @@ namespace VAMK.FWMS.DataObjects
 
             if (!string.IsNullOrEmpty(query.Name))
                 queryble = queryble.Where(t => t.Name.Contains(query.Name));
-                queryble = queryble.Include(t => t.Unit);
+
+            queryble = queryble.Include(t => t.Unit);
 
             return queryble.OrderBy(t => t.Code).ToList();
         }

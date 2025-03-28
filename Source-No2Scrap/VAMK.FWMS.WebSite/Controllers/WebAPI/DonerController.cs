@@ -9,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Web.Http;
+using VAMK.FWMS.WebSite.Helpers;
+using System.Linq;
 
 namespace VAMK.FWMS.WebSite.Controllers.WebAPI
 {
@@ -54,18 +56,54 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
         [Route("getById/{id}")]
         public IHttpActionResult GetById(int id)
         {
-            var department = new DonerModel();
+            var doner = new DonerModel();
             if (id != 0)
-                department = (DonerModel)BizObjectFactory.GetDonerBO().GetSingle(id);
+                doner = (DonerModel)BizObjectFactory.GetDonerBO().GetSingle(id);
+            else
+                doner.contactPersonList = new List<ContactPersonModel> { { new ContactPersonModel { } } };
+            //doner.contactPersonList = new List<ContactPersonModel>();
 
-            return Ok(department);
+            return Ok(doner);
         }
 
         [HttpPost]
         [Route("save")]
         [HttpAuthorizeAccessRule(Rule = "DEPRTMADED")]
+        //public IHttpActionResult Save(DonerModel model)
+        //{            
+        //    var identity = (ClaimsIdentity)User.Identity;
+        //    var userid = identity.FindFirst(ClaimTypes.Sid).Value.ToString();
+        //    var user = BizObjectFactory.GetEmployeeBO().GetProxy(int.Parse(userid));
+
+        //    Doner obj = model;
+        //    if (obj.ID == null)
+        //    {
+        //        obj.State = State.Added;
+        //        obj.DateCreated = DateTime.Now;
+        //    }
+        //    else
+        //    {
+        //        obj.State = State.Modified;
+        //        obj.DateModified = DateTime.Now;
+        //    }
+        //    obj.User = user.UserName;
+
+            
+
+
+        //    var transObject = new DonerFacade().Save(obj);
+
+        //    model.status = transObject.StatusInfo.Status == Common.Enums.ServiceStatus.Success;
+        //    if (transObject.StatusInfo.Status == Common.Enums.ServiceStatus.DatabaseFailure)
+        //        model.message = "Code cannot be duplicated";
+        //    else
+        //        model.message = transObject.StatusInfo.Message;
+
+        //    return Ok(model);
+        //}
+
         public IHttpActionResult Save(DonerModel model)
-        {            
+        {
             var identity = (ClaimsIdentity)User.Identity;
             var userid = identity.FindFirst(ClaimTypes.Sid).Value.ToString();
             var user = BizObjectFactory.GetEmployeeBO().GetProxy(int.Parse(userid));

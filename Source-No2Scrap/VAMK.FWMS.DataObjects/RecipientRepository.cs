@@ -36,5 +36,14 @@ namespace VAMK.FWMS.DataObjects
              
 
         }
+        public override Recipient GetSingle(System.Linq.Expressions.Expression<System.Func<Recipient, bool>> whereCondition)
+        {
+            var returnVal = this.DbSet.Where(whereCondition)
+                .FirstOrDefault();
+
+            returnVal.ContactPersonList = new ContactPersonRepository().GetAllFor(returnVal);
+
+            return returnVal;
+        }
     }
 }

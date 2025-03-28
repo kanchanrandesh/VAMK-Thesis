@@ -12,5 +12,14 @@ namespace VAMK.FWMS.DataObjects.Interfaces
         /// </summary>
         /// <returns></returns>
         IList<ContactPerson> GetAllForExport();
+
+        /// <summary>
+        /// Get all contact persons for Doner
+        /// </summary>
+        /// <param name="organization"></param>
+        /// <returns></returns>
+        IList<ContactPerson> GetAllFor(Doner doner);
+
+
     }
 }

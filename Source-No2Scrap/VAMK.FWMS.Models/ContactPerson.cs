@@ -22,9 +22,9 @@ namespace VAMK.FWMS.Models
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string Mobile { get; set; }
-        public ContactPersonType ContactPersonType { get; set; }
+        public bool IsDoner { get; set; }
         public Recipient Recipient { get; set; }
-        public int? RecepientID { get; set; }
+        public int? RecipientID { get; set; }
         public Doner Doner { get; set; }
         public int? DonerID { get; set; }
 

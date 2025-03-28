@@ -57,6 +57,7 @@
         },
 
         getAll: function () {
+            debugger;
             var urlBase = '/api/unit/getAll';
             var deferred = $q.defer();
             $http({

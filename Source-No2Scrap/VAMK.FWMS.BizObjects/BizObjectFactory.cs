@@ -92,5 +92,9 @@ namespace VAMK.FWMS.BizObjects
         {
             return new ItemBO();
         }
+        public static IRecipient GetRecipientBO()
+        {
+            return new RecipientBO();
+        }
     }
 }

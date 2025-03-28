@@ -90,7 +90,79 @@
                         <div class="form-group">
                             <label class="control-label col-md-3">Location Coordinates</label>
                             <div class="col-md-4">
-                                <input type="text" class="form-control" name="location_input" ng-model="doner.location" maxlength="200" required>                                
+                                <input type="text" class="form-control" name="location_input" ng-model="doner.location" maxlength="200" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="portlet light bordered">
+                                <div class="portlet-title" style="border-bottom:none;margin-bottom:0">
+                                    <div class="caption font-green-sharp">
+                                        <i class="icon-settings font-green-sharp"></i>
+                                        <span class="caption-subject bold uppercase">Contact Person(s) Details</span>
+                                    </div>
+                                    <div class="tools">
+                                        <a href="" class="collapse"> </a>
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <div ng-repeat="contactPerson in doner.contactPersonList">
+                                        <ng-form name="frmContactPerson">
+                                            <div class="row form-group" style="border:none">
+                                                <div class="row-container">
+                                                    <div class="row">
+                                                        <button type="button" class="close pull-right row-container-close"
+                                                                data-dismiss="modal" aria-label="Close"
+                                                                ng-click="deleteContactPerson(contactPerson)">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-2">
+                                                            <label class="control-label" style="text-align:left;padding-top:0 !important">Code</label>
+                                                            <input class="form-control" ng-model="contactPerson.code" name="contactPersonCode" required />
+                                                            <span class="fieldError" ng-cloak ng-show="frmContactPerson.contactPersonCode.$dirty && frmContactPerson.contactPersonCode.$invalid">
+                                                                <span ng-show="frmContactPerson.contactPersonCode.$error.required">Code is required</span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" style="text-align:left;padding-top:0 !important">Name</label>
+                                                            <input class="form-control" ng-model="contactPerson.name" name="contactPersonName" required />
+                                                            <span class="fieldError" ng-cloak ng-show="frmContactPerson.contactPersonName.$dirty && frmContactPerson.contactPersonName.$invalid">
+                                                                <span ng-show="frmContactPerson.contactPersonName.$error.required">Name is required</span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" style="text-align:left;padding-top:0 !important">Email</label>
+                                                            <input class="form-control" ng-model="contactPerson.email" name="contactPersonEmail" required />
+                                                            <span class="fieldError" ng-cloak ng-show="frmContactPerson.contactPersonEmail.$dirty && frmContactPerson.contactPersonEmail.$invalid">
+                                                                <span ng-show="frmContactPerson.contactPersonEmail.$error.required">Email is required</span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label class="control-label" style="text-align:left;padding-top:0 !important">Phone</label>
+                                                            <input class="form-control" ng-model="contactPerson.phoneNumber" name="contactPersonCategory" required />
+                                                            <span class="fieldError" ng-cloak ng-show="frmContactPerson.contactPersonPhoneNumber.$dirty && frmContactPerson.contactPersonPhoneNumber.$invalid">
+                                                                <span ng-show="frmContactPerson.contactPersonPhoneNumber.$error.required">Phone is required</span>
+                                                            </span>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <label class="control-label" style="text-align:left;padding-top:0 !important">Mobile</label>
+                                                            <input class="form-control" ng-model="contactPerson.mobile" name="contactPersonMobile" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-form>
+                                    </div>
+                                    <div style="margin-top:1em; margin-bottom:1em">
+                                        <a style="cursor:pointer;" ng-click="addNewContactPerson()">
+                                            <div>
+                                                <span>New Contact Person</span>
+                                                <span class="glyphicon glyphicon-plus pull-left" aria-hidden="true" style="color: #0a6aa1;margin-right:.5em"></span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -120,4 +192,3 @@
     ComponentsBootstrapSelect.init(); // init todo page
 </script>
 <!-- BEGIN MAIN JS -->
-

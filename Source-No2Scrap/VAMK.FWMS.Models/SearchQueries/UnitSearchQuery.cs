@@ -6,5 +6,6 @@
         public string Name { get; set; }
         public int? DepartmentID { get; set; }
         public string SearchText { get; set; }
+       
     }
 }

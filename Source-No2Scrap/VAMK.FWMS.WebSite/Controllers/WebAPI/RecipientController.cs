@@ -1,0 +1,101 @@
+﻿using VAMK.FWMS.BizObjects;
+using VAMK.FWMS.BizObjects.Facades;
+using VAMK.FWMS.Models;
+using VAMK.FWMS.Models.Interfaces;
+using VAMK.FWMS.Models.SearchQueries;
+using VAMK.FWMS.WebSite.Filters;
+using VAMK.FWMS.WebSite.Models;
+using System;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Web.Http;
+using VAMK.FWMS.WebSite.Helpers;
+using System.Linq;
+
+namespace VAMK.FWMS.WebSite.Controllers.WebAPI
+{
+    [RoutePrefix("api/recipient")]
+
+    public class RecipientController : ApiController
+    {
+        [HttpGet]
+        [Route("getAll")]
+        [HttpAuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        public IHttpActionResult GetAll()
+        {
+            var returnList = new List<RecipientModel>();
+            foreach (var item in BizObjectFactory.GetRecipientBO().GetAll())
+            {
+                var modelObj = (RecipientModel)item;
+                returnList.Add(modelObj);
+            }
+
+            return Ok(returnList);
+        }
+
+        [HttpPost]
+        [Route("search")]
+        [HttpAuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        public IHttpActionResult Search(RecipientSearchQuery query)
+        {
+            if (query == null)
+                query = new RecipientSearchQuery();
+
+            var returnList = new List<RecipientModel>();
+            foreach (var item in BizObjectFactory.GetRecipientBO().Search(query))
+            {
+                var modelObj = (RecipientModel)item;
+                returnList.Add(modelObj);
+            }
+
+            return Ok(returnList);
+        }
+
+        [HttpGet]
+        [HttpAuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        [Route("getById/{id}")]
+        public IHttpActionResult GetById(int id)
+        {
+            var recipient = new RecipientModel();
+            if (id != 0)
+                recipient = (RecipientModel)BizObjectFactory.GetRecipientBO().GetSingle(id);
+            else
+                recipient.contactPersonList = new List<ContactPersonModel> { { new ContactPersonModel { } } };
+
+            return Ok(recipient);
+        }
+
+        [HttpPost]
+        [Route("save")]
+        [HttpAuthorizeAccessRule(Rule = "DEPRTMADED")]
+        public IHttpActionResult Save(RecipientModel model)
+        {
+            var identity = (ClaimsIdentity)User.Identity;
+            var userid = identity.FindFirst(ClaimTypes.Sid).Value.ToString();
+            var user = BizObjectFactory.GetEmployeeBO().GetProxy(int.Parse(userid));
+
+            Recipient obj = model;
+            if (obj.ID == null)
+            {
+                obj.State = State.Added;
+                obj.DateCreated = DateTime.Now;
+            }
+            else
+            {
+                obj.State = State.Modified;
+                obj.DateModified = DateTime.Now;
+            }
+            obj.User = user.UserName;
+
+            var transObject = new RecipientFacade().Save(obj);
+
+            model.status = transObject.StatusInfo.Status == Common.Enums.ServiceStatus.Success;
+            if (transObject.StatusInfo.Status == Common.Enums.ServiceStatus.DatabaseFailure)
+                model.message = "Code cannot be duplicated";
+            else
+                model.message = transObject.StatusInfo.Message;
+
+            return Ok(model);
+        }
+    }
+}

@@ -78,6 +78,7 @@
     <Compile Include="Facades\CompanyFacade.cs" />
     <Compile Include="Facades\CountryFacade.cs" />
     <Compile Include="Facades\DepartmentFacade.cs" />
+    <Compile Include="Facades\RecipientFacade.cs" />
     <Compile Include="Facades\ItemFacade.cs" />
     <Compile Include="Facades\DonerFacade.cs" />
     <Compile Include="Facades\EmailItemsFacade.cs" />
@@ -85,6 +86,8 @@
     <Compile Include="Facades\GroupFacade.cs" />
     <Compile Include="Facades\UnitFacade.cs" />
     <Compile Include="IDepartment.cs" />
+    <Compile Include="Impl\RecipientBO.cs" />
+    <Compile Include="IRecipient.cs" />
     <Compile Include="IItem.cs" />
     <Compile Include="IDoner.cs" />
     <Compile Include="IEmailTemplateReader.cs" />

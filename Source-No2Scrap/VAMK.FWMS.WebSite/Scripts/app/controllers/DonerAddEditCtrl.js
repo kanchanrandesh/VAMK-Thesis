@@ -7,7 +7,9 @@
     $scope.id = $stateParams.id;
     $scope.pageTitle = $stateParams.pageTitle;
 
+
     donerService.getById($stateParams.id).then(function (res) {
+        debugger;
         $scope.doner = res;
     });
 
@@ -23,6 +25,34 @@
             });
         }
     }
+
+    //Contact Person
+    $scope.addNewContactPerson = function () {
+        //if (!$scope.doner.contactPersonList) {
+        //    $scope.doner.contactPersonList = [];
+        //}
+        $scope.doner.contactPersonList.push({
+            "doner": null,
+            "donerId": null,
+            "code": null,
+            "name": null,
+            "email": null,
+            "phoneNumber": null,
+            "mobile": null,
+            "id": null,
+            "timeStamp": null,
+            "timeStamp": null,
+            "dateCreated": null
+        });
+    }
+    $scope.deleteContactPerson = function (contactPerson) {       
+        var i = $scope.doner.contactPersonList.indexOf(contactPerson);
+        if (i != -1) {
+            $scope.doner.contactPersonList.splice(i, 1);
+        }
+    }
+
+
 
     $scope.cancel = function () {
         $state.go('donerList', {});

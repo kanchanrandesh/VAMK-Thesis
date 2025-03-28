@@ -26,7 +26,7 @@ namespace VAMK.FWMS.DataObjects.Mappers
             #endregion
 
             #region Relations
-            HasMany(t => t.ContactPersonList).WithOptional(l => l.Recipient).HasForeignKey(t => t.RecepientID).WillCascadeOnDelete(true);
+            HasMany(t => t.ContactPersonList).WithOptional(l => l.Recipient).HasForeignKey(t => t.RecipientID).WillCascadeOnDelete(true);            
             #endregion
         }
     }

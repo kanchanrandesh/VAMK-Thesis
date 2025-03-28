@@ -13,6 +13,5 @@
             }
         }
         public string UnitName { get; set; }
-       
     }
 }
