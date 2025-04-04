@@ -124,7 +124,6 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
             else
             {
                 var dbEmployee = BizObjectFactory.GetEmployeeBO().GetSingle(obj.ID.Value);
-                dbEmployee.Title = obj.Title;
                 dbEmployee.Code = obj.Code;
                 dbEmployee.FirstName = obj.FirstName;
                 dbEmployee.LastName = obj.LastName;

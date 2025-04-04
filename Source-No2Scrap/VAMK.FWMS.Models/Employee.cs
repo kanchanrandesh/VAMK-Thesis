@@ -5,7 +5,7 @@ namespace VAMK.FWMS.Models
 {
     public class Employee : EntityBase
     {
-        public Enums.IndividualTitle Title { get; set; }
+        
         private string _code;
         public string Code
         {

@@ -71,12 +71,14 @@
     <Compile Include="AuditTrailDetailRepository.cs" />
     <Compile Include="AuditTrailRepository.cs" />
     <Compile Include="CompanyRepository.cs" />
+    <Compile Include="DonationItemRepository.cs" />
     <Compile Include="ContactPersonRepository.cs" />
     <Compile Include="Context\FWMSDbContext.cs" />
     <Compile Include="CountryRepository.cs" />
     <Compile Include="DataSet\InitialDataSet.cs" />
     <Compile Include="DepartmentRepository.cs" />
     <Compile Include="DonationRepository.cs" />
+    <Compile Include="Interfaces\ISequenceNumberRepository.cs" />
     <Compile Include="ItemRepository.cs" />
     <Compile Include="DonerRepository.cs" />
     <Compile Include="EmailOutBoxRepository.cs" />
@@ -132,6 +134,7 @@
     <Compile Include="Mappers\RuleMapper.cs" />
     <Compile Include="Mappers\SecureAccessFormMapper.cs" />
     <Compile Include="Mappers\SentMailMapper.cs" />
+    <Compile Include="Mappers\SequenceNumberMapper.cs" />
     <Compile Include="Mappers\SystemConfigurationMapper.cs" />
     <Compile Include="Mappers\SystemUserMapper.cs" />
     <Compile Include="Mappers\TimeZoneMapper.cs" />
@@ -141,9 +144,9 @@
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IRepositoryContext.cs" />
     <Compile Include="Mappers\UserRightsMapper.cs" />
-    <Compile Include="Migrations\202503280840264_123.cs" />
-    <Compile Include="Migrations\202503280840264_123.designer.cs">
-      <DependentUpon>202503280840264_123.cs</DependentUpon>
+    <Compile Include="Migrations\202504021340531_test.cs" />
+    <Compile Include="Migrations\202504021340531_test.designer.cs">
+      <DependentUpon>202504021340531_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -151,6 +154,7 @@
     <Compile Include="RepositoryBase.cs" />
     <Compile Include="RuleRepository.cs" />
     <Compile Include="SentMailRepository.cs" />
+    <Compile Include="SequenceNumberRepository.cs" />
     <Compile Include="SystemConfigurationRepository.cs" />
     <Compile Include="TimeZoneRepository.cs" />
     <Compile Include="UnitRepository.cs" />
@@ -172,8 +176,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202503280840264_123.resx">
-      <DependentUpon>202503280840264_123.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202504021340531_test.resx">
+      <DependentUpon>202504021340531_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

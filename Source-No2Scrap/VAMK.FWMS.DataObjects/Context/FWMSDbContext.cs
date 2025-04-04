@@ -54,7 +54,7 @@ namespace VAMK.FWMS.DataObjects.Context
             //modelBuilder.Configurations.Add(new LogMapper());
 
             //fwms
-            modelBuilder.Configurations.Add(new RecipientMapper());            
+            modelBuilder.Configurations.Add(new RecipientMapper());
             modelBuilder.Configurations.Add(new DonerMapper());
             modelBuilder.Configurations.Add(new ContactPersonMapper());
             modelBuilder.Configurations.Add(new DonationMapper());
@@ -67,6 +67,7 @@ namespace VAMK.FWMS.DataObjects.Context
             modelBuilder.Configurations.Add(new SystemUserMapper());
             modelBuilder.Configurations.Add(new UserRightsMapper());
             modelBuilder.Configurations.Add(new SecureAccessFormMapper());
+            modelBuilder.Configurations.Add(new SequenceNumberMapper());
         }
 
         public IDbSet<TimeZone> TimeZones { get; set; }
@@ -75,14 +76,14 @@ namespace VAMK.FWMS.DataObjects.Context
         public IDbSet<Employee> Employees { get; set; }
         public IDbSet<AuditTrail> AuditTrails { get; set; }
         public IDbSet<AuditTrailDetail> AuditTrailDetails { get; set; }
-        public IDbSet<Country> Countries { get; set; }       
+        public IDbSet<Country> Countries { get; set; }
         public IDbSet<EmailOutBox> EmailOutBox { get; set; }
         public IDbSet<SentMail> SentMails { get; set; }
         public IDbSet<Rule> Rules { get; set; }
         public IDbSet<Group> Groups { get; set; }
         public IDbSet<GroupRule> GroupRules { get; set; }
         public IDbSet<GroupEmployee> GroupEmployees { get; set; }
-        public IDbSet<Department> Departments { get; set; }        
+        public IDbSet<Department> Departments { get; set; }
         public IDbSet<Log> Logs { get; set; }
         //fwms
         public IDbSet<Doner> Doners { get; set; }
@@ -98,6 +99,7 @@ namespace VAMK.FWMS.DataObjects.Context
         public IDbSet<SystemUser> SystemUser { get; set; }
         public IDbSet<UserRights> UserRights { get; set; }
         public IDbSet<SecureAccessForm> SecureAccessForm { get; set; }
+        public IDbSet<SequenceNumber> SequenceNumber { get; set; }
 
     }
 }

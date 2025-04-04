@@ -94,7 +94,7 @@ namespace VAMK.FWMS.DataObjects.DataSet
 
             var users = new List<VAMK.FWMS.Models.Employee>
                  {
-                    /* 01 */ new VAMK.FWMS.Models.Employee { Title = Models.Enums.IndividualTitle.Mr,   Code = "KR", FirstName = "KRWA",         LastName = "Wickrama Arachchi",   UserName = "KR",       Password = "12193117185192241182168491951532261051193897", Email = "kanchan.arachchi@gmail.com",  Phone ="+94 77 32 33417", Mobile = "+94 77 32 33 417", CompanyID = 1, IsActive = true, User = "Seed", DateCreated = DateTime.Now, DateModified = DateTime.Now },
+                    /* 01 */ new VAMK.FWMS.Models.Employee { Code = "KR", FirstName = "KRWA",         LastName = "Wickrama Arachchi",   UserName = "KR",       Password = "12193117185192241182168491951532261051193897", Email = "kanchan.arachchi@gmail.com",  Phone ="+94 77 32 33417", Mobile = "+94 77 32 33 417", CompanyID = 1, IsActive = true, User = "Seed", DateCreated = DateTime.Now, DateModified = DateTime.Now },
                    };
             users.ForEach(s => context.Employees.Add(s));
             context.SaveChanges();
@@ -188,7 +188,7 @@ namespace VAMK.FWMS.DataObjects.DataSet
             var departments = new List<VAMK.FWMS.Models.Department>
                  {
                     new VAMK.FWMS.Models.Department { Code = "ADMN", Name = "Administration",          AuthorizedOfficerID = 1,  User = "Seed", DateCreated = DateTime.Now, DateModified = DateTime.Now }
-                    
+
                  };
             departments.ForEach(s => context.Departments.Add(s));
             context.SaveChanges();
@@ -208,6 +208,19 @@ namespace VAMK.FWMS.DataObjects.DataSet
             //     };
             //units.ForEach(s => context.Units.Add(s));
             //context.SaveChanges();
+
+            #endregion
+
+            #region Sequence Number
+
+            var sequenceNumber = new List<VAMK.FWMS.Models.SequenceNumber>
+                 {
+                    new VAMK.FWMS.Models.SequenceNumber { Type = Models.Enums.InventoryEffectedby.Donation.ToString(), Prefix = "DON" , LastNumber = 1 },
+                    new VAMK.FWMS.Models.SequenceNumber { Type = Models.Enums.InventoryEffectedby.Request.ToString(), Prefix = "REQ" , LastNumber = 1 }
+
+                 };
+            sequenceNumber.ForEach(s => context.SequenceNumber.Add(s));
+            context.SaveChanges();
 
             #endregion
         }

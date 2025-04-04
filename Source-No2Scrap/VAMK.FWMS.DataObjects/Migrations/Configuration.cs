@@ -11,7 +11,7 @@ namespace VAMK.FWMS.DataObjects.Migrations
         protected override void Seed(Context.FWMSDbContext context)
         {
             //TODO:Uncomment to insert the init data set for the first time and comment during Migrations
-           //new DataSet.InitialDataSet().InsertDataSet(context);
+           new DataSet.InitialDataSet().InsertDataSet(context);
         }
     }
 }

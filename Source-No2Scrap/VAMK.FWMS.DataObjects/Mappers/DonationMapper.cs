@@ -15,6 +15,8 @@ namespace VAMK.FWMS.DataObjects.Mappers
             HasKey(t => t.ID);
             ToTable("Donations");
 
+            Property(t => t.ManualRefNumber).HasColumnName("ManualRefNumber").HasColumnType("nvarchar").HasMaxLength(20);
+            Property(t => t.TransacionNumber).HasColumnName("TransacionNumber").HasColumnType("nvarchar").HasMaxLength(20);
             Property(t => t.DonerID).HasColumnName("DonerID").HasColumnType("int");
             Property(t => t.Date).HasColumnName("Date").HasColumnType("datetime");
             Property(t => t.Description).HasColumnName("Description").HasColumnType("nvarchar").HasMaxLength(200);

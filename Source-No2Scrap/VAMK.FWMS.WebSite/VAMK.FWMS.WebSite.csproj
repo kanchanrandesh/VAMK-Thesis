@@ -265,6 +265,7 @@
     <Compile Include="Controllers\ContactPersonController.cs" />
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\DonationController.cs" />
     <Compile Include="Controllers\RecipientController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\DonerController.cs" />
@@ -283,6 +284,7 @@
     <Compile Include="Controllers\WebAPI\CountryController.cs" />
     <Compile Include="Controllers\WebAPI\DashboardController.cs" />
     <Compile Include="Controllers\WebAPI\DepartmentController.cs" />
+    <Compile Include="Controllers\WebAPI\DonationController.cs" />
     <Compile Include="Controllers\WebAPI\RecipientController.cs" />
     <Compile Include="Controllers\WebAPI\ItemController.cs" />
     <Compile Include="Controllers\WebAPI\DonerController.cs" />
@@ -310,7 +312,6 @@
     <Compile Include="Helpers\SessionSetting.cs" />
     <Compile Include="Helpers\Utility.cs" />
     <Compile Include="Integrations\Mobile\Filters\ActivityFilter.cs" />
-    <Compile Include="Integrations\Mobile\Helpers\EnumUtility.cs" />
     <Compile Include="Integrations\Mobile\Helpers\Filters\AddChallengeOnUnauthorizedResult.cs" />
     <Compile Include="Integrations\Mobile\Helpers\Filters\AuthenticationFailureResult.cs" />
     <Compile Include="Integrations\Mobile\Helpers\Filters\HttpAuthenticationChallengeContextExtensions.cs" />
@@ -334,10 +335,12 @@
     <Compile Include="Models\AccountViewModel.cs" />
     <Compile Include="Models\CompanyModel.cs" />
     <Compile Include="Models\ConfidenceLevelCriteriaModel.cs" />
+    <Compile Include="Models\DonationItemModel.cs" />
     <Compile Include="Models\ContactPersonModel.cs" />
     <Compile Include="Models\CountryModel.cs" />
     <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\DepartmentModel.cs" />
+    <Compile Include="Models\DonationModel.cs" />
     <Compile Include="Models\RecipientModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\DonerModel.cs" />
@@ -6154,6 +6157,8 @@
     <Content Include="Scripts\app\controllers\CountryAddEditCtrl.js" />
     <Content Include="Scripts\app\controllers\CountryListCtrl.js" />
     <Content Include="Scripts\app\controllers\DashboardController.js" />
+    <Content Include="Scripts\app\controllers\DonationAddEditCtrl.js" />
+    <Content Include="Scripts\app\controllers\DonationListCtrl.js" />
     <Content Include="Scripts\app\controllers\RecipientAddEditCtrl.js" />
     <Content Include="Scripts\app\controllers\RecipientListCtrl.js" />
     <Content Include="Scripts\app\controllers\ItemAddEditCtrl.js" />
@@ -6186,6 +6191,7 @@
     <Content Include="Scripts\app\services\ContactService.js" />
     <Content Include="Scripts\app\services\CountryService.js" />
     <Content Include="Scripts\app\services\DashboardService.js" />
+    <Content Include="Scripts\app\services\DonationService.js" />
     <Content Include="Scripts\app\services\RecipientService.js" />
     <Content Include="Scripts\app\services\ItemService.js" />
     <Content Include="Scripts\app\services\DonerService.js" />
@@ -6287,7 +6293,6 @@
     <Content Include="Views\HomeComponents\SideBar.cshtml" />
     <Content Include="Views\HomeComponents\werwrwerw.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
-    <Content Include="Views\Employee\FamilyMember.cshtml" />
     <Content Include="Views\Doner\AddEdit.cshtml" />
     <Content Include="Views\Doner\Index.cshtml" />
     <Content Include="Views\Item\Index.cshtml" />
@@ -6296,6 +6301,8 @@
     <Content Include="Views\Unit\Index.cshtml" />
     <Content Include="Views\Recipient\AddEdit.cshtml" />
     <Content Include="Views\Recipient\Index.cshtml" />
+    <Content Include="Views\Donation\AddEdit.cshtml" />
+    <Content Include="Views\Donation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\FileUploads\" />

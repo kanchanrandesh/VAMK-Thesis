@@ -13,8 +13,7 @@ namespace VAMK.FWMS.DataObjects.Mappers
 
             HasKey(t => t.ID);
             ToTable("Employees");
-
-            Property(t => t.Title).HasColumnName("Title").HasColumnType("int").IsOptional();
+            
             Property(t => t.Code).HasColumnName("Code").HasColumnType("nvarchar").HasMaxLength(20).HasColumnAnnotation(IndexAnnotation.AnnotationName, new IndexAnnotation(new IndexAttribute("IX_Employees_Code", 1) { IsUnique = true }));
             Property(t => t.FirstName).HasColumnName("FirstName").HasColumnType("nvarchar").HasMaxLength(200);
             Property(t => t.LastName).HasColumnName("LastName").HasColumnType("nvarchar").HasMaxLength(200);

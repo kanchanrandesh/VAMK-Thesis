@@ -78,6 +78,7 @@
     <Compile Include="Facades\CompanyFacade.cs" />
     <Compile Include="Facades\CountryFacade.cs" />
     <Compile Include="Facades\DepartmentFacade.cs" />
+    <Compile Include="Facades\DonationFacade.cs" />
     <Compile Include="Facades\RecipientFacade.cs" />
     <Compile Include="Facades\ItemFacade.cs" />
     <Compile Include="Facades\DonerFacade.cs" />
@@ -86,7 +87,10 @@
     <Compile Include="Facades\GroupFacade.cs" />
     <Compile Include="Facades\UnitFacade.cs" />
     <Compile Include="IDepartment.cs" />
+    <Compile Include="IDonation.cs" />
+    <Compile Include="Impl\DonationBO.cs" />
     <Compile Include="Impl\RecipientBO.cs" />
+    <Compile Include="Impl\SequenceNumberBO.cs" />
     <Compile Include="IRecipient.cs" />
     <Compile Include="IItem.cs" />
     <Compile Include="IDoner.cs" />
@@ -128,6 +132,7 @@
     <Compile Include="Impl\UnitBO.cs" />
     <Compile Include="IRule.cs" />
     <Compile Include="ISentEmail.cs" />
+    <Compile Include="ISequenceNumber.cs" />
     <Compile Include="ISystemConfiguration.cs" />
     <Compile Include="ITemplateContentGenerator.cs" />
     <Compile Include="ITimeZone.cs" />

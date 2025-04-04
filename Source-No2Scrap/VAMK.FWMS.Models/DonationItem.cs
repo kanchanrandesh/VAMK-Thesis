@@ -13,5 +13,16 @@ namespace VAMK.FWMS.Models
         public Item Item { get; set; }        
         public int ? ItemID { get; set; }        
         public decimal Qty { get; set; }
+               
+        private string _productCode;
+        public string ProductCode //For Audit Reference only
+        {
+            get { return _productCode; }
+            set
+            {
+                _productCode = value;
+                AuditReference = value;
+            }
+        }
     }
 }

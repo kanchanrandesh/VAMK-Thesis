@@ -115,7 +115,7 @@ namespace VAMK.FWMS.BizObjects.Resources
                         {
                             var detail = new AuditTrailDetail();
                             detail.EntityType = newChild.GetType().ToString().Split(new[] { "VAMK.FWMS.Models." }, StringSplitOptions.None)[1];
-                            detail.NewValue = newChild.GetType().GetProperty("AuditReference").GetValue(newChild, null).ToString();
+                            detail.NewValue = (newChild.GetType().GetProperty("AuditReference").GetValue(newChild, null) != null ? newChild.GetType().GetProperty("AuditReference").GetValue(newChild, null).ToString() : "");
                             detail.Action = Models.Enums.AuditTrailAction.Insert;
                             detail.State = State.Added;
                             returnVal.DetailList.Add(detail);
@@ -163,7 +163,8 @@ namespace VAMK.FWMS.BizObjects.Resources
                             var detail = new AuditTrailDetail();
                             detail.EntityType = dbChild.GetType().ToString().Split(new[] { "VAMK.FWMS.Models." }, StringSplitOptions.None)[1];
                             detail.EntityID = dbChildId;
-                            detail.NewValue = dbChild.GetType().GetProperty("AuditReference").GetValue(dbChild, null).ToString();
+                            // detail.NewValue = dbChild.GetType().GetProperty("AuditReference").GetValue(dbChild, null).ToString();
+                            detail.NewValue = (dbChild.GetType().GetProperty("AuditReference").GetValue(dbChild, null) != null ? dbChild.GetType().GetProperty("AuditReference").GetValue(dbChild, null).ToString() : "");
                             detail.Action = Models.Enums.AuditTrailAction.Delete;
                             detail.State = State.Added;
                             returnVal.DetailList.Add(detail);

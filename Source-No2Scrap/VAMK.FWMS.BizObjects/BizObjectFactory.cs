@@ -96,5 +96,13 @@ namespace VAMK.FWMS.BizObjects
         {
             return new RecipientBO();
         }
+        public static IDonation GetDonationBO()
+        {
+            return new DonationBO();
+        }
+        public static ISequenceNumber GetSequenceNumberBO()
+        {
+            return new SequenceNumberBO();
+        }
     }
 }

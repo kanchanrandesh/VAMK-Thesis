@@ -44,8 +44,7 @@ namespace VAMK.FWMS.WebSite.Models
         {
             return new VAMK.FWMS.Models.Employee()
             {
-                ID = Utility.ParseInt(e.id),
-                Title = (VAMK.FWMS.Models.Enums.IndividualTitle)Enum.Parse(typeof(VAMK.FWMS.Models.Enums.IndividualTitle), e.title),
+                ID = Utility.ParseInt(e.id),                
                 Code = e.code,
                 FirstName = e.firstName,
                 LastName = e.lastName,
@@ -75,8 +74,7 @@ namespace VAMK.FWMS.WebSite.Models
         {
             return new EmployeeModel()
             {
-                id = e.ID.Value.ToString(),
-                title = e.Title.ToString(),
+                id = e.ID.Value.ToString(),                
                 code = e.Code,
                 firstName = e.FirstName,
                 lastName = e.LastName,

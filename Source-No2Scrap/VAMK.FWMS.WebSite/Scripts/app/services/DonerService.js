@@ -71,5 +71,22 @@
             });
             return deferred.promise;
         },
+
+        getAllForDropdown: function () {
+            var urlBase = '/api/doner/getAllForDropdown';
+            var deferred = $q.defer();
+            $http({
+                url: urlBase,
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' }
+            }).
+                success(function (data, status, headers, config) {
+                    deferred.resolve(data);
+                }).
+                error(function (data, status, headers, config) {
+                    deferred.reject(status);
+                });
+            return deferred.promise;
+        },
     }
 });

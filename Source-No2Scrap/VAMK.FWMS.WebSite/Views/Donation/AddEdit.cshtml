@@ -1,0 +1,179 @@
+﻿@{
+    Layout = null;
+}
+<style>
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+        display: none !important;
+    }
+</style>
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a ui-sref="donationList">Donations</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a ui-sref="donationAddEdit">{{pageTitle}}</a>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+        <span class="col-md-1 glyphicon glyphicon-arrow-left" style="margin-top:.25em; font-size:1.5em;cursor:pointer; color:#23527c" ui-sref="donationList"></span>
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" dropdown-menu-hover data-delay="1000" data-close-others="true">
+                Actions
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul class="dropdown-menu pull-right" role="menu">
+                <li>
+                    <a href="#">
+                        <i class="icon-trash" style="font-weight:bold;"></i> Delete
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div class="note note-success">
+    <h3>{{headerTitle}}</h3>
+    <p>{{headerDescription}}</p>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PORTLET-->
+        <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i>Donation Details
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <!-- BEGIN FORM-->
+                <form action="#" name="frmDonationAddEdit" class="form-horizontal form-bordered">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Doner</label>
+                            <div class="col-md-4">
+                                <select class="form-control select2" ng-model="selectedDoner" ng-options="obj as obj.name for obj in doners track by obj.id"></select>
+                                <span class="fieldError" ng-cloak ng-show="frmDonationAddEdit.doner_input.$dirty && frmDonationAddEdit.doner_input.$invalid">
+                                    <span ng-show="frmDonationAddEdit.doner_input.$error.required">Doner is required</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Date</label>
+                            <div class="col-md-4">
+                                <p class="input-group" style="margin:0px;">
+                                    <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="donation.date" is-open="popupDate.opened"
+                                           datepicker-options="dateOptions" close-text="Close" placeholder="DD/MM/YYYY" />
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-sm" ng-click="openDatePickerDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Manual Reference Number</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="code_input" ng-model="donation.manualRefNumber" maxlength="20" required>
+                                <span class="fieldError" ng-cloak ng-show="frmDonationAddEdit.manualRefNumber_input.$dirty && frmDonationAddEdit.manualRefNumber_input.$invalid">
+                                    <span ng-show="frmDonationAddEdit.manualRefNumber_input.$error.required">Reference Number is required</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Description</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" name="name_input" ng-model="donation.description" maxlength="200" required>
+                                <span class="fieldError" ng-cloak ng-show="frmDonationAddEdit.description_input.$dirty && frmDonationAddEdit.description_input.$invalid">
+                                    <span ng-show="frmDonationAddEdit.description_input.$error.required">Name is required</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="portlet light bordered">
+                                <div class="portlet-title" style="border-bottom:none;margin-bottom:0">
+                                    <div class="caption font-green-sharp">
+                                        <i class="icon-settings font-green-sharp"></i>
+                                        <span class="caption-subject bold uppercase">Donation Items Details</span>
+                                    </div>
+                                    <div class="tools">
+                                        <a href="" class="collapse"> </a>
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <div ng-repeat="donationItem in donation.donationItemList">
+                                        <ng-form name="frmDonationItem">
+                                            <div class="row form-group" style="border:none">
+                                                <div class="row-container">
+                                                    <div class="row">
+                                                        <button type="button" class="close pull-right row-container-close"
+                                                                data-dismiss="modal" aria-label="Close"
+                                                                ng-click="deleteDonationItems(donationItem)">
+                                                            <span aria-hidden="true">×</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" style="text-align:left;padding-top:0 !important">Item</label>
+                                                            <select class="form-control " ng-model="donationItem.selectedItem" ng-options="obj as obj.name for obj in items track by obj.id"></select>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" style="text-align:left;padding-top:0 !important">Quantity</label>
+                                                            <input class="form-control" ng-model="donationItem.qty" name="donationItemQty" />
+                                                            <span class="fieldError" ng-cloak ng-show="frmDonationAddEdit.qty_input.$dirty && frmDonationAddEdit.qty_input.$invalid">
+                                                                <span ng-show="frmDonationAddEdit.qty_input.$error.required">Quantity is required</span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-form>
+                                    </div>
+                                    <div style="margin-top:1em; margin-bottom:1em">
+                                        <a style="cursor:pointer;" ng-click="addNewDonationItem()">
+                                            <div>
+                                                <span>New Donation Item</span>
+                                                <span class="glyphicon glyphicon-plus pull-left" aria-hidden="true" style="color: #0a6aa1;margin-right:.5em"></span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="button" class="btn purple" ng-click="save(donation,frmDonationAddEdit)" ng-disabled="frmDonationAddEdit.$invalid">
+                                    <i class="fa fa-check"></i> Submit
+                                </button>
+                                <button type="button" class="btn default" ng-click="cancel()">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- END FORM-->
+            </div>
+        </div>
+        <!-- END PORTLET-->
+    </div>
+</div>
+<span ng-bind="name"></span>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS-->
+<script>
+    ComponentsFormTools.init(); // init todo page
+    ComponentsSelect2.init(); // init todo page
+    ComponentsBootstrapSelect.init(); // init todo page
+</script>
+<!-- BEGIN MAIN JS -->

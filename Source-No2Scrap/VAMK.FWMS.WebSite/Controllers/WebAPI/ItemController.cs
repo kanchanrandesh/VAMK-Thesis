@@ -31,6 +31,19 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
             return Ok(returnList);
         }
 
+        [HttpGet]
+        [Route("getAllForDropdown")]
+        public IHttpActionResult GetAllForDropdown()
+        {
+            var returnList = new List<SelectObjectModel>();
+            returnList.Add(new SelectObjectModel { id = "-", name = "-- Select --" });
+            foreach (var item in BizObjectFactory.GetItemBO().GetAll())
+                returnList.Add(new SelectObjectModel { id = item.ID.Value.ToString(), name = item.Code + " - " + item.Name });
+
+            return Ok(returnList);
+        }
+
+
         [HttpPost]
         [Route("search")]
         [HttpAuthorizeAccessRule(Rule = "DEPRTMVIEW")]

@@ -13,7 +13,7 @@
     }());
 
     function loadUnits() {
-        var defer = $.Deferred();       
+        var defer = $.Deferred();
         unitService.getAll().then(function (res) {
             $scope.units = res;
             defer.resolve();
@@ -21,7 +21,7 @@
         return defer;
     };
 
-    
+
 
     itemService.getById($stateParams.id).then(function (res) {
         $scope.item = res;
