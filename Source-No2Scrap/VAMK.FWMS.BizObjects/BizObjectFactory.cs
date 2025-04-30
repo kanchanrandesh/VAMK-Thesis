@@ -1,4 +1,4 @@
-﻿using VAMK.FWMS.BizObjects.Impl; 
+﻿using VAMK.FWMS.BizObjects.Impl;
 
 namespace VAMK.FWMS.BizObjects
 {
@@ -103,6 +103,18 @@ namespace VAMK.FWMS.BizObjects
         public static ISequenceNumber GetSequenceNumberBO()
         {
             return new SequenceNumberBO();
+        }
+        public static IRequest GetRequestBO()
+        {
+            return new RequestBO();
+        }
+        public static IInventoryStock GetInventoryStockBO()
+        {
+            return new InventoryStockBO();
+        }
+        public static ICoordinatorIntentoryItem GetCoordinatorIntentoryItemBO()
+        {
+            return new CoordinatorIntentoryItemBO();
         }
     }
 }

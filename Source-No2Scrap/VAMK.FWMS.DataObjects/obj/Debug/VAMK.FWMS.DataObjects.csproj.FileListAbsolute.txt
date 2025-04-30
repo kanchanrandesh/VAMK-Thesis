@@ -69,5 +69,3 @@ C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\So
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.csproj.CopyComplete
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.dll
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.pdb
-C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.Migrations.test.resources
-C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.DataObjects\obj\Debug\VAMK.FWMS.DataObjects.csproj.GenerateResource.cache

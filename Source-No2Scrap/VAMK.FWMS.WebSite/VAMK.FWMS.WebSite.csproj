@@ -276,6 +276,7 @@
     <Compile Include="Controllers\HomeComponentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\UnauthorizeController.cs" />
     <Compile Include="Controllers\UnitController.cs" />
     <Compile Include="Controllers\WebAPI\AccountController.cs" />
@@ -290,6 +291,7 @@
     <Compile Include="Controllers\WebAPI\DonerController.cs" />
     <Compile Include="Controllers\WebAPI\EmployeeController.cs" />
     <Compile Include="Controllers\WebAPI\GroupController.cs" />
+    <Compile Include="Controllers\WebAPI\RequestController.cs" />
     <Compile Include="Controllers\WebAPI\TimeZoneController.cs" />
     <Compile Include="Controllers\WebAPI\UnitController.cs" />
     <Compile Include="Email\EmailClientFacade.cs" />
@@ -354,6 +356,8 @@
     <Compile Include="Models\MeViewModel.cs" />
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\PasswordUpdateModel.cs" />
+    <Compile Include="Models\RequestItemModel.cs" />
+    <Compile Include="Models\RequestModel.cs" />
     <Compile Include="Models\SelectObjectModel.cs" />
     <Compile Include="Models\SessionListModel.cs" />
     <Compile Include="Models\TimeZoneModel.cs" />
@@ -5773,6 +5777,7 @@
     <Content Include="Content\notificationMessages.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\tableStyle.css" />
+    <Content Include="EmailTemplates\donationcollected.html" />
     <Content Include="EmailTemplates\employeeregistration.html" />
     <Content Include="ErrorPages\ErrorDefault.html" />
     <Content Include="favicon.ico" />
@@ -6159,6 +6164,7 @@
     <Content Include="Scripts\app\controllers\DashboardController.js" />
     <Content Include="Scripts\app\controllers\DonationAddEditCtrl.js" />
     <Content Include="Scripts\app\controllers\DonationListCtrl.js" />
+    <Content Include="Scripts\app\controllers\DonationReceiveCtrl.js" />
     <Content Include="Scripts\app\controllers\RecipientAddEditCtrl.js" />
     <Content Include="Scripts\app\controllers\RecipientListCtrl.js" />
     <Content Include="Scripts\app\controllers\ItemAddEditCtrl.js" />
@@ -6174,6 +6180,9 @@
     <Content Include="Scripts\app\controllers\GroupRulesCtrl.js" />
     <Content Include="Scripts\app\controllers\GroupUsersCtrl.js" />
     <Content Include="Scripts\app\controllers\LoginCtrl.js" />
+    <Content Include="Scripts\app\controllers\RequestAcceptCtrl.js" />
+    <Content Include="Scripts\app\controllers\RequestAddEditCtrl.js" />
+    <Content Include="Scripts\app\controllers\RequestListCtrl.js" />
     <Content Include="Scripts\app\controllers\SystemConfigurationAddEditCtrl.js" />
     <Content Include="Scripts\app\controllers\TimeSheetListCtrl.js" />
     <Content Include="Scripts\app\controllers\TodoController.js" />
@@ -6219,6 +6228,7 @@
     <Content Include="Scripts\app\services\GroupService.js" />
     <Content Include="Scripts\app\services\LoginService.js" />
     <Content Include="Scripts\app\services\NotificationMsgService.js" />
+    <Content Include="Scripts\app\services\RequestService.js" />
     <Content Include="Scripts\app\services\SystemConfigurationService.js" />
     <Content Include="Scripts\app\services\TimeZoneService.js" />
     <Content Include="Scripts\app\services\UnitService.js" />
@@ -6303,6 +6313,10 @@
     <Content Include="Views\Recipient\Index.cshtml" />
     <Content Include="Views\Donation\AddEdit.cshtml" />
     <Content Include="Views\Donation\Index.cshtml" />
+    <Content Include="Views\Donation\Receive.cshtml" />
+    <Content Include="Views\Request\Accept.cshtml" />
+    <Content Include="Views\Request\AddEdit.cshtml" />
+    <Content Include="Views\Request\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\FileUploads\" />

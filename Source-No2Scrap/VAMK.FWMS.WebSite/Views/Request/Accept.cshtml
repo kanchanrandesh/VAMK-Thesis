@@ -1,0 +1,158 @@
+﻿@{
+    Layout = null;
+}
+<style>
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+        display: none !important;
+    }
+</style>
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a ui-sref="requestList">Requests</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a ui-sref="requestAddEdit">{{pageTitle}}</a>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+        <span class="col-md-1 glyphicon glyphicon-arrow-left" style="margin-top:.25em; font-size:1.5em;cursor:pointer; color:#23527c" ui-sref="requestList"></span>
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" dropdown-menu-hover data-delay="1000" data-close-others="true">
+                Actions
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul class="dropdown-menu pull-right" role="menu">
+                <li>
+                    <a href="#">
+                        <i class="icon-trash" style="font-weight:bold;"></i> Delete
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div class="note note-success">
+    <h3>{{headerTitle}}</h3>
+    <p>{{headerDescription}}</p>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PORTLET-->
+        <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i>Request Details
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <!-- BEGIN FORM-->
+                <form action="#" name="frmRequestAddEdit" class="form-horizontal form-bordered">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Transacion Number</label>
+                            <div class="col-md-4">
+                                {{request.transacionNumber}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Request </label>
+                            <div class="col-md-4">
+                                {{selectedRecipient.name}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Date</label>
+                            <div class="col-md-4">
+                                <p class="input-group" style="margin:0px;">
+                                    {{request.date}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Description</label>
+                            <div class="col-md-4">
+                                {{request.description}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Referance Number</label>
+                            <div class="col-md-4">
+                                {{request.manualRefNumber}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="portlet light bordered">
+                                <div class="portlet-title" style="border-bottom:none;margin-bottom:0">
+                                    <div class="caption font-green-sharp">
+                                        <i class="icon-settings font-green-sharp"></i>
+                                        <span class="caption-subject bold uppercase">Request Items Details</span>
+                                    </div>
+                                    <div class="tools">
+                                        <a href="" class="collapse"> </a>
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <div ng-repeat="requestItem in request.requestItemList">
+                                        <ng-form name="frmRequestItem">
+                                            <div class="row form-group" style="border:none">
+                                                <div class="row-container">
+                                                    <div class="row">
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" style="text-align:left;padding-top:0 !important">Item : </label>
+                                                           {{requestItem.selectedItem.name}}
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" style="text-align:left;padding-top:0 !important">Requested Qty</label>
+                                                            {{requestItem.requestedQty}}
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            <label class="control-label" style="text-align:left;padding-top:0 !important">Allocated Qty</label>
+                                                            {{requestItem.allocatedQty}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ng-form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="button" class="btn purple" ng-click="accept(request,frmRequestAddEdit)" ng-disabled="frmRequestAddEdit.$invalid">
+                                    <i class="fa fa-check"></i>   Accept Request
+                                </button>
+                                <button type="button" class="btn default" ng-click="cancel()">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- END FORM-->
+            </div>
+        </div>
+        <!-- END PORTLET-->
+    </div>
+</div>
+<span ng-bind="name"></span>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS-->
+<script>
+    ComponentsFormTools.init(); // init todo page
+    ComponentsSelect2.init(); // init todo page
+    ComponentsBootstrapSelect.init(); // init todo page
+</script>
+<!-- BEGIN MAIN JS -->

@@ -77,6 +77,7 @@
     <Compile Include="Enums\SystemUserType.cs" />
     <Compile Include="GroupEmployee.cs" />
     <Compile Include="GroupRule.cs" />
+    <Compile Include="InventoryStock.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="MessageModels\EmployeeMessageModel.cs" />
@@ -89,14 +90,17 @@
     <Compile Include="Rule.cs" />
     <Compile Include="SearchQueries\CompanySearchQuery.cs" />
     <Compile Include="SearchQueries\ContactSearchQuery.cs" />
+    <Compile Include="SearchQueries\CoordinatorIntentoryItemSearchQuery.cs" />
     <Compile Include="SearchQueries\CountrySearchQuery.cs" />
     <Compile Include="SearchQueries\DepartmentSearchQuery.cs" />
     <Compile Include="SearchQueries\DonationSearchQuery.cs" />
+    <Compile Include="SearchQueries\InventoryStockSearchQuery.cs" />
     <Compile Include="SearchQueries\ItemSearchQuery.cs" />
     <Compile Include="SearchQueries\DonerSearchQuery.cs" />
     <Compile Include="SearchQueries\EmployeeSearchQuery.cs" />
     <Compile Include="SearchQueries\GroupSearchQuery.cs" />
     <Compile Include="SearchQueries\RecipientSearchQuery.cs" />
+    <Compile Include="SearchQueries\RequestSearchQuery.cs" />
     <Compile Include="SearchQueries\RuleSearchQuery.cs" />
     <Compile Include="SearchQueries\TimeZoneSearchQuery.cs" />
     <Compile Include="SearchQueries\UnitSearchQuery.cs" />

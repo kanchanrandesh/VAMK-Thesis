@@ -85,11 +85,17 @@
     <Compile Include="Facades\EmailItemsFacade.cs" />
     <Compile Include="Facades\EmployeeFacade.cs" />
     <Compile Include="Facades\GroupFacade.cs" />
+    <Compile Include="Facades\RequestFacade.cs" />
     <Compile Include="Facades\UnitFacade.cs" />
+    <Compile Include="ICoordinatorIntentoryItem.cs" />
     <Compile Include="IDepartment.cs" />
     <Compile Include="IDonation.cs" />
+    <Compile Include="IInventoryStock.cs" />
+    <Compile Include="Impl\CoordinatorIntentoryItemBO.cs" />
     <Compile Include="Impl\DonationBO.cs" />
+    <Compile Include="Impl\InventoryStockBO.cs" />
     <Compile Include="Impl\RecipientBO.cs" />
+    <Compile Include="Impl\RequestBO.cs" />
     <Compile Include="Impl\SequenceNumberBO.cs" />
     <Compile Include="IRecipient.cs" />
     <Compile Include="IItem.cs" />
@@ -130,6 +136,7 @@
     <Compile Include="Impl\SystemConfigurationBO.cs" />
     <Compile Include="Impl\TimeZoneBO.cs" />
     <Compile Include="Impl\UnitBO.cs" />
+    <Compile Include="IRequest.cs" />
     <Compile Include="IRule.cs" />
     <Compile Include="ISentEmail.cs" />
     <Compile Include="ISequenceNumber.cs" />

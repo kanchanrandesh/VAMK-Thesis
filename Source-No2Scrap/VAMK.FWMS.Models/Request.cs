@@ -9,7 +9,7 @@ namespace VAMK.FWMS.Models
     {
 
         public Recipient Recipient { get; set; }
-        public int? RecipientD { get; set; }
+        public int? RecipientID { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }
         public string TransacionNumber { get; set; }
