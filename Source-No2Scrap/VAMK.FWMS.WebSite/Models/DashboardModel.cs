@@ -7,11 +7,13 @@ namespace VAMK.FWMS.WebSite.Models
 {
     public class DashboardModel
     {
-        public string openIOUs { get; set; }
-        public string openPCVs { get; set; }
-        public string openMCs { get; set; }
-        public string iousToApprove { get; set; }
-        public string pcvsToApprove { get; set; }
-        public string mcsToApprove { get; set; }       
+        public string openDonations { get; set; }
+        public string totalDonationsPostedToday { get; set; }
+        public string donationsCollectedToday { get; set; }
+        public string totalRequestPostedToday { get; set; }
+        public string openRequests { get; set; }
+        public string requestsTobeIssued { get; set; }
+        public List<DonationModel> recentDonations { get; set; }
+        public List<RequestModel> recentRequests { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using VAMK.FWMS.DataObjects.Interfaces;
 using VAMK.FWMS.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 
 namespace VAMK.FWMS.DataObjects
 {
@@ -44,7 +45,9 @@ namespace VAMK.FWMS.DataObjects
 
         public override Employee GetSingle(System.Linq.Expressions.Expression<System.Func<Employee, bool>> whereCondition)
         {
-            var returnVal = this.DbSet.Where(whereCondition).FirstOrDefault();
+            var returnVal = this.DbSet.Where(whereCondition)
+                .Include(i => i.EmployeeDoners).Include(i => i.EmployeeRecipients)
+                .FirstOrDefault();
             return returnVal;
         }
 

@@ -1,19 +1,18 @@
 angular.module('MetronicApp').controller('DashboardController', function ($rootScope, $scope, $http, $timeout, dashboardService) {
-    $scope.$on('$viewContentLoaded', function() {   
+    $scope.$on('$viewContentLoaded', function () {
         // initialize core components
         App.initAjax();
-    });  
+    });
 
     dashboardService.get().then(function (res) {
-        $scope.openIOUs = res.openIOUs;
-        $scope.openPCVs = res.openPCVs;
-        $scope.iousToApprove = res.iousToApprove;
-        $scope.pcvsToApprove = res.pcvsToApprove;
-        $scope.recentPcvs = res.recentPcvs;
-        $scope.recentIOUs = res.recentIOUs;
-        $scope.openMCs = res.openMCs;
-        $scope.mcsToApprove = res.mcsToApprove;
-        $scope.recentMCs = res.recentMCs;
+        $scope.openDonations = res.openDonations;
+        $scope.totalDonationsPostedToday = res.totalDonationsPostedToday;
+        $scope.donationsCollectedToday = res.donationsCollectedToday;
+        $scope.totalRequestPostedToday = res.totalRequestPostedToday;
+        $scope.openRequests = res.openRequests;
+        $scope.requestsTobeIssued = res.requestsTobeIssued;
+        $scope.recentDonations = res.recentDonations;
+        $scope.recentRequests = res.recentRequests;
     });
 
     // set sidebar closed and body solid layout mode

@@ -42,12 +42,22 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
             {
                 employee = (EmployeeModel)BizObjectFactory.GetEmployeeBO().GetSingle(id);
                 var dbEmployee = BizObjectFactory.GetEmployeeBO().GetSingle(id);
+                foreach (var employeeDoner in dbEmployee.EmployeeDoners)
+                {
+                    employeeDoner.Doner = BizObjectFactory.GetDonerBO().GetSingle(employeeDoner.DonerID.Value);
+                }
+                foreach (var employeeRecipient in dbEmployee.EmployeeRecipients)
+                {
+                    employeeRecipient.Recipient = BizObjectFactory.GetRecipientBO().GetSingle(employeeRecipient.RecipientID.Value);
+                }
                 employee = (EmployeeModel)dbEmployee;
 
             }
             else
             {
                 employee.isActive = true;
+                employee.employeeDoners = new List<EmployeeDonerModel>();
+                employee.employeeRecipients = new List<EmployeeRecipientModel>();
             }
             return Ok(employee);
         }
@@ -91,12 +101,12 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
                 model.message = "Company needs to be selected";
                 return Ok(model);
             }
-            if (string.IsNullOrEmpty(model.jobCategoryId))
-            {
-                model.status = false;
-                model.message = "Job Category needs to be selected";
-                return Ok(model);
-            }
+            //if (string.IsNullOrEmpty(model.jobCategoryId))
+            //{
+            //    model.status = false;
+            //    model.message = "Job Category needs to be selected";
+            //    return Ok(model);
+            //}
 
             if (string.IsNullOrEmpty(model.email))
             {
@@ -149,6 +159,9 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
                 dbEmployee.IsBizDeveloper = obj.IsBizDeveloper;
                 dbEmployee.IsTechnicalPerson = obj.IsTechnicalPerson;
                 dbEmployee.IsLeagalOfficer = obj.IsLeagalOfficer;
+                dbEmployee.EmployeeRecipients = obj.EmployeeRecipients;
+                dbEmployee.EmployeeDoners = obj.EmployeeDoners;
+
 
                 transObject = new EmployeeFacade(WebSettingProvider.GetWebSettings()).Save(dbEmployee);
             }

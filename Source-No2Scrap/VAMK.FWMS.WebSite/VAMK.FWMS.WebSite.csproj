@@ -343,6 +343,8 @@
     <Compile Include="Models\DashboardModel.cs" />
     <Compile Include="Models\DepartmentModel.cs" />
     <Compile Include="Models\DonationModel.cs" />
+    <Compile Include="Models\EmployeeDonerModel.cs" />
+    <Compile Include="Models\EmployeeRecipientModel.cs" />
     <Compile Include="Models\RecipientModel.cs" />
     <Compile Include="Models\ItemModel.cs" />
     <Compile Include="Models\DonerModel.cs" />

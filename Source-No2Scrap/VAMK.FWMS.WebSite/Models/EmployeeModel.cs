@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using VAMK.FWMS.Models;
 
 namespace VAMK.FWMS.WebSite.Models
 {
@@ -10,6 +11,7 @@ namespace VAMK.FWMS.WebSite.Models
     {
         public string id { get; set; }
         public string timeStamp { get; set; }
+
         public string title { get; set; }
         public string code { get; set; }
         public string firstName { get; set; }
@@ -36,26 +38,54 @@ namespace VAMK.FWMS.WebSite.Models
         public bool isBizDeveloper { get; set; }
         public bool isTechnicalPerson { get; set; }
         public bool isLeagalOfficer { get; set; }
+
         public string displayName { get; set; }
         public bool status { get; set; }
         public string message { get; set; }
 
+        public List<EmployeeRecipientModel> employeeRecipients { get; set; }
+        public List<EmployeeDonerModel> employeeDoners { get; set; }
+
         public static implicit operator VAMK.FWMS.Models.Employee(EmployeeModel e)
         {
+            var employeeRecipients = new List<EmployeeRecipient>();
+            foreach (var item in e.employeeRecipients)
+            {
+                employeeRecipients.Add(new EmployeeRecipient
+                {
+                    ID = Utility.ParseInt(item.id),
+                    TimeStamp = item.id != null ? Utility.StringToTimeStamp(item.timeStamp) : new byte[8],
+
+                    EmployeeID = Utility.ParseInt(item.employeeId),
+                    RecipientID = Utility.ParseInt(item.recipientId),
+                });
+            }
+            var employeeDoners = new List<EmployeeDoner>();
+            foreach (var item in e.employeeDoners)
+            {
+                employeeDoners.Add(new EmployeeDoner
+                {
+                    ID = Utility.ParseInt(item.id),
+                    TimeStamp = item.id != null ? Utility.StringToTimeStamp(item.timeStamp) : new byte[8],
+
+                    EmployeeID = Utility.ParseInt(item.employeeId),
+                    DonerID = Utility.ParseInt(item.donerId),
+                });
+            }
             return new VAMK.FWMS.Models.Employee()
             {
-                ID = Utility.ParseInt(e.id),                
+                ID = Utility.ParseInt(e.id),
                 Code = e.code,
                 FirstName = e.firstName,
                 LastName = e.lastName,
                 Phone = e.phone,
-                
+
                 Mobile = e.mobile,
                 Email = e.email,
-                IsActive = e.isActive,              
+                IsActive = e.isActive,
                 UserName = e.userName,
                 Password = e.password,
-                CompanyID = Utility.ParseInt(e.companyId),               
+                CompanyID = Utility.ParseInt(e.companyId),
                 TimeStamp = e.id != null ? Utility.StringToTimeStamp(e.timeStamp) : new byte[8],
                 IsLocked = e.isLocked,
                 UnSuccessfulLoginAttempts = Utility.ParseInt(e.unSuccessfulLoginAttempts),
@@ -66,25 +96,52 @@ namespace VAMK.FWMS.WebSite.Models
                 IsProjectManager = e.isProjectManager,
                 IsBizDeveloper = e.isBizDeveloper,
                 IsTechnicalPerson = e.isTechnicalPerson,
-                IsLeagalOfficer = e.isLeagalOfficer
+                IsLeagalOfficer = e.isLeagalOfficer,
+                EmployeeRecipients = employeeRecipients,
+                EmployeeDoners = employeeDoners,
             };
         }
 
         public static explicit operator EmployeeModel(VAMK.FWMS.Models.Employee e)
         {
+            var employeeRecipients = new List<EmployeeRecipientModel>();
+            foreach (var item in e.EmployeeRecipients)
+            {
+                employeeRecipients.Add(new EmployeeRecipientModel
+                {
+                    id = item.ID.Value.ToString(),
+                    timeStamp = Utility.TimeStampToString(item.TimeStamp),
+
+                    employeeId = item.EmployeeID.ToString(),
+                    recipientId = item.RecipientID.ToString(),
+                });
+            }
+            var employeeDoners = new List<EmployeeDonerModel>();
+            foreach (var item in e.EmployeeDoners)
+            {
+                employeeDoners.Add(new EmployeeDonerModel
+                {
+                    id = item.ID.Value.ToString(),
+                    timeStamp = Utility.TimeStampToString(item.TimeStamp),
+
+                    employeeId = item.EmployeeID.ToString(),
+                    donerId = item.DonerID.ToString(),
+                });
+            }
+
             return new EmployeeModel()
             {
-                id = e.ID.Value.ToString(),                
+                id = e.ID.Value.ToString(),
                 code = e.Code,
                 firstName = e.FirstName,
                 lastName = e.LastName,
-                phone = e.Phone,                
+                phone = e.Phone,
                 mobile = e.Mobile,
                 email = e.Email,
-                isActive = e.IsActive,                
+                isActive = e.IsActive,
                 userName = e.UserName,
                 password = e.Password,
-                companyId = e.CompanyID != null ? e.CompanyID.Value.ToString() : string.Empty,               
+                companyId = e.CompanyID != null ? e.CompanyID.Value.ToString() : string.Empty,
                 timeStamp = Utility.TimeStampToString(e.TimeStamp),
                 displayName = e.FirstName + " " + e.LastName,
                 isLocked = e.IsLocked,
@@ -96,7 +153,9 @@ namespace VAMK.FWMS.WebSite.Models
                 isProjectManager = e.IsProjectManager,
                 isBizDeveloper = e.IsBizDeveloper,
                 isTechnicalPerson = e.IsTechnicalPerson,
-                isLeagalOfficer = e.IsLeagalOfficer
+                isLeagalOfficer = e.IsLeagalOfficer,
+                employeeDoners = employeeDoners,
+                employeeRecipients = employeeRecipients
             };
         }
     }

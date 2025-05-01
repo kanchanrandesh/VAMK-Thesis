@@ -1,4 +1,9 @@
-﻿angular.module('MetronicApp').controller('EmployeeAddEditCtrl', function ($rootScope, $scope, $http, $timeout, $document, $uibModal, $stateParams, $state, employeeService, companyService, jobCategoryService,notificationMsgService) {
+﻿angular.module('MetronicApp').controller('EmployeeAddEditCtrl', function ($rootScope, $scope, $http, $timeout, $document, $uibModal, $stateParams, $state,
+    employeeService,
+    companyService,
+    recipientService,
+    donerService,
+    notificationMsgService) {
 
     $scope.$on('$viewContentLoaded', function () {
         App.initAjax();
@@ -6,11 +11,9 @@
     $scope.id = $stateParams.id;
     $scope.pageTitle = $stateParams.pageTitle;
     $scope.selectedCompany;
-    $scope.selectedJobCategory;
     (function () {
-        loadCompanies().then(loadJobCategories).then(loadEmployee);
+        loadCompanies().then(loadRecipiants).then(loadDoners).then(loadEmployee);
     }());
-    
 
     function loadCompanies() {
         var defer = $.Deferred();
@@ -21,22 +24,27 @@
         return defer;
     };
 
-    function loadJobCategories() {
+    function loadRecipiants() {
         var defer = $.Deferred();
-        jobCategoryService.getAll().then(function (res) {
-            $scope.jobCategories = res;
-
+        recipientService.getAllForDropdown().then(function (res) {
+            $scope.recipients = res;
             defer.resolve();
         });
         return defer;
     };
-
+    function loadDoners() {
+        var defer = $.Deferred();
+        donerService.getAllForDropdown().then(function (res) {
+            $scope.doners = res;
+            defer.resolve();
+        });
+        return defer;
+    };
     function loadEmployee() {
         var defer = $.Deferred();
         employeeService.getById($stateParams.id).then(function (res) {
             $scope.employee = res;
             $scope.selectedCompany = $scope.companies.find(x => x.id === res.companyId);
-            $scope.selectedJobCategory = $scope.jobCategories.find(x => x.id === res.jobCategoryId);
 
             $scope.multiPrjectOptions = {
                 title: '',
@@ -60,11 +68,17 @@
                 selectedItems: $scope.employee.assignedUnitList
             };
 
+            for (var i = 0; i < res.employeeDoners.length; i++) {
+                $scope.employee.employeeDoners[i].selectedDoner = $scope.doners.find(y => y.id === res.employeeDoners[i].donerId)
+            }
+
+            for (var i = 0; i < res.employeeRecipients.length; i++) {
+                $scope.employee.employeeRecipients[i].selectedRecipient = $scope.recipients.find(y => y.id === res.employeeRecipients[i].recipientId)
+            }
             defer.resolve();
         });
         return defer;
     };
-
 
     $scope.save = function (obj, frm) {
         if (frm.$valid) {
@@ -76,6 +90,14 @@
                 obj.jobCategoryId = $scope.selectedJobCategory.id
             else
                 obj.jobCategoryId = null
+
+            for (var i = 0; i < obj.employeeDoners.length; i++) {
+                $scope.employee.employeeDoners[i].donerId = $scope.employee.employeeDoners[i].selectedDoner.id;
+            }
+
+            for (var i = 0; i < obj.employeeRecipients.length; i++) {
+                $scope.employee.employeeRecipients[i].recipientId = $scope.employee.employeeRecipients[i].selectedRecipient.id;
+            }
 
             employeeService.save(obj).then(function (res) {
                 if (res.status == true) {
@@ -92,6 +114,35 @@
         $state.go('employeeList', {});
     }
 
+    $scope.addNewEmployeeDoner = function () {
+        $scope.employee.employeeDoners.push({
+            "id": null,
+            "employeeId": null,
+            "donerId": null,
+        });
+    }
+    $scope.deleteEmployeeDoners = function (item) {
+
+        var i = $scope.employee.employeeDoners.indexOf(item);
+        if (i != -1) {
+            $scope.employee.employeeDoners.splice(i, 1);
+        }
+    }
+
+    $scope.addNewEmployeeRecipient = function () {
+        $scope.employee.employeeRecipients.push({
+            "id": null,
+            "employeeId": null,
+            "recipientId": null,
+        });
+    }
+    $scope.deleteEmployeeRecipient = function (item) {
+
+        var i = $scope.employee.employeeRecipients.indexOf(item);
+        if (i != -1) {
+            $scope.employee.employeeRecipients.splice(i, 1);
+        }
+    }
     $scope.$watch('employee.firstName', function (newValue, oldValue, scope) {
         if ($stateParams.id == "0" && newValue == undefined && $scope.employee.lastName == undefined) {
             $scope.headerTitle = "New Employee";

@@ -64,6 +64,8 @@
     <Compile Include="Doner.cs" />
     <Compile Include="EmailOutBox.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="EmployeeDoner.cs" />
+    <Compile Include="EmployeeRecipient.cs" />
     <Compile Include="Enums\AccessLevel.cs" />
     <Compile Include="Enums\AuditTrailAction.cs" />
     <Compile Include="Enums\DonationSatus.cs" />

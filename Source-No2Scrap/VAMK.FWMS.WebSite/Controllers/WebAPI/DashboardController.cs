@@ -28,49 +28,56 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
             int employeeId = session.LoginSession.UserID;
 
             var returnVal = new DashboardModel();
-            //returnVal.recentIOUs = new List<IOUModel>();
-            //returnVal.recentPcvs = new List<PettyCashVoucherModel>();
-            //returnVal.recentMCs = new List<MedicalClaimModel>();
+            returnVal.recentDonations = new List<DonationModel>();
+            returnVal.recentRequests = new List<RequestModel>();
 
-            //var iouSearch = new IOUSearchQuery();
-            //iouSearch.PayeeID = employeeId;
-            //var ious = BizObjectFactory.GetIOUBO().Search(iouSearch);
-            //returnVal.openIOUs = ious.Where(t => t.Status != VAMK.FWMS.Models.Enums.IOUStatus.Settled).Count().ToString();
+            var donationSearch = new DonationSearchQuery();
+            //donationSearch.PayeeID = employeeId;
+            var donations = BizObjectFactory.GetDonationBO().Search(donationSearch);
+            //returnVal.openDonations = ious.Where(t => t.DonationSatus != VAMK.FWMS.Models.Enums.DonationSatus.ReadyToPickup).Count().ToString();
+            returnVal.openDonations = donations.Where(t => t.DonationSatus == VAMK.FWMS.Models.Enums.DonationSatus.ReadyToPickup).Count().ToString();
 
-            //foreach (var item in ious.OrderByDescending(t => t.RequestedDate).ToList().Take(10))
-            //    returnVal.recentIOUs.Add((IOUModel)item);
+            foreach (var item in donations.OrderByDescending(t => t.Date).ToList().Take(10))
+                returnVal.recentDonations.Add((DonationModel)item);
 
-            //iouSearch = new IOUSearchQuery();
-            //iouSearch.ApproverID = employeeId;
-            //ious = BizObjectFactory.GetIOUBO().SearchForIOUApproval(iouSearch);
-            //returnVal.iousToApprove = ious.Count().ToString();
+            //donationSearch = new DonationSearchQuery();
+            ////donationSearch.ApproverID = employeeId;
+            //donations = BizObjectFactory.GetDonationBO().Search(donationSearch);
+            //returnVal.totalRequestPostedToday = donations.Where(t => t.DonationSatus == VAMK.FWMS.Models.Enums.DonationSatus.ReadyToPickup).Count().ToString();
 
-            //var pcvSearch = new PettyCashVoucherSearchQuery();
+            donationSearch = new DonationSearchQuery();
+            donations = BizObjectFactory.GetDonationBO().Search(donationSearch);
+            returnVal.totalDonationsPostedToday = donations.Where(t => t.Date == System.DateTime.Now.Date).Count().ToString();
+
+
+            donationSearch = new DonationSearchQuery();
+            donations = BizObjectFactory.GetDonationBO().Search(donationSearch);
+            returnVal.donationsCollectedToday = donations.Where(t => t.Date == System.DateTime.Now.Date && t.DonationSatus == VAMK.FWMS.Models.Enums.DonationSatus.Collected).Count().ToString();
+
+
+
+
+            var reqSearch = new RequestSearchQuery();
             //pcvSearch.PayeeID = employeeId;
-            //var pcvs = BizObjectFactory.GetPettyCashVoucherBO().Search(pcvSearch);
-            //returnVal.openPCVs = pcvs.Where(t => t.Status != VAMK.FWMS.Models.Enums.PettyCashVoucherStatus.Disbursed && t.Status != VAMK.FWMS.Models.Enums.PettyCashVoucherStatus.Cancelled).Count().ToString();
+            var reqs = BizObjectFactory.GetRequestBO().Search(reqSearch);
+            returnVal.openRequests = reqs.Where(t => t.RequestStatus == VAMK.FWMS.Models.Enums.RequestStatus.AllocationPending).Count().ToString();
 
-            //foreach (var item in pcvs.OrderByDescending(t => t.RequestedDate).ToList().Take(10))
-            //    returnVal.recentPcvs.Add((PettyCashVoucherModel)item);
+            foreach (var item in reqs.OrderByDescending(t => t.Date).ToList().Take(10))
+                returnVal.recentRequests.Add((RequestModel)item);
 
-            //pcvSearch = new PettyCashVoucherSearchQuery();
-            //pcvSearch.ApproverID = employeeId;
-            //pcvs = BizObjectFactory.GetPettyCashVoucherBO().SearchForPettyCashApproval(pcvSearch);
-            //returnVal.pcvsToApprove = pcvs.Count().ToString();
+            reqSearch = new RequestSearchQuery();
+            //reqSearch.ApproverID = employeeId;
+            reqs = BizObjectFactory.GetRequestBO().Search(reqSearch);
+            returnVal.totalRequestPostedToday = reqs.Where(t => t.Date == System.DateTime.Now.Date).Count().ToString();
 
-            //var mcSearch = new MedicalClaimSearchQuery();
-            //mcSearch.PayeeID = employeeId;
-            //mcSearch.Type = "Open";
-            //var mcs = BizObjectFactory.GetMedicalClaimBO().Search(mcSearch);
-            //returnVal.openMCs = mcs.Count().ToString();
 
-            //foreach (var item in mcs.OrderByDescending(t => t.RequestedDate).ToList().Take(10))
-            //    returnVal.recentMCs.Add((MedicalClaimModel)item);
+            reqSearch = new RequestSearchQuery();
+            //reqSearch.ApproverID = employeeId;
+            reqs = BizObjectFactory.GetRequestBO().Search(reqSearch);
+            returnVal.requestsTobeIssued = reqs.Where(t => t.RequestStatus == VAMK.FWMS.Models.Enums.RequestStatus.Allocated).Count().ToString();
 
-            //mcSearch = new MedicalClaimSearchQuery();
-            //mcSearch.ApproverID = employeeId;
-            //mcs = BizObjectFactory.GetMedicalClaimBO().SearchForMedicalClaimApproval(mcSearch);
-            //returnVal.mcsToApprove = mcs.Count().ToString();
+
+
             return Ok(returnVal);
         }
     }

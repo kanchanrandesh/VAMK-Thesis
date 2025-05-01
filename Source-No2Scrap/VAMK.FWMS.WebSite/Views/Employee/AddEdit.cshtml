@@ -125,14 +125,6 @@
                         </div>
 
 
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Job Category</label>
-                            <div class="col-md-4">
-                                <div class="input-icon right">
-                                    <select class="form-control select2" ng-model="selectedJobCategory" ng-options="obj.name for obj in jobCategories track by obj.id"></select>
-                                </div>
-                            </div>
-                        </div>
 
 
                         <div class="form-group">
@@ -175,73 +167,100 @@
                     </div>
                     <div class="form-group">
                         <!-- Begin: Roles In Funnel -->
-                        <div class="portlet light bordered">
-                            <div class="portlet-title" style="border-bottom:none; margin-bottom:0">
-                                <div class="caption font-green-sharp">
-                                    <i class="icon-settings font-green-sharp"></i>
-                                    <span class="caption-subject bold uppercase">Role(s) In Funnel</span>
-                                </div>
-                                <div class="tools">
-                                    <a href="" class="collapse"> </a>
-                                </div>
-                            </div>
-                            <div class="portlet-body">
-                                <div class="form-group">
-                                    <label class="control-label col-md-3">Account Manager</label>
-                                    <div class="col-md-1">
-                                        <div class="input-icon right">
-                                            <input type="checkbox" ng-model="employee.isRelationshipManager">
+                        
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="portlet light bordered">
+                                    <div class="portlet-title" style="border-bottom:none;margin-bottom:0">
+                                        <div class="caption font-green-sharp">
+                                            <i class="icon-settings font-green-sharp"></i>
+                                            <span class="caption-subject bold uppercase">Dorners Details</span>
+                                        </div>
+                                        <div class="tools">
+                                            <a href="" class="collapse"> </a>
                                         </div>
                                     </div>
-                                    <label class="control-label col-md-2">Sales Manager</label>
-                                    <div class="col-md-1">
-                                        <div class="input-icon right">
-                                            <input type="checkbox" ng-model="employee.isSalesManager">
+                                    <div class="portlet-body">
+                                        <div ng-repeat="employeeDoner in employee.employeeDoners">
+                                            <ng-form name="frmDonationItem">
+                                                <div class="row form-group" style="border:none">
+                                                    <div class="row-container">
+                                                        <div class="row">
+                                                            <button type="button" class="close pull-right row-container-close"
+                                                                    data-dismiss="modal" aria-label="Close"
+                                                                    ng-click="deleteEmployeeDoners(employeeDoner)">
+                                                                <span aria-hidden="true">×</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-8">
+                                                                <label class="control-label" style="text-align:left;padding-top:0 !important">Item</label>
+                                                                <select class="form-control " ng-model="employeeDoner.selectedDoner" ng-options="obj as obj.name for obj in doners track by obj.id"></select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ng-form>
                                         </div>
-                                    </div>
-                                    <label class="control-label col-md-2">Sales Engineer</label>
-                                    <div class="col-md-1">
-                                        <div class="input-icon right">
-                                            <input type="checkbox" ng-model="employee.isSalesEngineer">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-3">Pre-Sales Engineer</label>
-                                    <div class="col-md-1">
-                                        <div class="input-icon right">
-                                            <input type="checkbox" ng-model="employee.isPreSaleEngineer">
-                                        </div>
-                                    </div>
-                                    <label class="control-label col-md-2">Project Manager</label>
-                                    <div class="col-md-1">
-                                        <div class="input-icon right">
-                                            <input type="checkbox" ng-model="employee.isProjectManager">
-                                        </div>
-                                    </div>
-                                    <label class="control-label col-md-2">Product Manager</label>
-                                    <div class="col-md-1">
-                                        <div class="input-icon right">
-                                            <input type="checkbox" ng-model="employee.isBizDeveloper">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-3">Technical Person</label>
-                                    <div class="col-md-1">
-                                        <div class="input-icon right">
-                                            <input type="checkbox" ng-model="employee.isTechnicalPerson">
-                                        </div>
-                                    </div>
-                                    <label class="control-label col-md-2">Legal Officer</label>
-                                    <div class="col-md-1">
-                                        <div class="input-icon right">
-                                            <input type="checkbox" ng-model="employee.isLeagalOfficer">
+                                        <div style="margin-top:1em; margin-bottom:1em">
+                                            <a style="cursor:pointer;" ng-click="addNewEmployeeDoner()">
+                                                <div>
+                                                    <span>New Doner</span>
+                                                    <span class="glyphicon glyphicon-plus pull-left" aria-hidden="true" style="color: #0a6aa1;margin-right:.5em"></span>
+                                                </div>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="portlet light bordered">
+                                    <div class="portlet-title" style="border-bottom:none;margin-bottom:0">
+                                        <div class="caption font-green-sharp">
+                                            <i class="icon-settings font-green-sharp"></i>
+                                            <span class="caption-subject bold uppercase">Recipients Details</span>
+                                        </div>
+                                        <div class="tools">
+                                            <a href="" class="collapse"> </a>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <div ng-repeat="employeeRecipient in employee.employeeRecipients">
+                                            <ng-form name="frmDonationItem">
+                                                <div class="row form-group" style="border:none">
+                                                    <div class="row-container">
+                                                        <div class="row">
+                                                            <button type="button" class="close pull-right row-container-close"
+                                                                    data-dismiss="modal" aria-label="Close"
+                                                                    ng-click="deleteEmployeeRecipient(employeeRecipient)">
+                                                                <span aria-hidden="true">×</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-8">
+                                                                <label class="control-label" style="text-align:left;padding-top:0 !important">Item</label>
+                                                                <select class="form-control " ng-model="employeeRecipient.selectedRecipient" ng-options="obj as obj.name for obj in recipients track by obj.id"></select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </ng-form>
+                                        </div>
+                                        <div style="margin-top:1em; margin-bottom:1em">
+                                            <a style="cursor:pointer;" ng-click="addNewEmployeeRecipient()">
+                                                <div>
+                                                    <span>New Recipient</span>
+                                                    <span class="glyphicon glyphicon-plus pull-left" aria-hidden="true" style="color: #0a6aa1;margin-right:.5em"></span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- End: User Details -->
                     </div>                    
                     <div class="form-actions">

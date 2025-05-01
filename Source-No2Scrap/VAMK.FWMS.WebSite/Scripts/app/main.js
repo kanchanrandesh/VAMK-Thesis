@@ -508,8 +508,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             }
         })
 
-            
-        
+
+
 
         .state('countryList', {
             url: "/CountryList",
@@ -741,7 +741,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             }
         })
 
-        
+
         .state('departmentList', {
             url: "/DepartmentList",
             templateUrl: "../department/index",
@@ -858,10 +858,10 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
 
 
 
-     
 
 
-               
+
+
 
         .state('unitList', {
             url: "/UnitList",
@@ -972,7 +972,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                             '../Scripts/app/directive/modeldirective.js',
                             '../Scripts/app/services/EmployeeService.js',
                             '../Scripts/app/services/DepartmentService.js',
-                            '../Scripts/app/services/UnitService.js', 
+                            '../Scripts/app/services/UnitService.js',
                             '../Scripts/app/controllers/UnitAddEditCtrl.js',
                             '../Scripts/app/services/NotificationMsgService.js',
                         ]
@@ -981,7 +981,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             }
         })
 
-       
+
         .state('employeeList', {
             url: "/EmployeeList",
             templateUrl: "../employee/index",
@@ -1033,7 +1033,6 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                             '../Scripts/app/controllers/EmployeeListCtrl.js',
                             '../Scripts/app/services/CompanyService.js',
                             '../Scripts/app/services/NotificationMsgService.js',
-                            '../Scripts/app/services/JobCategoryService.js',
                         ]
                     }]);
                 }]
@@ -1092,7 +1091,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                             '../Scripts/app/directives.js',
                             '../Scripts/app/directive/modeldirective.js',
                             '../Scripts/app/services/EmployeeService.js',
-                            '../Scripts/app/services/JobCategoryService.js',
+                            '../Scripts/app/services/RecipientService.js',
+                            '../Scripts/app/services/DonerService.js',
                             '../Scripts/app/controllers/EmployeeAddEditCtrl.js',
                             '../Scripts/app/services/NotificationMsgService.js',
                             '../Scripts/app/services/CompanyService.js',
@@ -1102,7 +1102,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             }
         })
 
-        
+
 
         .state('groupList', {
             url: "/GroupList",
@@ -1572,7 +1572,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             }
         })
 
-        
+
 
 
         .state('itemList', {
@@ -1678,7 +1678,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                             '../assets/pages/scripts/components-select2.min.js',
 
                             '../Scripts/app/directives.js',
-                            '../Scripts/app/directive/modeldirective.js',                            
+                            '../Scripts/app/directive/modeldirective.js',
                             '../Scripts/app/services/ItemService.js',
                             '../Scripts/app/services/UnitService.js',
                             '../Scripts/app/controllers/ItemAddEditCtrl.js',
@@ -1688,7 +1688,6 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
                 }]
             }
         })
-
 
         .state('donationList', {
             url: "/DonationList",
@@ -1805,7 +1804,243 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
             }
         })
 
-       
+        .state('donationReceive', {
+            url: "/DonationReceive/:pageTitle/:id/",
+            templateUrl: "../Donation/Receive",
+            data: { pageTitle: '', id: 0 },
+            controller: "DonationReceiveCtrl",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([{
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                        files: [
+                            '../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
+                            '../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css',
+                            '../assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css',
+                            '../assets/global/plugins/typeahead/typeahead.css',
+                            '../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
+                            '../assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css',
+                            '../assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css',
+                            '../assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css',
+                            '../assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css',
+                            '../assets/global/plugins/select2/css/select2.min.css',
+                            '../assets/global/plugins/select2/css/select2-bootstrap.min.css',
+                            '../Content/formStyle.css',
+
+                            '../assets/global/plugins/fuelux/js/spinner.min.js',
+                            '../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js',
+                            '../assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js',
+                            '../assets/global/plugins/jquery.input-ip-address-control-1.0.min.js',
+                            '../assets/global/plugins/bootstrap-pwstrength/pwstrength-bootstrap.min.js',
+                            '../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js',
+                            '../assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
+                            '../assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js',
+                            '../assets/global/plugins/typeahead/handlebars.min.js',
+                            '../assets/global/plugins/typeahead/typeahead.bundle.min.js',
+                            '../assets/pages/scripts/components-form-tools-2.min.js',
+                            '../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
+                            '../assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js',
+                            '../assets/global/plugins/clockface/js/clockface.js',
+                            '../assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js',
+                            '../assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js',
+                            '../assets/pages/scripts/components-date-time-pickers.min.js',
+                            '../assets/pages/scripts/components-form-tools-2.min.js',
+                            '../assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js',
+                            '../assets/global/plugins/select2/js/select2.full.min.js',
+                            '../assets/pages/scripts/components-bootstrap-select.min.js',
+                            '../assets/pages/scripts/components-select2.min.js',
+
+                            '../Scripts/app/directives.js',
+                            '../Scripts/app/directive/modeldirective.js',
+                            '../Scripts/app/services/DonationService.js',
+                            '../Scripts/app/services/ItemService.js',
+                            '../Scripts/app/services/DonerService.js',
+                            '../Scripts/app/controllers/DonationReceiveCtrl.js',
+                            '../Scripts/app/services/NotificationMsgService.js',
+                        ]
+                    }]);
+                }]
+            }
+        })
+
+        .state('requestList', {
+            url: "/RequestList",
+            templateUrl: "../request/index",
+            data: { pageTitle: 'Request List' },
+            controller: "RequestListCtrl",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([{
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                        files: [
+                            '../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
+                            '../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css',
+                            '../assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css',
+                            '../assets/global/plugins/typeahead/typeahead.css',
+                            '../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
+                            '../assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css',
+                            '../assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css',
+                            '../assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css',
+                            '../assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css',
+                            '../assets/global/plugins/select2/css/select2.min.css',
+                            '../assets/global/plugins/select2/css/select2-bootstrap.min.css',
+
+                            '../assets/global/plugins/fuelux/js/spinner.min.js',
+                            '../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js',
+                            '../assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js',
+                            '../assets/global/plugins/jquery.input-ip-address-control-1.0.min.js',
+                            '../assets/global/plugins/bootstrap-pwstrength/pwstrength-bootstrap.min.js',
+                            '../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js',
+                            '../assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
+                            '../assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js',
+                            '../assets/global/plugins/typeahead/handlebars.min.js',
+                            '../assets/global/plugins/typeahead/typeahead.bundle.min.js',
+                            '../assets/pages/scripts/components-form-tools-2.min.js',
+                            '../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
+                            '../assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js',
+                            '../assets/global/plugins/clockface/js/clockface.js',
+                            '../assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js',
+                            '../assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js',
+                            '../assets/pages/scripts/components-date-time-pickers.min.js',
+                            '../assets/pages/scripts/components-form-tools-2.min.js',
+                            '../assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js',
+                            '../assets/global/plugins/select2/js/select2.full.min.js',
+                            '../assets/pages/scripts/components-bootstrap-select.min.js',
+                            '../assets/pages/scripts/components-select2.min.js',
+
+                            '../Scripts/app/services/RequestService.js',
+                            '../Scripts/app/controllers/RequestListCtrl.js',
+                            '../Scripts/app/services/NotificationMsgService.js',
+                        ]
+                    }]);
+                }]
+            }
+        })
+
+        .state('requestAddEdit', {
+            url: "/RequestAddEdit/:pageTitle/:id/",
+            templateUrl: "../Request/AddEdit",
+            data: { pageTitle: '', id: 0 },
+            controller: "RequestAddEditCtrl",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([{
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                        files: [
+                            '../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
+                            '../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css',
+                            '../assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css',
+                            '../assets/global/plugins/typeahead/typeahead.css',
+                            '../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
+                            '../assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css',
+                            '../assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css',
+                            '../assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css',
+                            '../assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css',
+                            '../assets/global/plugins/select2/css/select2.min.css',
+                            '../assets/global/plugins/select2/css/select2-bootstrap.min.css',
+                            '../Content/formStyle.css',
+
+                            '../assets/global/plugins/fuelux/js/spinner.min.js',
+                            '../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js',
+                            '../assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js',
+                            '../assets/global/plugins/jquery.input-ip-address-control-1.0.min.js',
+                            '../assets/global/plugins/bootstrap-pwstrength/pwstrength-bootstrap.min.js',
+                            '../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js',
+                            '../assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
+                            '../assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js',
+                            '../assets/global/plugins/typeahead/handlebars.min.js',
+                            '../assets/global/plugins/typeahead/typeahead.bundle.min.js',
+                            '../assets/pages/scripts/components-form-tools-2.min.js',
+                            '../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
+                            '../assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js',
+                            '../assets/global/plugins/clockface/js/clockface.js',
+                            '../assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js',
+                            '../assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js',
+                            '../assets/pages/scripts/components-date-time-pickers.min.js',
+                            '../assets/pages/scripts/components-form-tools-2.min.js',
+                            '../assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js',
+                            '../assets/global/plugins/select2/js/select2.full.min.js',
+                            '../assets/pages/scripts/components-bootstrap-select.min.js',
+                            '../assets/pages/scripts/components-select2.min.js',
+                            '../assets/global/plugins/angular-file-upload-master/dist/angular-file-upload.js',
+
+
+                            '../Scripts/app/directives.js',
+                            '../Scripts/app/directive/modeldirective.js',
+                            '../Scripts/app/services/RequestService.js',
+                            '../Scripts/app/services/ItemService.js',
+                            '../Scripts/app/services/RecipientService.js',
+                            '../Scripts/app/controllers/RequestAddEditCtrl.js',
+                            '../Scripts/app/services/NotificationMsgService.js',
+                        ]
+                    }]);
+                }]
+            }
+        })
+
+        .state('requestAccept', {
+            url: "/RequestAccept/:pageTitle/:id/",
+            templateUrl: "../Request/Accept",
+            data: { pageTitle: '', id: 0 },
+            controller: "RequestAcceptCtrl",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load([{
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                        files: [
+                            '../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',
+                            '../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css',
+                            '../assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css',
+                            '../assets/global/plugins/typeahead/typeahead.css',
+                            '../assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css',
+                            '../assets/global/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css',
+                            '../assets/global/plugins/bootstrap-colorpicker/css/colorpicker.css',
+                            '../assets/global/plugins/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css',
+                            '../assets/global/plugins/bootstrap-select/css/bootstrap-select.min.css',
+                            '../assets/global/plugins/select2/css/select2.min.css',
+                            '../assets/global/plugins/select2/css/select2-bootstrap.min.css',
+                            '../Content/formStyle.css',
+
+                            '../assets/global/plugins/fuelux/js/spinner.min.js',
+                            '../assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js',
+                            '../assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js',
+                            '../assets/global/plugins/jquery.input-ip-address-control-1.0.min.js',
+                            '../assets/global/plugins/bootstrap-pwstrength/pwstrength-bootstrap.min.js',
+                            '../assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js',
+                            '../assets/global/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js',
+                            '../assets/global/plugins/bootstrap-touchspin/bootstrap.touchspin.js',
+                            '../assets/global/plugins/typeahead/handlebars.min.js',
+                            '../assets/global/plugins/typeahead/typeahead.bundle.min.js',
+                            '../assets/pages/scripts/components-form-tools-2.min.js',
+                            '../assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js',
+                            '../assets/global/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js',
+                            '../assets/global/plugins/clockface/js/clockface.js',
+                            '../assets/global/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js',
+                            '../assets/global/plugins/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js',
+                            '../assets/pages/scripts/components-date-time-pickers.min.js',
+                            '../assets/pages/scripts/components-form-tools-2.min.js',
+                            '../assets/global/plugins/bootstrap-select/js/bootstrap-select.min.js',
+                            '../assets/global/plugins/select2/js/select2.full.min.js',
+                            '../assets/pages/scripts/components-bootstrap-select.min.js',
+                            '../assets/pages/scripts/components-select2.min.js',
+
+                            '../Scripts/app/directives.js',
+                            '../Scripts/app/directive/modeldirective.js',
+                            '../Scripts/app/services/RequestService.js',
+                            '../Scripts/app/services/ItemService.js',
+                            '../Scripts/app/services/RecipientService.js',
+                            '../Scripts/app/controllers/RequestAcceptCtrl.js',
+                            '../Scripts/app/services/NotificationMsgService.js',
+                        ]
+                    }]);
+                }]
+            }
+        })
+
 }]);
 
 /* Init global settings and run the app */

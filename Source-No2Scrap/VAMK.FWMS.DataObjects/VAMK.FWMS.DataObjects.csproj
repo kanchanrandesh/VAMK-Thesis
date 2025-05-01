@@ -125,6 +125,8 @@
     <Compile Include="Mappers\DonationItemMapper.cs" />
     <Compile Include="Mappers\DonationMapper.cs" />
     <Compile Include="Mappers\DonerMapper.cs" />
+    <Compile Include="Mappers\EmployeeDonerMapper.cs" />
+    <Compile Include="Mappers\EmployeeRecipientMapper.cs" />
     <Compile Include="Mappers\InventoryStockMapper.cs" />
     <Compile Include="Mappers\ItemMapper.cs" />
     <Compile Include="Mappers\LogMapper.cs" />

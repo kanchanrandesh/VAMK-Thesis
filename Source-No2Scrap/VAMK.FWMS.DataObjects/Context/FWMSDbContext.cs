@@ -41,6 +41,8 @@ namespace VAMK.FWMS.DataObjects.Context
             //modelBuilder.Configurations.Add(new SystemConfigurationMapper());
             //modelBuilder.Configurations.Add(new CompanyMapper());
             modelBuilder.Configurations.Add(new EmployeeMapper());
+            modelBuilder.Configurations.Add(new EmployeeDonerMapper());
+            modelBuilder.Configurations.Add(new EmployeeRecipientMapper());
             modelBuilder.Configurations.Add(new AuditTrailMapper());
             modelBuilder.Configurations.Add(new AuditTrailDetailMapper());
             //modelBuilder.Configurations.Add(new CountryMapper());            
@@ -68,12 +70,15 @@ namespace VAMK.FWMS.DataObjects.Context
             modelBuilder.Configurations.Add(new UserRightsMapper());
             modelBuilder.Configurations.Add(new SecureAccessFormMapper());
             modelBuilder.Configurations.Add(new SequenceNumberMapper());
+            modelBuilder.Configurations.Add(new InventoryStockMapper());
         }
 
         public IDbSet<TimeZone> TimeZones { get; set; }
         public IDbSet<SystemConfiguration> SystemConfiguration { get; set; }
         public IDbSet<Company> Companies { get; set; }
         public IDbSet<Employee> Employees { get; set; }
+        public IDbSet<EmployeeDoner> EmployeeDoners { get; set; }
+        public IDbSet<EmployeeRecipient> EmployeeRecipients { get; set; }
         public IDbSet<AuditTrail> AuditTrails { get; set; }
         public IDbSet<AuditTrailDetail> AuditTrailDetails { get; set; }
         public IDbSet<Country> Countries { get; set; }
@@ -100,6 +105,7 @@ namespace VAMK.FWMS.DataObjects.Context
         public IDbSet<UserRights> UserRights { get; set; }
         public IDbSet<SecureAccessForm> SecureAccessForm { get; set; }
         public IDbSet<SequenceNumber> SequenceNumber { get; set; }
+        public IDbSet<InventoryStock> InventoryStocks { get; set; }
 
     }
 }
