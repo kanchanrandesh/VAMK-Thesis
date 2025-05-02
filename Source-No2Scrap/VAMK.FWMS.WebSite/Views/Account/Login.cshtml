@@ -43,79 +43,79 @@
     <!-- BEGIN LOGO -->
     <div class="logo">
         <div>
-            <span style="font-family:'Copperplate Gothic';font-size:5em;font:bold; color:gold">No2</span><span style="font-family:Broadway;font-size:4.4em;color:white">Scrap</span>
+            <span style="font-family: 'Broadway'; font-size: 5em; font: bold; color: #FFC000 ">No</span><span style="font-family: Broadway; font-size: 5.7em; color: #20900A">2</span><span style="font-family: Broadway; font-size: 4.4em; color: #eb2929 ">Scrap</span>
         </div>
     </div>
     <!-- END LOGO -->
     <!-- BEGIN LOGIN -->
-    <div class="content" ng-controller="LoginCtrl">
-      <!-- BEGIN LOGIN FORM -->
-      @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "", role = "form" ,@id ="Form1"}))
-      {
-        <h3 class="form-title font-green">Sign In</h3>
-        <div class="alert alert-danger display-hide">
-          <button class="close" data-close="alert"></button>
-          <span> Enter any username and password. </span>
+    <div class="content" ng-controller="LoginCtrl" style="margin-top:0;padding-top:0;">
+        <!-- BEGIN LOGIN FORM -->
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "", role = "form", @id = "Form1" }))
+        {
+            <h3 class="form-title font-green">Coordinator Sign In</h3>
+            <div class="alert alert-danger display-hide">
+                <button class="close" data-close="alert"></button>
+                <span> Enter any username and password. </span>
+            </div>
+            <div class="form-group">
+                <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                <label class="control-label visible-ie8 visible-ie9">Username</label>
+                <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" id="username" ng-model="login.userName" />
+            </div>
+            <div class="form-group">
+                <label class="control-label visible-ie8 visible-ie9">Password</label>
+                <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" id="password" ng-model="login.password" />
+            </div>
+            <div>
+                <label class="editable-error" style="color:red">
+                    @ViewBag.msg
+                </label>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn green uppercase" name="name">Login</button>
+                <script>
+                    document.getElementById('password').addEventListener('keypress', function (event) {
+                        if (event.keyCode == 13) {
+                            document.getElementById('Form1').submit();
+                        }
+                    });
+                </script>
+                <script>
+                    document.getElementById('username').addEventListener('keypress', function (event) {
+                        if (event.keyCode == 13) {
+                            document.getElementById('Form1').submit();
+                        }
+                    });
+                </script>
+                @*<label class="rememberme check mt-checkbox mt-checkbox-outline">
+                          <input type="checkbox" name="remember" value="1" />Remember
+                    <span></span>
+                        </label>*@
+                <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
+            </div>
+        }
+        <!-- END LOGIN FORM -->
+        <!-- BEGIN FORGOT PASSWORD FORM -->
+        <form class="forget-form" name="frmResetPassword">
+            @*<h3 class="font-green">Forget Password ?</h3>*@
+            <p> @*Enter your Username below to reset your password.*@ </p>
+            <div class="form-group">
+                <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Enter username here to reset your password" name="userName" ng-model="reset.userName" ng-required="true" />
+            </div>
+            <div class="from-group">
+                <span id="resetPasswordMessage" class="notify" style="color:red">{{reset.message}}</span>
+            </div>
+            <div class="form-actions">
+                <button type="button" id="back-btn" class="btn green btn-outline">Back</button>
+                <button type="button" class="btn btn-success uppercase pull-right" ng-click="resetPassword(reset,frmResetPassword)">Reset Password</button>
+            </div>
+        </form>
+        <!-- END FORGOT PASSWORD FORM -->
+        <div class="create-account">
+            <p>
+                <a href="http://jithpl.com">©&nbsp;&nbsp;Kanchan Randesh</a>
+            </p>
         </div>
-        <div class="form-group">
-          <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-          <label class="control-label visible-ie8 visible-ie9">Username</label>
-          <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username"  id="username"  ng-model="login.userName"/>
-        </div>
-        <div class="form-group">
-          <label class="control-label visible-ie8 visible-ie9">Password</label>
-          <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" id="password" ng-model="login.password" />
-        </div>
-        <div>
-          <label class="editable-error" style="color:red">
-            @ViewBag.msg
-          </label>
-        </div>
-        <div class="form-actions">
-          <button type="submit" class="btn green uppercase" name="name">Login</button>
-          <script>
-            document.getElementById('password').addEventListener('keypress', function (event) {
-              if (event.keyCode == 13) {
-                document.getElementById('Form1').submit();
-              }
-            });
-          </script>
-          <script>
-            document.getElementById('username').addEventListener('keypress', function (event) {
-              if (event.keyCode == 13) {
-                document.getElementById('Form1').submit();
-              }
-            });
-          </script>
-          @*<label class="rememberme check mt-checkbox mt-checkbox-outline">
-          <input type="checkbox" name="remember" value="1" />Remember
-    <span></span>
-        </label>*@
-          <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
-        </div>
-      }
-      <!-- END LOGIN FORM -->
-      <!-- BEGIN FORGOT PASSWORD FORM -->
-      <form class="forget-form" name="frmResetPassword">
-        @*<h3 class="font-green">Forget Password ?</h3>*@
-        <p> @*Enter your Username below to reset your password.*@ </p>
-        <div class="form-group">
-          <input class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="Enter username here to reset your password" name="userName" ng-model="reset.userName" ng-required="true" />
-        </div>
-        <div class="from-group">
-          <span id="resetPasswordMessage" class="notify" style="color:red">{{reset.message}}</span>
-        </div>
-        <div class="form-actions">
-          <button type="button" id="back-btn" class="btn green btn-outline">Back</button>
-          <button type="button" class="btn btn-success uppercase pull-right" ng-click="resetPassword(reset,frmResetPassword)">Reset Password</button>
-        </div>
-      </form>
-      <!-- END FORGOT PASSWORD FORM -->
-      <div class="create-account">
-        <p>
-          <a href="http://jithpl.com">©&nbsp;&nbsp;Kanchan Randesh</a>
-        </p>
-      </div>
     </div>
     <div class="copyright"> Developed by Kanchan Randesh </div>
     <!--[if lt IE 9]>
