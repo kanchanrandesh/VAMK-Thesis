@@ -17,6 +17,12 @@
         donationService.getById($stateParams.id).then(function (res) {
             debugger;
             $scope.donation = res;
+
+            if (res.donerID)
+                $scope.selectedDoner = $scope.doners.find(x => x.id == $scope.donerID);
+            else
+                obj.selectedDoner = null
+
             if (res.date)
                 $scope.donation.date = new Date(res.date);
             else
@@ -39,7 +45,7 @@
     function loadDoners() {
 
         var defer = $.Deferred();
-        donerService.getAllForDropdown().then(function (res) {
+        donerService.getAllForDropdownForUser().then(function (res) {
             $scope.doners = res;
             defer.resolve();
         });
@@ -84,7 +90,7 @@
 
             donationService.save(obj).then(function (res) {
                 if (res.status == true) {
-                    notificationMsgService.showSuccessMessage('Record saved successfully');
+                    notificationMsgService.showSuccessMessage('Record saved successfully. Donation Number  : ' + res.transacionNumber);
                     $state.go('donationList', {});
                 }
                 else
@@ -120,7 +126,8 @@
 
     $scope.headerDescription = '';
     $scope.$watch('donation.transacionNumber', function (newValue, oldValue, scope) {
-        if ($stateParams.id == "0" && newValue == undefined) {
+        debugger
+        if ($stateParams.id == "0" && (newValue == undefined || newValue == "-- AUTO GENERATED --")) {
             $scope.headerTitle = "New Donation";
         }
         else {

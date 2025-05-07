@@ -10,7 +10,8 @@ namespace VAMK.FWMS.WebSite.Models
     {
         public string id { get; set; }
         public string timeStamp { get; set; }
-
+        public string dateAccepted { get; set; }
+        public string dateIssued { get; set; }
         public string recipientId { get; set; }
         public string recipientName { get; set; }
         public string date { get; set; }
@@ -18,7 +19,6 @@ namespace VAMK.FWMS.WebSite.Models
         public string transacionNumber { get; set; }
         public string manualRefNumber { get; set; }
         public string requestStatus { get; set; }
-
         public List<RequestItemModel> requestItemList { get; set; }
         public bool status { get; set; }
         public string message { get; set; }
@@ -54,6 +54,8 @@ namespace VAMK.FWMS.WebSite.Models
                 RequestStatus = (e.id == null ? VAMK.FWMS.Models.Enums.RequestStatus.AllocationPending : (VAMK.FWMS.Models.Enums.RequestStatus)Enum.Parse(typeof(VAMK.FWMS.Models.Enums.RequestStatus), e.requestStatus)),
                 RequestItemList = _requestItemList,
                 TimeStamp = e.id != null ? Utility.StringToTimeStamp(e.timeStamp) : new byte[8],
+                DateAccepted = Convert.ToDateTime(e.dateAccepted),
+                DateIssued = Convert.ToDateTime(e.dateIssued),
             };
 
 

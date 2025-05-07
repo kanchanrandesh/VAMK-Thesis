@@ -6,13 +6,72 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
+using VAMK.FWMS.BizObjects.Impl;
+using VAMK.FWMS.Models.Util;
+using iTextSharp.text;
+using VAMK.FWMS.Models.Enums;
+using VAMK.FWMS.Models.MessageModels;
+using Microsoft.Office.Interop.Excel;
 
 namespace VAMK.FWMS.BizObjects.Facades
 {
     public class DonationFacade
     {
+        WebSettings websettings;
+
+        public DonationFacade(WebSettings websettings)
+        {
+            this.websettings = websettings;
+        }
         public TransferObject<Donation> Save(Donation donation, SequenceNumber sequenceNumber)
         {
+            var CoordinatorIntentoryItems = new List<CoordinatorIntentoryItem>();
+            var InventoryStocks = new List<InventoryStock>();
+            if (donation.DonationSatus == Models.Enums.DonationSatus.Collected)
+            {
+                foreach (var item in donation.DonationItemList)
+                {
+                    CoordinatorIntentoryItems.Add(new CoordinatorIntentoryItem
+                    {
+                        Date = DateTime.Now,
+                        DateCreated = DateTime.Now,
+                        EffectedQty = item.Qty,
+                        InventoryEffectedby = Models.Enums.InventoryEffectedby.Donation,
+                        EffectedTransacionID = donation.ID,
+                        ItemID = item.ItemID,
+                        User = donation.User,
+                        State = Models.Interfaces.State.Added,
+                        AuditReference = item.ItemID.ToString()
+                    });
+                    var inventoryStockDbObj = BizObjectFactory.GetInventoryStockBO().FindItemStock(item.ItemID.Value);
+                    if (inventoryStockDbObj == null)
+                    {
+                        InventoryStocks.Add(new InventoryStock
+                        {
+                            ItemID = item.ItemID,
+                            Quantity = item.Qty,
+                            State = Models.Interfaces.State.Added,
+                            User = donation.User,
+                            DateCreated = DateTime.Now,
+                        });
+                    }
+                    else
+                    {
+                        inventoryStockDbObj.State = Models.Interfaces.State.Modified;
+                        inventoryStockDbObj.Quantity += item.Qty;
+                        inventoryStockDbObj.User = donation.User;
+                        inventoryStockDbObj.DateModified = DateTime.Now;
+                        InventoryStocks.Add(inventoryStockDbObj);
+                    }
+                }
+            }
+
+            EmailOutBox emailOutBox = null;
+            if (donation.DonationSatus == Models.Enums.DonationSatus.Collected)
+            {
+                emailOutBox = GenerateEmailItem(donation, websettings.FunctionURLs);
+            }
+
             var transferObject = new TransferObject<Donation>();
             var options = new TransactionOptions();
             options.Timeout = TimeSpan.FromMinutes(1);
@@ -21,7 +80,7 @@ namespace VAMK.FWMS.BizObjects.Facades
             if (donation.ID == null)
             {
                 donation.State = Models.Interfaces.State.Added;
-                
+
                 foreach (var item in donation.DonationItemList)
                 {
                     item.State = Models.Interfaces.State.Added;
@@ -70,6 +129,8 @@ namespace VAMK.FWMS.BizObjects.Facades
                 dbDonation.ManualRefNumber = donation.ManualRefNumber;
                 dbDonation.Description = donation.Description;
                 dbDonation.DonationSatus = donation.DonationSatus;
+                if (dbDonation.DonationSatus == DonationSatus.Collected)
+                    dbDonation.DateCollected = donation.DateCollected;
                 dbDonation.Doner = donation.Doner;
                 dbDonation.DonerID = donation.DonerID;
                 dbDonation.User = donation.User;
@@ -115,6 +176,34 @@ namespace VAMK.FWMS.BizObjects.Facades
                     if (transferObject.StatusInfo.Status != Common.Enums.ServiceStatus.Success)
                         return transferObject;
 
+                    foreach (var coordinatorIntentoryItem in CoordinatorIntentoryItems)
+                    {
+                        var coordinatorIntentoryItemTO = BizObjectFactory.GetCoordinatorIntentoryItemBO().Save(coordinatorIntentoryItem);
+                        if (coordinatorIntentoryItemTO.StatusInfo.Status != Common.Enums.ServiceStatus.Success)
+                        {
+                            transferObject.StatusInfo = coordinatorIntentoryItemTO.StatusInfo;
+                            return transferObject;
+                        }
+                    }
+                    foreach (var inventoryStock in InventoryStocks)
+                    {
+                        var inventoryStockTO = BizObjectFactory.GetInventoryStockBO().Save(inventoryStock);
+                        if (inventoryStockTO.StatusInfo.Status != Common.Enums.ServiceStatus.Success)
+                        {
+                            transferObject.StatusInfo = inventoryStockTO.StatusInfo;
+                            return transferObject;
+                        }
+                    }
+
+                    if (donation.DonationSatus == DonationSatus.Collected)
+                    {
+                        var emailTO = BizObjectFactory.GetEmailOutBoxBO().Save(emailOutBox);
+                        if (emailTO.StatusInfo.Status != Common.Enums.ServiceStatus.Success)
+                        {
+                            transferObject.StatusInfo = emailTO.StatusInfo;
+                            return transferObject;
+                        }
+                    }
                     var auditTO = BizObjectFactory.GetAuditTrailBO().Save(auditTrail);
                     if (auditTO.StatusInfo.Status != Common.Enums.ServiceStatus.Success)
                     {
@@ -155,6 +244,42 @@ namespace VAMK.FWMS.BizObjects.Facades
             }
 
             return transferObject;
+        }
+
+        public EmailOutBox GenerateEmailItem(Donation donation, FunctionURLs FunctionURLs)
+        {
+            var emails = string.Empty;
+            var emailList = new List<string>();
+            var pendingRequests = BizObjectFactory.GetRequestBO().Search(new Models.SearchQueries.RequestSearchQuery { RequestStatus = RequestStatus.AllocationPending });
+            foreach (var pendingRequest in pendingRequests)
+            {
+                var reciption = BizObjectFactory.GetRecipientBO().GetSingle(pendingRequest.RecipientID.Value);
+                foreach (var contactPerson in reciption.ContactPersonList)
+                {
+                    if (!string.IsNullOrEmpty(contactPerson.Email))
+                    {
+                        if (!emailList.Contains(contactPerson.Email))
+                            emailList.Add(contactPerson.Email);
+                    }
+                }
+            }
+            emails = string.Join(",", emailList);
+            EmailOutBox email = new EmailOutBox();
+            email.IsBodyHtml = true;
+            email.State = Models.Interfaces.State.Added;
+            email.Sender = Models.Enums.EmailSender.General;
+            email.To = emails;
+            email.Subject = "Welcome to VAMK FWMS";
+            email.EmailStatus = EmailStatus.Pending;
+            email.EmailSendAttempt = 0;
+
+            EmployeeMessageModel messageModel = new EmployeeMessageModel();
+            messageModel.UserName = donation.User;
+            messageModel.FunctionURL = FunctionURLs.Login;
+
+            email.MailContent = new EmailItemsFacade(websettings).GenerateEmailcontentFromTemplate<EmployeeMessageModel>(EmailTemplate.DONATION_COLLECTED, messageModel);
+
+            return email;
         }
     }
 }

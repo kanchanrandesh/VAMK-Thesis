@@ -10,7 +10,7 @@
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a ui-sref="donerList">Doners</a>
+            <a ui-sref="donerList">Donors</a>
         </li>
     </ul>
     <div class="page-toolbar">
@@ -33,9 +33,9 @@
 <!-- END PAGE HEADER-->
 <!-- BEGIN MAIN CONTENT -->
 <div class="note note-success">
-    <h3>Doners</h3>
+    <h3>Donors</h3>
     <p>
-        Use to define the Doners of No2Scrap 
+        Use to define the Donors of No2Scrap
     </p>
 </div>
 <div class="row">
@@ -50,7 +50,7 @@
                         <div class="col-md-12">
                             <div class="input-icon right input-group">
                                 <span class="input-group-addon" style="border-left:1px solid #ccc; border-right: none; background-color: lightseagreen;cursor:pointer;" id="new" data-toggle="modal" data-target="#exampleModal">
-                                    <span class="glyphicon glyphicon-plus" aria-hidden="true" style="display: inline!important; color: white" ui-sref="donerAddEdit({pageTitle :'Add Doner', id : 0 })"></span>
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true" style="display: inline!important; color: white" ui-sref="donerAddEdit({pageTitle :'Add Donor', id : 0 })"></span>
                                 </span>
                                 <input type="text" class="form-control" ng-model="searchQuery.searchText" ng-keyup="search(searchQuery)">
                                 <span class="input-group-addon" style="cursor:pointer;" id="advanceSearch" data-toggle="collapse" href="#advanceSearchContainer" aria-expanded="false" aria-controls="collapseExample">
@@ -93,7 +93,7 @@
                                     <th> </th>
                                     <th> Code </th>
                                     <th> Name </th>
-                                    <th> Address  </th>                                    
+                                    <th> Address  </th>
                                 </tr>
                             </thead>
                             <tbody>

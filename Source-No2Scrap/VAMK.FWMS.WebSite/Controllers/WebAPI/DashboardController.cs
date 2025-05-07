@@ -74,7 +74,12 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
             reqSearch = new RequestSearchQuery();
             //reqSearch.ApproverID = employeeId;
             reqs = BizObjectFactory.GetRequestBO().Search(reqSearch);
-            returnVal.requestsTobeIssued = reqs.Where(t => t.RequestStatus == VAMK.FWMS.Models.Enums.RequestStatus.Allocated).Count().ToString();
+            returnVal.requestsTobeIssued = reqs.Where(t => t.RequestStatus == VAMK.FWMS.Models.Enums.RequestStatus.IssuancePending).Count().ToString();
+
+            reqSearch = new RequestSearchQuery();
+            //reqSearch.ApproverID = employeeId;
+            reqs = BizObjectFactory.GetRequestBO().Search(reqSearch);
+            returnVal.requestsCompletedToday = reqs.Where(t => t.RequestStatus == VAMK.FWMS.Models.Enums.RequestStatus.Completed && t.Date == System.DateTime.Now.Date).Count().ToString();
 
 
 

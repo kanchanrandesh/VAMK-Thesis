@@ -6184,6 +6184,7 @@
     <Content Include="Scripts\app\controllers\LoginCtrl.js" />
     <Content Include="Scripts\app\controllers\RequestAcceptCtrl.js" />
     <Content Include="Scripts\app\controllers\RequestAddEditCtrl.js" />
+    <Content Include="Scripts\app\controllers\RequestIssueCtrl.js" />
     <Content Include="Scripts\app\controllers\RequestListCtrl.js" />
     <Content Include="Scripts\app\controllers\SystemConfigurationAddEditCtrl.js" />
     <Content Include="Scripts\app\controllers\TimeSheetListCtrl.js" />

@@ -13,6 +13,7 @@ namespace VAMK.FWMS.WebSite.Models
         public string totalRequestPostedToday { get; set; }
         public string openRequests { get; set; }
         public string requestsTobeIssued { get; set; }
+        public string requestsCompletedToday { get; set; }
         public List<DonationModel> recentDonations { get; set; }
         public List<RequestModel> recentRequests { get; set; }
     }

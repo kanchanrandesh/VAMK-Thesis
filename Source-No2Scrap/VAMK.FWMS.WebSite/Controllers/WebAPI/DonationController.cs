@@ -48,6 +48,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
                 var modelObj = (DonationModel)item;
                 returnList.Add(modelObj);
             }
+
             return Ok(returnList);
         }
 
@@ -60,8 +61,10 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
             if (id != 0)
                 donation = (DonationModel)BizObjectFactory.GetDonationBO().GetSingle(id);
             else
+            {
                 donation.donationItemList = new List<DonationItemModel> { { new DonationItemModel { } } };
-
+                donation.transacionNumber = "-- AUTO GENERATED --";
+            }
             return Ok(donation);
         }
 
@@ -113,6 +116,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
             {
                 obj.State = State.Added;
                 obj.DateCreated = DateTime.Now;
+                obj.DateCollected = null;
                 foreach (var item in obj.DonationItemList)
                 {
                     if (item.ID == null)
@@ -122,6 +126,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
                     }
                     item.User = user.UserName;
                 }
+                obj.Date.AddDays(1);
             }
             else
             {
@@ -144,7 +149,48 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
             }
             obj.User = user.UserName;
 
-            var transObject = new DonationFacade().Save(obj, sequenceNumber);
+            var transObject = new DonationFacade(WebSettingProvider.GetWebSettings()).Save(obj, sequenceNumber);
+
+            model.status = transObject.StatusInfo.Status == Common.Enums.ServiceStatus.Success;
+            if (transObject.StatusInfo.Status == Common.Enums.ServiceStatus.DatabaseFailure)
+                model.message = "Code cannot be duplicated";
+            else
+                model.message = transObject.StatusInfo.Message;
+
+            return Ok(model);
+        }
+        [HttpPost]
+        [Route("receive")]
+        [HttpAuthorizeAccessRule(Rule = "DEPRTMRECE")]
+        public IHttpActionResult Receive(DonationModel model)
+        {
+            var identity = (ClaimsIdentity)User.Identity;
+            var userid = identity.FindFirst(ClaimTypes.Sid).Value.ToString();
+            var user = BizObjectFactory.GetEmployeeBO().GetProxy(int.Parse(userid));
+
+            Donation obj = model;
+
+            obj.State = State.Modified;
+            obj.DateModified = DateTime.Now;
+            foreach (var item in obj.DonationItemList)
+            {
+                if (item.ID == null)
+                {
+                    item.State = State.Added;
+                    item.DateCreated = DateTime.Now;
+                }
+                else
+                {
+                    item.State = State.Modified;
+                    item.DateCreated = DateTime.Now;
+                }
+                item.User = user.UserName;
+            }
+            obj.User = user.UserName;
+            obj.DonationSatus = FWMS.Models.Enums.DonationSatus.Collected;
+            obj.DateCollected = DateTime.Now;
+
+            var transObject = new DonationFacade(WebSettingProvider.GetWebSettings()).Save(obj, null);
 
             model.status = transObject.StatusInfo.Status == Common.Enums.ServiceStatus.Success;
             if (transObject.StatusInfo.Status == Common.Enums.ServiceStatus.DatabaseFailure)

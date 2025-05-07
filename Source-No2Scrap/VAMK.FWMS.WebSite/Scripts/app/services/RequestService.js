@@ -54,11 +54,31 @@
                 });
             return deferred.promise;
         },
-        
+
         accept: function (data) {
             var deferred = $q.defer();
             $http({
                 url: '/api/request/accept',
+                method: 'POST',
+                data: data,
+                headers: { 'Content-Type': 'application/json' }
+            }).
+                success(function (data, status, headers, config) {
+                    deferred.resolve(data);
+                }).
+                error(function (data, status, headers, config) {
+                    deferred.reject(status);
+                    if (status == "401") {
+                        notificationMsgService.showErrorMessage("You are not authorized to access this function");
+                    }
+                });
+            return deferred.promise;
+        },
+
+        issue: function (data) {
+            var deferred = $q.defer();
+            $http({
+                url: '/api/request/issue',
                 method: 'POST',
                 data: data,
                 headers: { 'Content-Type': 'application/json' }

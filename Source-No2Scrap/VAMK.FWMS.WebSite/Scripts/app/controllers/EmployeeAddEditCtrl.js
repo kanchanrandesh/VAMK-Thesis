@@ -12,7 +12,7 @@
     $scope.pageTitle = $stateParams.pageTitle;
     $scope.selectedCompany;
     (function () {
-        loadCompanies().then(loadRecipiants).then(loadDoners).then(loadEmployee);
+        loadRecipiants().then(loadDoners).then(loadEmployee);
     }());
 
     function loadCompanies() {
@@ -41,10 +41,12 @@
         return defer;
     };
     function loadEmployee() {
+        debugger;
         var defer = $.Deferred();
         employeeService.getById($stateParams.id).then(function (res) {
             $scope.employee = res;
-            $scope.selectedCompany = $scope.companies.find(x => x.id === res.companyId);
+
+            //$scope.selectedCompany = $scope.companies.find(x => x.id === res.companyId);
 
             $scope.multiPrjectOptions = {
                 title: '',
@@ -143,67 +145,68 @@
             $scope.employee.employeeRecipients.splice(i, 1);
         }
     }
-    $scope.$watch('employee.firstName', function (newValue, oldValue, scope) {
-        if ($stateParams.id == "0" && newValue == undefined && $scope.employee.lastName == undefined) {
-            $scope.headerTitle = "New Employee";
-        }
-        else {
-            if (newValue == undefined && $scope.employee.lastName == undefined) {
-                $scope.headerTitle = "Edit Employee";
-            }
-            else {
-                if (newValue != undefined && $scope.employee.lastName == undefined) {
-                    $scope.headerTitle = newValue;
-                }
-                else {
-                    if (newValue == undefined && $scope.employee.lastName != undefined) {
-                        $scope.headerTitle = $scope.employee.lastName;
-                    }
-                    else {
-                        $scope.headerTitle = newValue + ' ' + $scope.employee.lastName;
-                    }
-                }
-            }
-        }
-    }, true);
 
-    $scope.$watch('employee.lastName', function (newValue, oldValue, scope) {
-        if ($stateParams.id == "0" && $scope.employee.firstName == undefined && newValue == undefined) {
-            $scope.headerTitle = "New Employee";
-        }
-        else {
-            if ($scope.employee.firstName == undefined && newValue == undefined) {
-                $scope.headerTitle = "Edit Employee";
-            }
-            else {
-                if ($scope.employee.firstName == undefined && newValue != undefined) {
-                    $scope.headerTitle = newValue;
-                }
-                else {
-                    if ($scope.employee.firstName != undefined && newValue == undefined) {
-                        $scope.headerTitle = $scope.employee.firstName;
-                    }
-                    else {
-                        $scope.headerTitle = $scope.employee.firstName + ' ' + newValue;
-                    }
-                }
-            }
-        }
-    }, true);
+    //$scope.$watch('employee.firstName', function (newValue, oldValue, scope) {
+    //    if ($stateParams.id == "0" && newValue == undefined && $scope.employee.lastName == undefined) {
+    //        $scope.headerTitle = "New System User";
+    //    }
+    //    else {
+    //        if (newValue == undefined && $scope.employee.lastName == undefined) {
+    //            $scope.headerTitle = "Edit System User";
+    //        }
+    //        else {
+    //            if (newValue != undefined && $scope.employee.lastName == undefined) {
+    //                $scope.headerTitle = newValue;
+    //            }
+    //            else {
+    //                if (newValue == undefined && $scope.employee.lastName != undefined) {
+    //                    $scope.headerTitle = $scope.employee.lastName;
+    //                }
+    //                else {
+    //                    $scope.headerTitle = newValue + ' ' + $scope.employee.lastName;
+    //                }
+    //            }
+    //        }
+    //    }
+    //}, true);
 
-    $scope.$watch('employee.code', function (newValue, oldValue, scope) {
-        if ($stateParams.id == "0" && newValue == undefined) {
-            $scope.headerDescription = "";
-        }
-        else {
-            if (newValue == undefined) {
-                $scope.headerDescription = "";
-            }
-            else {
-                $scope.headerDescription = newValue;
-            }
-        }
-    }, true);
+    //$scope.$watch('employee.lastName', function (newValue, oldValue, scope) {
+    //    if ($stateParams.id == "0" && $scope.employee.firstName == undefined && newValue == undefined) {
+    //        $scope.headerTitle = "New System User";
+    //    }
+    //    else {
+    //        if ($scope.employee.firstName == undefined && newValue == undefined) {
+    //            $scope.headerTitle = "Edit System User";
+    //        }
+    //        else {
+    //            if ($scope.employee.firstName == undefined && newValue != undefined) {
+    //                $scope.headerTitle = newValue;
+    //            }
+    //            else {
+    //                if ($scope.employee.firstName != undefined && newValue == undefined) {
+    //                    $scope.headerTitle = $scope.employee.firstName;
+    //                }
+    //                else {
+    //                    $scope.headerTitle = $scope.employee.firstName + ' ' + newValue;
+    //                }
+    //            }
+    //        }
+    //    }
+    //}, true);
+
+    //$scope.$watch('employee.code', function (newValue, oldValue, scope) {
+    //    if ($stateParams.id == "0" && newValue == undefined) {
+    //        $scope.headerDescription = "";
+    //    }
+    //    else {
+    //        if (newValue == undefined) {
+    //            $scope.headerDescription = "";
+    //        }
+    //        else {
+    //            $scope.headerDescription = newValue;
+    //        }
+    //    }
+    //}, true);
 
     // set sidebar closed and body solid layout mode
     $rootScope.settings.layout.pageContentWhite = true;

@@ -61,6 +61,12 @@
                 <form action="#" name="frmDonationAddEdit" class="form-horizontal form-bordered">
                     <div class="form-body">
                         <div class="form-group">
+                            <label class="control-label col-md-3">Transacion Number</label>
+                            <div class="col-md-4">
+                                <input type="text" value="-- AUTO GENERATED --" class="form-control" name="name_input" ng-model="donation.transacionNumber" maxlength="200" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label col-md-3">Doner</label>
                             <div class="col-md-4">
                                 <select class="form-control select2" ng-model="selectedDoner" ng-options="obj as obj.name for obj in doners track by obj.id"></select>
@@ -128,7 +134,7 @@
                                                             <select class="form-control " ng-model="donationItem.selectedItem" ng-options="obj as obj.name for obj in items track by obj.id"></select>
                                                         </div>
                                                         <div class="col-md-3">
-                                                            <label class="control-label" style="text-align:left;padding-top:0 !important">Quantity</label>
+                                                            <label class="control-label" style="text-align:right;padding-top:0 !important">Quantity</label>
                                                             <input class="form-control" ng-model="donationItem.qty" name="donationItemQty" />
                                                             <span class="fieldError" ng-cloak ng-show="frmDonationAddEdit.qty_input.$dirty && frmDonationAddEdit.qty_input.$invalid">
                                                                 <span ng-show="frmDonationAddEdit.qty_input.$error.required">Quantity is required</span>

@@ -11,6 +11,7 @@ namespace VAMK.FWMS.WebSite.Models
         public string timeStamp { get; set; }
         public string dateCreated { get; set; }
         public string date { get; set; }
+        public string dateCollected { get; set; }
         public string description { get; set; }
         public string transacionNumber { get; set; }
         public string manualRefNumber { get; set; }
@@ -51,7 +52,8 @@ namespace VAMK.FWMS.WebSite.Models
                 DonationSatus = e.id != null ? (VAMK.FWMS.Models.Enums.DonationSatus)Enum.Parse(typeof(VAMK.FWMS.Models.Enums.DonationSatus), e.donationSatus) : VAMK.FWMS.Models.Enums.DonationSatus.ReadyToPickup,
                 DonerID = Utility.ParseInt(e.donerID),
                 TimeStamp = e.id != null ? Utility.StringToTimeStamp(e.timeStamp) : new byte[8],
-                DonationItemList = _donationItemList
+                DonationItemList = _donationItemList,
+                DateCollected = Convert.ToDateTime(e.dateCollected),
             };
 
 

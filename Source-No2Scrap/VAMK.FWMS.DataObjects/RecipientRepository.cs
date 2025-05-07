@@ -11,29 +11,29 @@ namespace VAMK.FWMS.DataObjects
 {
     public class RecipientRepository : RepositoryBase<Recipient>, IRecipientRepository
     {
-        
-            public RecipientRepository() : this(new RepositoryContext()) { }
 
-            public RecipientRepository(IRepositoryContext context) : base(context) { }
+        public RecipientRepository() : this(new RepositoryContext()) { }
 
-            public IList<Recipient> Search(Models.SearchQueries.RecipientSearchQuery query)
-            {
-                if (query == null)
-                    return null;
+        public RecipientRepository(IRepositoryContext context) : base(context) { }
 
-                var queryble = GetQueryable();
+        public IList<Recipient> Search(Models.SearchQueries.RecipientSearchQuery query)
+        {
+            if (query == null)
+                return null;
 
-                if (!string.IsNullOrEmpty(query.SearchText))
-                    queryble = queryble.Where(t => t.Code.Contains(query.SearchText) || t.Name.Contains(query.SearchText));
+            var queryble = GetQueryable();
 
-                if (!string.IsNullOrEmpty(query.Code))
-                    queryble = queryble.Where(t => t.Code.Contains(query.Code));
+            if (!string.IsNullOrEmpty(query.SearchText))
+                queryble = queryble.Where(t => t.Code.Contains(query.SearchText) || t.Name.Contains(query.SearchText));
 
-                if (!string.IsNullOrEmpty(query.Name))
-                    queryble = queryble.Where(t => t.Name.Contains(query.Name));
+            if (!string.IsNullOrEmpty(query.Code))
+                queryble = queryble.Where(t => t.Code.Contains(query.Code));
 
-                return queryble.OrderBy(t => t.Code).ToList();
-             
+            if (!string.IsNullOrEmpty(query.Name))
+                queryble = queryble.Where(t => t.Name.Contains(query.Name));
+
+            return queryble.OrderBy(t => t.Code).ToList();
+
 
         }
         public override Recipient GetSingle(System.Linq.Expressions.Expression<System.Func<Recipient, bool>> whereCondition)

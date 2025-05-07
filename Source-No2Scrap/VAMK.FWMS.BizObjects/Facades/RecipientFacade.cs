@@ -54,7 +54,7 @@ namespace VAMK.FWMS.BizObjects.Facades
 
                 dbRecipient.Code = recipient.Code;
                 dbRecipient.Name = recipient.Name;
-                dbRecipient.Address = recipient.Address;                
+                dbRecipient.Address = recipient.Address;
                 dbRecipient.State = Models.Interfaces.State.Modified;
 
                 foreach (var item in recipient.ContactPersonList)

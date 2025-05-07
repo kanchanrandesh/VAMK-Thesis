@@ -61,7 +61,7 @@ namespace VAMK.FWMS.BizObjects.Impl.EmailTemplate
             {
                 placeHolder_prefix = value;
             }
-        } 
+        }
         #endregion
 
         public IEmailTemplateReader TemplateReader
@@ -86,11 +86,11 @@ namespace VAMK.FWMS.BizObjects.Impl.EmailTemplate
                 {
                     if (item.Value != null)
                     {
-                        template.Replace(String.Format("{0}{1}{2}", "{{", item.Key, "}}"), item.Value); 
+                        template.Replace(String.Format("{0}{1}{2}", "{{", item.Key, "}}"), item.Value);
                     }
                     else
                     {
-                        template.Replace(String.Format("{0}{1}{2}", "{{", item.Key, "}}"), String.Format("< !--{0} {1}-- >",item.Key," is null"));
+                        template.Replace(String.Format("{0}{1}{2}", "{{", item.Key, "}}"), String.Format("< !--{0} {1}-- >", item.Key, " is null"));
                     }
                 }
 

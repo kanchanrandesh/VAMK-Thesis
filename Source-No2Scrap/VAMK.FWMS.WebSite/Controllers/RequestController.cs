@@ -20,9 +20,14 @@ namespace VAMK.FWMS.WebSite.Controllers
             return View();
         }
 
-
         [AuthorizeAccessRule(Rule = "REQUESADED")]
         public ActionResult AddEdit()
+        {
+            return View();
+        }
+
+        [AuthorizeAccessRule(Rule = "REQUESISSUE")]
+        public ActionResult Issue()
         {
             return View();
         }

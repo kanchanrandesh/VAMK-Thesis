@@ -24,7 +24,7 @@ namespace VAMK.FWMS.WebSite.Models
             return new VAMK.FWMS.Models.DonationItem()
             {
                 ID = Utility.ParseInt(e.id),
-                 Qty= e.qty, 
+                Qty = e.qty,
                 ItemID = Utility.ParseInt(e.itemId),
                 DonationID = Utility.ParseInt(e.donationId),
                 TimeStamp = e.id != null ? Utility.StringToTimeStamp(e.timeStamp) : new byte[8],

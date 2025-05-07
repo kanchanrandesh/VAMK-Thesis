@@ -115,39 +115,12 @@ namespace VAMK.FWMS.BizObjects.Facades
         {
             switch (emailTemplate)
             {
-                case EmailTemplate.IOU_PENDING_LEAD_APPROVAL:
-                    return this.websettings.EmailTemplates.IOUPendingLeadApproval;
-                case EmailTemplate.IOU_PENDING_HOD_APPROVAL:
-                    return this.websettings.EmailTemplates.IOUPendingHodApproval;
-                case EmailTemplate.IOU_FINANCE_APPROVED:
-                    return this.websettings.EmailTemplates.IOUFinanceApproved;
-                case EmailTemplate.IOU_REJECTED:
-                    return this.websettings.EmailTemplates.IOURejected;
+                case EmailTemplate.USER_REGISTRATION:
+                    return this.websettings.EmailTemplates.UserRegistration;
 
-                case EmailTemplate.PETTY_CASH_PENDING_LEAD_APPROVAL:
-                    return this.websettings.EmailTemplates.PettyCashPendingLeadApproval;
-                case EmailTemplate.PETTY_CASH_PENDING_HOD_APPROVAL:
-                    return this.websettings.EmailTemplates.PettyCashPendingHodApproval;
-                case EmailTemplate.PETTY_CASH_FINANCE_APPROVED:
-                    return this.websettings.EmailTemplates.PettyCashFinanceApproved;
-                case EmailTemplate.PETTY_CASH_REJECTED:
-                    return this.websettings.EmailTemplates.PettyCashRejected;
-                case EmailTemplate.PETTY_CASH_CANCELLATION:
-                    return this.websettings.EmailTemplates.PettyCashCancellation;
-                    
-                case EmailTemplate.EMPLOYEE_REGISTRATION:
-                    return this.websettings.EmailTemplates.EmployeeRegistration;
-                    
-                case EmailTemplate.MEDICAL_CLAIM_PENDING_HR_CHECK:
-                    return this.websettings.EmailTemplates.MedicalClaimPendingHRCheck;
-                case EmailTemplate.MEDICAL_CLAIM_PENDING_HR_APPROVAL:
-                    return this.websettings.EmailTemplates.MedicalClaimPendingHRApproval;
-                case EmailTemplate.MEDICAL_CLAIM_REJECTED:
-                    return this.websettings.EmailTemplates.MedicalClaimRejected;
-                case EmailTemplate.MEDICAL_CLAIM_CANCELLATION:
-                    return this.websettings.EmailTemplates.MedicalClaimCancellation;
-                case EmailTemplate.MEDICAL_CLAIM_FINANCE_APPROVED:
-                    return this.websettings.EmailTemplates.MedicalClaimFinanceApproved;
+                case EmailTemplate.DONATION_COLLECTED:
+                    return this.websettings.EmailTemplates.DonationCollected;
+
                 default:
                     return "";
             }

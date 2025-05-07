@@ -48,8 +48,8 @@ namespace VAMK.FWMS.BizObjects.Facades
                 var dbEmployee = BizObjectFactory.GetEmployeeBO().GetSingle(employee.ID.Value);
 
                 var childListNames = new List<string>();
-                childListNames.Add("ProjectList");
-                childListNames.Add("UnitList");
+                childListNames.Add("EmployeeDoners");
+                childListNames.Add("EmployeeRecipients");
                 auditTrail = Resources.Utility.CreateAuditTrail(dbEmployee, employee, Models.Enums.AuditTrailAction.Update, childListNames, 0);
             }
 
@@ -118,7 +118,7 @@ namespace VAMK.FWMS.BizObjects.Facades
             messageModel.Password = employee.Password;
             messageModel.FunctionURL = FunctionURLs.Login;
 
-            email.MailContent = new EmailItemsFacade(websettings).GenerateEmailcontentFromTemplate<EmployeeMessageModel>(EmailTemplate.EMPLOYEE_REGISTRATION, messageModel);
+            email.MailContent = new EmailItemsFacade(websettings).GenerateEmailcontentFromTemplate<EmployeeMessageModel>(EmailTemplate.USER_REGISTRATION, messageModel);
 
             return email;
         }

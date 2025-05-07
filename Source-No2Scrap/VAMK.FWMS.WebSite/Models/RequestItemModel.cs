@@ -27,9 +27,9 @@ namespace VAMK.FWMS.WebSite.Models
                 ID = Utility.ParseInt(e.id),
                 ItemID = Utility.ParseInt(e.itemID),
                 RequestID = Utility.ParseInt(e.requestID),
-                AllocatedQty = (!string.IsNullOrEmpty(e.requestedQty)?int.Parse(e.requestedQty):0),
+                AllocatedQty = (!string.IsNullOrEmpty(e.requestedQty) ? int.Parse(e.requestedQty) : 0),
                 IsFullfilled = e.isFullfilled,
-                RequestedQty = (!string.IsNullOrEmpty(e.requestedQty) ? int.Parse(e.requestedQty) : 0) ,
+                RequestedQty = (!string.IsNullOrEmpty(e.requestedQty) ? int.Parse(e.requestedQty) : 0),
                 TimeStamp = e.id != null ? Utility.StringToTimeStamp(e.timeStamp) : new byte[8],
             };
         }

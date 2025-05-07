@@ -10,7 +10,7 @@
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <a ui-sref="employeeList">Employees</a>
+            <a ui-sref="employeeList">System Users</a>
         </li>
     </ul>
     <div class="page-toolbar">
@@ -37,9 +37,9 @@
 <!-- END PAGE HEADER-->
 <!-- BEGIN MAIN CONTENT -->
 <div class="note note-success">
-    <h3>Employees</h3>
+    <h3>System Users</h3>
     <p>
-        Used to manage the Employee details under each Company <a href="http://www.businessdictionary.com/definition/employee.html">Read more</a>
+
     </p>
 </div>
 <div class="row">
@@ -54,7 +54,7 @@
                         <div class="col-md-12">
                             <div class="input-icon right input-group">
                                 <span class="input-group-addon" style="border-left:1px solid #ccc; border-right: none; background-color: lightseagreen;cursor:pointer;" id="new" data-toggle="modal" data-target="#exampleModal">
-                                    <span class="glyphicon glyphicon-plus" aria-hidden="true" style="display: inline!important; color: white" ui-sref="employeeAddEdit({pageTitle :'Add Employee', id : 0 })"></span>
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true" style="display: inline!important; color: white" ui-sref="employeeAddEdit({pageTitle :'Add Sysem User', id : 0 })"></span>
                                 </span>
                                 <input type="text" class="form-control" ng-model="searchQuery.searchText" ng-keyup="search(searchQuery)">
                                 <span class="input-group-addon" style="cursor:pointer;" id="advanceSearch" data-toggle="collapse" href="#advanceSearchContainer" aria-expanded="false" aria-controls="collapseExample">
@@ -106,25 +106,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              <tr class="odd gradeX" ng-repeat="row in searchList">
-                                <td style="width:50px; text-align:center;">
-                                  <span class="glyphicon glyphicon-edit" aria-hidden="true" style="cursor:pointer;"
-                                        data-toggle="modal" ui-sref="employeeAddEdit({pageTitle :'Edit Employee', id : row.id })"></span>
-                                </td>
-                                <td>{{row.code}} </td>
-                                <td>{{row.firstName}} {{row.lastName}}</td>
-                                <td>{{row.extension}}</td>
-                                <td>{{row.phone}}</td>
-                                <td>{{row.userName}}</td>
-                                <td>{{row.isActive?"Yes":"No"}}</td>
-                                <td style="width:50px; text-align:center;">
-                                  <span class="icon-users" aria-hidden="true" style="cursor:pointer;"
-                                        data-toggle="modal" ui-sref="employeeFamilyMemberAddEdit({pageTitle :'Family Member', employeeId : row.id })"></span>
-                                </td>
-                                <td>
-                                  <input type="checkbox" ng-model="row.isLocked" ng-change="updateLockedEmployee(row.id)">
-                                </td>
-                              </tr>
+                                <tr class="odd gradeX" ng-repeat="row in searchList">
+                                    <td style="width:50px; text-align:center;">
+                                        <span class="glyphicon glyphicon-edit" aria-hidden="true" style="cursor:pointer;"
+                                              data-toggle="modal" ui-sref="employeeAddEdit({pageTitle :'Edit Employee', id : row.id })"></span>
+                                    </td>
+                                    <td>{{row.code}} </td>
+                                    <td>{{row.firstName}} {{row.lastName}}</td>
+                                    <td>{{row.extension}}</td>
+                                    <td>{{row.phone}}</td>
+                                    <td>{{row.userName}}</td>
+                                    <td>{{row.isActive?"Yes":"No"}}</td>
+                                    <td style="width:50px; text-align:center;">
+                                        <span class="icon-users" aria-hidden="true" style="cursor:pointer;"
+                                              data-toggle="modal" ui-sref="employeeFamilyMemberAddEdit({pageTitle :'Family Member', employeeId : row.id })"></span>
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" ng-model="row.isLocked" ng-change="updateLockedEmployee(row.id)">
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>

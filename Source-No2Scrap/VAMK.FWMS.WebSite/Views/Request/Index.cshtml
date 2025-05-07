@@ -35,7 +35,7 @@
 <div class="note note-success">
     <h3>Requests</h3>
     <p>
-        Use to define the Requests of No2Scrap
+        Kindly submit your food requests here
     </p>
 </div>
 <div class="row">
@@ -73,7 +73,7 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Transaction Number</label>
-                                                <input class="form-control" ng-model="searchQuery.transacionNumber" />
+                                                <input class="form-control" ng-model="searchQuery.transactionNumber" />
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Manual Ref Number </label>
@@ -81,10 +81,12 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <label>Status</label>
-                                                <select class="form-control select2" ng-model="searchQuery.RequestSatus">
-                                                    <option value="BakeryItems">ALL</option>
-                                                    <option value="ReadyToPickup">ReadyToPickup</option>
-                                                    <option value="Collected">Collected</option>
+                                                <select class="form-control select2" ng-model="searchQuery.requestStatus">
+                                                    <option value="1">AllocationPending</option>
+                                                    <option value="2">Allocated</option>
+                                                    <option value="3">IssuancePending</option>
+                                                    <option value="4">Completed</option>
+                                                    <option value="0">ALL</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-2" style="padding-left:15px;padding-top:10px;">
@@ -108,25 +110,32 @@
                                 <tr>
                                     <th> </th>
                                     <th> </th>
+                                    <th> </th>
                                     <th> Date </th>
-                                    <th> Request </th>
+                                    <th> Request By </th>
                                     <th> Transaction Number</th>
+                                    <th> Manual Ref Number</th>
                                     <th> Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="odd gradeX" ng-repeat="row in searchList">
                                     <td style="width:50px; text-align:center;">
-                                        <span class="glyphicon glyphicon-edit" aria-hidden="true" style="cursor:pointer;"  ng-hide="row.requestStatus == 'Dispatched'"
+                                        <span class="glyphicon glyphicon-edit" aria-hidden="true" style="cursor:pointer;" ng-hide="row.requestStatus != 'AllocationPending'" uib-tooltip="Edit" tooltip-placement="top"
                                               data-toggle="modal" ui-sref="requestAddEdit({pageTitle :'Edit Request', id : row.id })"></span>
-                                    </td> 
+                                    </td>
                                     <td style="width:50px; text-align:center;">
-                                        <span class="glyphicon glyphicon-log-in" aria-hidden="true" style="cursor:pointer;"  ng-hide="row.requestStatus == 'Dispatched'"
-                                              data-toggle="modal" ui-sref="requestAccept({pageTitle :'Accept Request', id : row.id })"></span>
+                                        <span class="glyphicon glyphicon-log-in" aria-hidden="true" style="cursor:pointer;" ng-hide="(row.requestStatus != 'AllocationPending' && row.requestStatus != 'Allocated')" uib-tooltip="Accept Allocation" tooltip-placement="top"
+                                              data-toggle="modal" ui-sref="requestAccept({pageTitle :'Accept Allocation', id : row.id })"></span>
+                                    </td>
+                                    <td style="width:50px; text-align:center;">
+                                        <span class="glyphicon glyphicon-adjust" aria-hidden="true" style="cursor:pointer;" ng-hide="row.requestStatus != 'IssuancePending'" uib-tooltip="Issue Foods" tooltip-placement="top"
+                                              data-toggle="modal" ui-sref="requestIssue({pageTitle :'Item Issue', id : row.id })"></span>
                                     </td>
                                     <td>{{row.date}}</td>
                                     <td>{{row.recipientName}}</td>
                                     <td>{{row.transacionNumber}}</td>
+                                    <td>{{row.manualRefNumber}}</td>
                                     <td>{{row.requestStatus}}</td>
                                 </tr>
                             </tbody>

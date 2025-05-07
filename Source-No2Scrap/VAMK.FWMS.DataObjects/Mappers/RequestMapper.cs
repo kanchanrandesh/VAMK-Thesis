@@ -7,7 +7,6 @@ namespace VAMK.FWMS.DataObjects.Mappers
 {
     public class RequestMapper : EntityTypeConfiguration<Request>
     {
-
         public RequestMapper()
         {
             #region Properties
@@ -22,6 +21,8 @@ namespace VAMK.FWMS.DataObjects.Mappers
             Property(t => t.Description).HasColumnName("Description").HasColumnType("nvarchar").HasMaxLength(200);
             Property(t => t.RequestStatus).HasColumnName("RequestStatus").HasColumnType("int").IsOptional();
 
+            Property(t => t.DateIssued).HasColumnName("DateIssued").HasColumnType("datetime").IsOptional();
+            Property(t => t.DateAccepted).HasColumnName("DateAccepted").HasColumnType("datetime").IsOptional();
             Property(t => t.User).HasColumnName("UserCreated").HasColumnType("nvarchar").HasMaxLength(50);
             Property(t => t.DateCreated).HasColumnName("DateCreated").HasColumnType("datetime");
             Property(t => t.DateModified).HasColumnName("DateModified").HasColumnType("datetime");
@@ -31,6 +32,8 @@ namespace VAMK.FWMS.DataObjects.Mappers
             #endregion
 
             #region Relations
+            HasOptional(t => t.Recipient).WithMany().HasForeignKey(t => t.RecipientID).WillCascadeOnDelete(false);
+
             HasMany(t => t.RequestItemList).WithOptional(l => l.Request).HasForeignKey(t => t.RequestID).WillCascadeOnDelete(true);
             #endregion
         }

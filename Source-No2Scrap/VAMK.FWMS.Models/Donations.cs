@@ -10,9 +10,10 @@ namespace VAMK.FWMS.Models
         public Doner Doner { get; set; }
         public int? DonerID { get; set; }
         public DateTime Date { get; set; }
+        public DateTime? DateCollected { get; set; }
         public string Description { get; set; }
         public string TransacionNumber { get; set; }
-        //public string ManualRefNumber { get; set; }
+
         public Models.Enums.DonationSatus DonationSatus { get; set; }
         public IList<DonationItem> DonationItemList { get; set; }
 

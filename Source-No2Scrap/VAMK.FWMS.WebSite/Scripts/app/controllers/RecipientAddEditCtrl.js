@@ -7,7 +7,7 @@
     $scope.id = $stateParams.id;
     $scope.pageTitle = $stateParams.pageTitle;
 
-    
+
     recipientService.getById($stateParams.id).then(function (res) {
         debugger;
         $scope.recipient = res;
@@ -37,21 +37,21 @@
             "name": null,
             "email": null,
             "phoneNumber": null,
-            "mobile": null,            
+            "mobile": null,
             "id": null,
             "timeStamp": null,
             "timeStamp": null,
             "dateCreated": null
         });
     }
-    $scope.deleteContactPerson = function (contactPerson) {       
+    $scope.deleteContactPerson = function (contactPerson) {
         var i = $scope.recipient.contactPersonList.indexOf(contactPerson);
         if (i != -1) {
             $scope.recipient.contactPersonList.splice(i, 1);
         }
     }
 
-    
+
 
     $scope.cancel = function () {
         $state.go('recipientList', {});

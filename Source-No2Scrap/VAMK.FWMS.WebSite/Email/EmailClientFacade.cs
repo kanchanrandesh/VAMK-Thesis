@@ -21,22 +21,23 @@ namespace VAMK.FWMS.WebSite.Email
         {
             try
             {
-                emailServer.SendMail(outboxItem).ContinueWith(i =>
-                {
+                //emailServer.SendMail(outboxItem).ContinueWith(i =>
+                //{
 
-                    if (i.Result.EmailStatus == VAMK.FWMS.Models.Enums.EmailStatus.Sent)
-                    {
-                        emailItemsFacade.MoveEmailToSentList(new List<int> { outboxItem.ID.Value });
-                    }
-                    else
-                    {
-                        emailItemsFacade.UpdateEmailOutBoxStatus(outboxItem);
-                    }
-                });
+                //    if (i.Result.EmailStatus == VAMK.FWMS.Models.Enums.EmailStatus.Sent)
+                //    {
+                //        emailItemsFacade.MoveEmailToSentList(new List<int> { outboxItem.ID.Value });
+                //    }
+                //    else
+                //    {
+                //        emailItemsFacade.UpdateEmailOutBoxStatus(outboxItem);
+                //    }
+                //});
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                var message = ex.Message;
             }
         }
     }

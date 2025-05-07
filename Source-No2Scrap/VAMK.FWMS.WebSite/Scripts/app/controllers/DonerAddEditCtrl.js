@@ -45,7 +45,7 @@
             "dateCreated": null
         });
     }
-    $scope.deleteContactPerson = function (contactPerson) {       
+    $scope.deleteContactPerson = function (contactPerson) {
         var i = $scope.doner.contactPersonList.indexOf(contactPerson);
         if (i != -1) {
             $scope.doner.contactPersonList.splice(i, 1);
@@ -61,11 +61,11 @@
     $scope.headerDescription = '';
     $scope.$watch('doner.name', function (newValue, oldValue, scope) {
         if ($stateParams.id == "0" && newValue == undefined) {
-            $scope.headerTitle = "New Doner";
+            $scope.headerTitle = "New Donor";
         }
         else {
             if (newValue == undefined) {
-                $scope.headerTitle = "Edit Doner";
+                $scope.headerTitle = "Edit Donor";
             }
             else {
                 $scope.headerTitle = newValue;

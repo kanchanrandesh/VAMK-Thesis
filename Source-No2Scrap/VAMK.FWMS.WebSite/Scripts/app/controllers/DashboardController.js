@@ -13,6 +13,8 @@ angular.module('MetronicApp').controller('DashboardController', function ($rootS
         $scope.requestsTobeIssued = res.requestsTobeIssued;
         $scope.recentDonations = res.recentDonations;
         $scope.recentRequests = res.recentRequests;
+        $scope.requestsCompletedToday = res.requestsCompletedToday;
+
     });
 
     // set sidebar closed and body solid layout mode

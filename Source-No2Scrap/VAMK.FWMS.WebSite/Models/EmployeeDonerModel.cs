@@ -20,6 +20,6 @@ namespace VAMK.FWMS.WebSite.Models
         public bool status { get; set; }
         public string message { get; set; }
 
-       
+
     }
 }

@@ -36,7 +36,7 @@
     function loadDoners() {
 
         var defer = $.Deferred();
-        donerService.getAllForDropdown().then(function (res) {
+        donerService.getAllForDropdownForUser().then(function (res) {
             $scope.doners = res;
             defer.resolve();
         });
@@ -86,14 +86,14 @@
     $scope.headerDescription = '';
     $scope.$watch('donation.transacionNumber', function (newValue, oldValue, scope) {
         if ($stateParams.id == "0" && newValue == undefined) {
-            $scope.headerTitle = "Receive Donation";
+            $scope.headerTitle = "Confirm Collection : ";
         }
         else {
             if (newValue == undefined) {
-                $scope.headerTitle = "Receive Donation";
+                $scope.headerTitle = "Confirm Collection : ";
             }
             else {
-                $scope.headerTitle = "Receive Donation " + newValue;
+                $scope.headerTitle = "Confirm Collection : " + newValue;
             }
         }
     }, true);

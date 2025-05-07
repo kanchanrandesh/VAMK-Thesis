@@ -47,6 +47,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
                 var modelObj = (RequestModel)item;
                 returnList.Add(modelObj);
             }
+
             return Ok(returnList);
         }
 
@@ -62,10 +63,13 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
                 foreach (var item in request.requestItemList)
                 {
                     var stock = BizObjectFactory.GetInventoryStockBO().FindItemStock(int.Parse(item.itemID));
-                    if (decimal.Parse(item.requestedQty) <= stock.Quantity)
-                        item.allocatedQty = item.requestedQty;
-                    else
-                        item.allocatedQty = stock.Quantity.ToString();
+                    if (stock != null)
+                    {
+                        if (decimal.Parse(item.requestedQty) <= stock.Quantity)
+                            item.allocatedQty = item.requestedQty;
+                        else
+                            item.allocatedQty = stock.Quantity.ToString();
+                    }
                 }
             }
             else
@@ -122,6 +126,9 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
             {
                 obj.State = State.Added;
                 obj.DateCreated = DateTime.Now;
+                obj.DateIssued = null;
+                obj.DateAccepted = null;
+
                 foreach (var item in obj.RequestItemList)
                 {
                     if (item.ID == null)
@@ -192,7 +199,50 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
             }
 
             obj.User = user.UserName;
-            obj.RequestStatus = FWMS.Models.Enums.RequestStatus.Dispatched;
+            obj.RequestStatus = FWMS.Models.Enums.RequestStatus.IssuancePending;
+            obj.DateAccepted = DateTime.Now;
+
+            var transObject = new RequestFacade().Save(obj, null);
+
+            model.status = transObject.StatusInfo.Status == Common.Enums.ServiceStatus.Success;
+            if (transObject.StatusInfo.Status == Common.Enums.ServiceStatus.DatabaseFailure)
+                model.message = "Code cannot be duplicated";
+            else
+                model.message = transObject.StatusInfo.Message;
+
+            return Ok(model);
+        }
+
+        [Route("issue")]
+        [HttpAuthorizeAccessRule(Rule = "REQUESISSUE")]
+        public IHttpActionResult Issue(RequestModel model)
+        {
+            var identity = (ClaimsIdentity)User.Identity;
+            var userid = identity.FindFirst(ClaimTypes.Sid).Value.ToString();
+            var user = BizObjectFactory.GetEmployeeBO().GetProxy(int.Parse(userid));
+
+            Request obj = model;
+
+            obj.State = State.Modified;
+            obj.DateModified = DateTime.Now;
+            foreach (var item in obj.RequestItemList)
+            {
+                if (item.ID == null)
+                {
+                    item.State = State.Added;
+                    item.DateCreated = DateTime.Now;
+                }
+                else
+                {
+                    item.State = State.Modified;
+                    item.DateCreated = DateTime.Now;
+                }
+                item.User = user.UserName;
+            }
+
+            obj.User = user.UserName;
+            obj.RequestStatus = FWMS.Models.Enums.RequestStatus.Completed;
+            obj.DateIssued = DateTime.Now;
 
             var transObject = new RequestFacade().Save(obj, null);
 

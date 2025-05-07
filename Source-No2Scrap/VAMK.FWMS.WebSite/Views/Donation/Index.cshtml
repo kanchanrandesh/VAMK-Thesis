@@ -35,7 +35,7 @@
 <div class="note note-success">
     <h3>Donations</h3>
     <p>
-        Use to define the Donations of No2Scrap
+        Kindly submit your food donations here
     </p>
 </div>
 <div class="row">
@@ -107,6 +107,7 @@
                             <thead>
                                 <tr>
                                     <th> </th>
+                                    <th> </th>
                                     <th> Date </th>
                                     <th> Doner </th>
                                     <th> Transaction Number</th>
@@ -117,8 +118,12 @@
                             <tbody>
                                 <tr class="odd gradeX" ng-repeat="row in searchList">
                                     <td style="width:50px; text-align:center;">
-                                        <span class="glyphicon glyphicon-edit" aria-hidden="true" style="cursor:pointer;"
+                                        <span class="glyphicon glyphicon-edit" aria-hidden="true" style="cursor:pointer;" ng-hide="row.displayDonationSatus == 'Collected'" uib-tooltip="Edit" tooltip-placement="top"
                                               data-toggle="modal" ui-sref="donationAddEdit({pageTitle :'Edit Donation', id : row.id })"></span>
+                                    </td>
+                                    <td style="width:50px; text-align:center;">
+                                        <span class="glyphicon glyphicon-log-in" aria-hidden="true" style="cursor:pointer;" ng-hide="row.displayDonationSatus == 'Collected'" uib-tooltip="Collection Confirm" tooltip-placement="top"
+                                              data-toggle="modal" ui-sref="donationReceive({pageTitle :'Confirm Collection', id : row.id })"></span>
                                     </td>
                                     <td>{{row.date}}</td>
                                     <td>{{row.donerName}}</td>

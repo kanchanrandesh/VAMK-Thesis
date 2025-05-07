@@ -17,7 +17,7 @@ namespace VAMK.FWMS.BizObjects.Facades
         {
             var CoordinatorIntentoryItems = new List<CoordinatorIntentoryItem>();
             var InventoryStocks = new List<InventoryStock>();
-            if (request.RequestStatus == Models.Enums.RequestStatus.Dispatched)
+            if (request.RequestStatus == Models.Enums.RequestStatus.Completed)
             {
                 foreach (var item in request.RequestItemList)
                 {
@@ -39,7 +39,7 @@ namespace VAMK.FWMS.BizObjects.Facades
                         InventoryStocks.Add(new InventoryStock
                         {
                             ItemID = item.ItemID,
-                            Quantity = item.AllocatedQty ,
+                            Quantity = item.AllocatedQty,
                             State = Models.Interfaces.State.Added,
                             User = request.User,
                             DateCreated = DateTime.Now,
@@ -113,6 +113,10 @@ namespace VAMK.FWMS.BizObjects.Facades
                 dbRequest.Description = request.Description;
                 dbRequest.RecipientID = request.RecipientID;
                 dbRequest.RequestStatus = request.RequestStatus;
+                if (dbRequest.RequestStatus == Models.Enums.RequestStatus.IssuancePending)
+                    dbRequest.DateAccepted = request.DateAccepted;
+                if (dbRequest.RequestStatus == Models.Enums.RequestStatus.Completed)
+                    dbRequest.DateIssued = request.DateIssued;
                 dbRequest.User = request.User;
                 dbRequest.State = Models.Interfaces.State.Modified;
 

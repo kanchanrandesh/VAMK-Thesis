@@ -27,11 +27,11 @@ namespace VAMK.FWMS.WebSite.Models
                     contactPersonList.Add(new VAMK.FWMS.Models.ContactPerson()
                     {
                         Name = item.name,
-                        Code=item.code,
+                        Code = item.code,
                         PhoneNumber = item.phoneNumber,
                         Mobile = item.mobile,
                         Email = item.email,
-                        IsDoner= true,
+                        IsDoner = true,
                         ID = !String.IsNullOrWhiteSpace(item.id) ? int.Parse(item.id) : 0
                     });
                 }

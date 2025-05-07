@@ -95,12 +95,12 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
                 return Ok(model);
             }
 
-            if (string.IsNullOrEmpty(model.companyId))
-            {
-                model.status = false;
-                model.message = "Company needs to be selected";
-                return Ok(model);
-            }
+            //if (string.IsNullOrEmpty(model.companyId))
+            //{
+            //    model.status = false;
+            //    model.message = "Company needs to be selected";
+            //    return Ok(model);
+            //}
             //if (string.IsNullOrEmpty(model.jobCategoryId))
             //{
             //    model.status = false;

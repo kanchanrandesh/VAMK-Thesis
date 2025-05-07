@@ -14,7 +14,12 @@ namespace VAMK.FWMS.WebSite.Controllers
             return View();
         }
 
-        
+        [AuthorizeAccessRule(Rule = "DEPRTMRECE")]
+        public ActionResult Receive()
+        {
+            return View();
+        }
+
         [AuthorizeAccessRule(Rule = "DEPRTMADED")]
         public ActionResult AddEdit()
         {

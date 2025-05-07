@@ -26,7 +26,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
             var returnList = new List<DonerModel>();
             foreach (var item in BizObjectFactory.GetDonerBO().GetAll())
             {
-                var modelObj = (DonerModel)item;                
+                var modelObj = (DonerModel)item;
                 returnList.Add(modelObj);
             }
 
@@ -44,7 +44,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
             var returnList = new List<DonerModel>();
             foreach (var item in BizObjectFactory.GetDonerBO().Search(query))
             {
-                var modelObj = (DonerModel)item;                
+                var modelObj = (DonerModel)item;
                 returnList.Add(modelObj);
             }
 
@@ -107,6 +107,27 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
             returnList.Add(new SelectObjectModel { id = "-", name = "-- Select --" });
             foreach (var item in BizObjectFactory.GetDonerBO().GetAll())
                 returnList.Add(new SelectObjectModel { id = item.ID.Value.ToString(), name = item.Code + " - " + item.Name });
+
+            return Ok(returnList);
+        }
+
+
+        [HttpGet]
+        [Route("getAllForDropdownForUser")]
+        [HttpAuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        public IHttpActionResult GetAllForDropdownForUser()
+        {
+            var identity = (ClaimsIdentity)User.Identity;
+            var userid = identity.FindFirst(ClaimTypes.Sid).Value.ToString();
+            var user = BizObjectFactory.GetEmployeeBO().GetSingle(int.Parse(userid));
+            var returnList = new List<SelectObjectModel>();
+
+            returnList.Add(new SelectObjectModel { id = "-", name = "-- Select --" });
+            foreach (var item in user.EmployeeDoners)
+            {
+                item.Doner = BizObjectFactory.GetDonerBO().GetSingle(item.DonerID.Value);
+                returnList.Add(new SelectObjectModel { id = item.DonerID.Value.ToString(), name = item.Doner.Code + " - " + item.Doner.Name });
+            }
 
             return Ok(returnList);
         }

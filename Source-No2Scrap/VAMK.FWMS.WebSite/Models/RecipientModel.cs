@@ -31,7 +31,7 @@ namespace VAMK.FWMS.WebSite.Models
                         PhoneNumber = item.phoneNumber,
                         Mobile = item.mobile,
                         Email = item.email,
-                        IsDoner= false,
+                        IsDoner = false,
                         ID = !String.IsNullOrWhiteSpace(item.id) ? int.Parse(item.id) : 0
                     });
                 }
@@ -42,7 +42,7 @@ namespace VAMK.FWMS.WebSite.Models
                 ID = Utility.ParseInt(e.id),
                 Code = e.code,
                 Name = e.name,
-                Address = e.address,                
+                Address = e.address,
                 ContactPersonList = contactPersonList,
                 TimeStamp = e.id != null ? Utility.StringToTimeStamp(e.timeStamp) : new byte[8]
             };
@@ -75,7 +75,7 @@ namespace VAMK.FWMS.WebSite.Models
                 id = e.ID.Value.ToString(),
                 code = e.Code,
                 name = e.Name,
-                address = e.Address,                
+                address = e.Address,
                 timeStamp = Utility.TimeStampToString(e.TimeStamp),
                 contactPersonList = contactPersonList,
             };

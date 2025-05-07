@@ -26,11 +26,21 @@ namespace VAMK.FWMS.DataObjects
             var queryble = GetQueryable();
 
             if (query.Date != null)
-                queryble = queryble.Where(t => t.Date == query.Date);
-            if (!string.IsNullOrEmpty(query.RequestStatus))
-                queryble = queryble.Where(t => t.RequestStatus.ToString() ==  query.RequestStatus);
+            {
+                DateTime searchday = query.Date.Value.Date.AddDays(1);
+                queryble = queryble.Where(t => t.Date == searchday);
+            }
 
-            return queryble.Include(i => i.Recipient).ToList();
+
+            if (!string.IsNullOrEmpty(query.ManualRefNumber))
+                queryble = queryble.Where(t => t.ManualRefNumber.Contains(query.ManualRefNumber));
+            if (!string.IsNullOrEmpty(query.TransactionNumber))
+                queryble = queryble.Where(t => t.TransacionNumber.Contains(query.TransactionNumber));
+            if (!string.IsNullOrEmpty(query.RequestStatus.ToString()))
+                if ((query.RequestStatus.ToString() != "ALL") && (query.RequestStatus.ToString() != "0"))
+                    queryble = queryble.Where(t => (int)t.RequestStatus == (int)query.RequestStatus);
+
+            return queryble.Include(i => i.Recipient).OrderByDescending(x => x.Date).ThenByDescending(x => x.TransacionNumber).ToList();
         }
 
         public override Request GetSingle(System.Linq.Expressions.Expression<System.Func<Request, bool>> whereCondition)

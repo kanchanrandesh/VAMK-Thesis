@@ -21,7 +21,7 @@ namespace VAMK.FWMS.DataObjects.Mappers
             Property(t => t.Date).HasColumnName("Date").HasColumnType("datetime");
             Property(t => t.Description).HasColumnName("Description").HasColumnType("nvarchar").HasMaxLength(200);
             Property(t => t.DonationSatus).HasColumnName("DonationSatus").HasColumnType("int").IsOptional();
-
+            Property(t => t.DateCollected).HasColumnName("DateCollected").HasColumnType("datetime").IsOptional();
             Property(t => t.User).HasColumnName("UserCreated").HasColumnType("nvarchar").HasMaxLength(50);
             Property(t => t.DateCreated).HasColumnName("DateCreated").HasColumnType("datetime");
             Property(t => t.DateModified).HasColumnName("DateModified").HasColumnType("datetime");

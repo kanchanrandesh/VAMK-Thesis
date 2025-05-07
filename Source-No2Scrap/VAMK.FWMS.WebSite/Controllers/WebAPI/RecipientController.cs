@@ -97,5 +97,36 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
 
             return Ok(model);
         }
+        [HttpGet]
+        [Route("getAllForDropdown")]
+        public IHttpActionResult GetAllForDropdown()
+        {
+            var returnList = new List<SelectObjectModel>();
+            returnList.Add(new SelectObjectModel { id = "-", name = "-- Select --" });
+            foreach (var item in BizObjectFactory.GetRecipientBO().GetAll())
+                returnList.Add(new SelectObjectModel { id = item.ID.Value.ToString(), name = item.Code + " - " + item.Name });
+
+            return Ok(returnList);
+        }
+
+        [HttpGet]
+        [Route("getAllForDropdownForUser")]
+        [HttpAuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        public IHttpActionResult GetAllForDropdownForUser()
+        {
+            var identity = (ClaimsIdentity)User.Identity;
+            var userid = identity.FindFirst(ClaimTypes.Sid).Value.ToString();
+            var user = BizObjectFactory.GetEmployeeBO().GetSingle(int.Parse(userid));
+            var returnList = new List<SelectObjectModel>();
+
+            returnList.Add(new SelectObjectModel { id = "-", name = "-- Select --" });
+            foreach (var item in user.EmployeeRecipients)
+            {
+                item.Recipient = BizObjectFactory.GetRecipientBO().GetSingle(item.RecipientID.Value);
+                returnList.Add(new SelectObjectModel { id = item.RecipientID.Value.ToString(), name = item.Recipient.Code + " - " + item.Recipient.Name });
+            }
+
+            return Ok(returnList);
+        }
     }
 }

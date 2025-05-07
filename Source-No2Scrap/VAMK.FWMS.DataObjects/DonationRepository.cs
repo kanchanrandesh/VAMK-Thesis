@@ -38,12 +38,10 @@ namespace VAMK.FWMS.DataObjects
             dateString = dateString.Trim('{', '}');
 
             // Try to parse it
-            if (DateTime.TryParse(dateString, out DateTime parsedDate))
+            if (query.Date != null)
             {
-                if (parsedDate != DateTime.MinValue)
-                {
-                    queryble = queryble.Where(t => (DateTime)t.Date == (DateTime)query.Date);
-                }
+                DateTime searchday = query.Date.Value.Date.AddDays(1);
+                queryble = queryble.Where(t => t.Date == searchday);
             }
 
 
@@ -51,10 +49,7 @@ namespace VAMK.FWMS.DataObjects
                 if ((query.DonationSatus.ToString() != "ALL") && (query.DonationSatus.ToString() != "0"))
                     queryble = queryble.Where(t => (int)t.DonationSatus == (int)query.DonationSatus);
 
-
-
-            queryble = queryble.Include(t => t.Doner);
-            return queryble.ToList();
+            return queryble.Include(i => i.Doner).OrderByDescending(x => x.Date).ThenByDescending(x => x.TransacionNumber).ToList();
         }
 
         public override Donation GetSingle(System.Linq.Expressions.Expression<System.Func<Donation, bool>> whereCondition)

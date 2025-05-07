@@ -1,4 +1,4 @@
-﻿angular.module('MetronicApp').controller('RequestAcceptCtrl', function ($rootScope, $scope, $http, $timeout, $document, $uibModal, $stateParams, $state, requestService, itemService, recipientService, notificationMsgService) {
+﻿angular.module('MetronicApp').controller('RequestIssueCtrl', function ($rootScope, $scope, $http, $timeout, $document, $uibModal, $stateParams, $state, requestService, itemService, recipientService, notificationMsgService) {
 
     $scope.$on('$viewContentLoaded', function () {
         App.initAjax();
@@ -8,6 +8,7 @@
     $scope.pageTitle = $stateParams.pageTitle;
 
     function loadRequest() {
+        debugger;
         requestService.getById($stateParams.id).then(function (res) {
             $scope.request = res;
 
@@ -32,6 +33,7 @@
     }());
 
     function loadItems() {
+        debugger;
         var defer = $.Deferred();
         itemService.getAllForDropdown().then(function (res) {
             $scope.items = res;
@@ -41,6 +43,7 @@
     };
 
     function loadIrecipients() {
+        debugger;
         var defer = $.Deferred();
         recipientService.getAllForDropdownForUser().then(function (res) {
             $scope.recipients = res;
@@ -49,7 +52,7 @@
         return defer;
     };
 
-    $scope.accept = function (obj, frm) {
+    $scope.issue = function (obj, frm) {
         if (frm.$valid) {
             if ($scope.selectedRecipient) {
                 obj.recipientId = $scope.selectedRecipient.id;
@@ -63,9 +66,9 @@
                 } else obj.requestItemList[i].itemId = null;
             }
 
-            requestService.accept(obj).then(function (res) {
+            requestService.issue(obj).then(function (res) {
                 if (res.status == true) {
-                    notificationMsgService.showSuccessMessage('Allocation acceptance was completed and saved successfully. Request Number  : ' + res.transacionNumber);
+                    notificationMsgService.showSuccessMessage('Foods issue was completed and saved successfully. Request Number  : ' + res.transacionNumber);
                     $state.go('requestList', {});
                 }
                 else
@@ -102,14 +105,14 @@
     $scope.headerDescription = '';
     $scope.$watch('request.transacionNumber', function (newValue, oldValue, scope) {
         if ($stateParams.id == "0" && newValue == undefined) {
-            $scope.headerTitle = "Accept Allocation";
+            $scope.headerTitle = "Issue Request";
         }
         else {
             if (newValue == undefined) {
-                $scope.headerTitle = "Accept Allocation";
+                $scope.headerTitle = "Issue Request";
             }
             else {
-                $scope.headerTitle = "Accept Allocation, Request No : " + newValue;
+                $scope.headerTitle = "Issue Request " + newValue;
             }
         }
     }, true);

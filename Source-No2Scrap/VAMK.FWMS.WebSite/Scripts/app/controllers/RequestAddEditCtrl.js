@@ -41,7 +41,7 @@
 
     function loadIrecipients() {
         var defer = $.Deferred();
-        recipientService.getAllForDropdown().then(function (res) {
+        recipientService.getAllForDropdownForUser().then(function (res) {
             $scope.recipients = res;
             defer.resolve();
         });
@@ -64,7 +64,7 @@
 
             requestService.save(obj).then(function (res) {
                 if (res.status == true) {
-                    notificationMsgService.showSuccessMessage('Record saved successfully');
+                    notificationMsgService.showSuccessMessage('Record saved successfully. Request Number  : ' + res.transacionNumber);
                     $state.go('requestList', {});
                 }
                 else
@@ -97,8 +97,8 @@
 
     $scope.headerDescription = '';
     $scope.$watch('request.transacionNumber', function (newValue, oldValue, scope) {
-        debugger;
-        if ($stateParams.id == "0" && newValue == undefined) {
+        debugger
+        if ($stateParams.id == "0" && (newValue == undefined || newValue == "-- AUTO GENERATED --")) {
             $scope.headerTitle = "New Request";
         }
         else {
