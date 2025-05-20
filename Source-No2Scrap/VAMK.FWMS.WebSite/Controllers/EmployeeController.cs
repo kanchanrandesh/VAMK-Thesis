@@ -11,19 +11,19 @@ namespace VAMK.FWMS.WebSite.Controllers
     public class EmployeeController : Controller
     {
         // GET: Employee
-        [AuthorizeAccessRule(Rule = "EMPLYEVIEW")]
+        [AuthorizeAccessRule(Rule = "USERVIEW")]
         public ActionResult Index()
         {
             return View();
         }
 
-        [AuthorizeAccessRule(Rule = "EMPLYEADED")]
+        [AuthorizeAccessRule(Rule = "USERADED")]
         public ActionResult AddEdit()
         {
             return View();
         }
 
-        [AuthorizeAccessRule(Rule = "EMPLYEADED")]
+        [AuthorizeAccessRule(Rule = "USERADED")]
         public ActionResult FamilyMember()
         {
             var identity = (ClaimsIdentity)User.Identity;

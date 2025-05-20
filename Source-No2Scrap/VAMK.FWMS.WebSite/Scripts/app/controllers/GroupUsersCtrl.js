@@ -5,7 +5,7 @@
     });
 
     $scope.id = $stateParams.id;
-    $scope.pageTitle = $stateParams.pageTitle;    
+    $scope.pageTitle = $stateParams.pageTitle;
 
     (function () {
         loadGroupUsers().then(fillMultiSelect);

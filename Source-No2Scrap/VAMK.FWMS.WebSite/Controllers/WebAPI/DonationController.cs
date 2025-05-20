@@ -21,7 +21,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
     {
         [HttpGet]
         [Route("getAll")]
-        [HttpAuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        [HttpAuthorizeAccessRule(Rule = "DONATVIEW")]
         public IHttpActionResult GetAll()
         {
             var returnList = new List<DonationModel>();
@@ -36,7 +36,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
 
         [HttpPost]
         [Route("search")]
-        [HttpAuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        [HttpAuthorizeAccessRule(Rule = "DONATVIEW")]
         public IHttpActionResult Search(DonationSearchQuery query)
         {
             if (query == null)
@@ -53,7 +53,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
         }
 
         [HttpGet]
-        [HttpAuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        [HttpAuthorizeAccessRule(Rule = "DONATVIEW")]
         [Route("getById/{id}")]
         public IHttpActionResult GetById(int id)
         {
@@ -70,7 +70,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
 
         [HttpPost]
         [Route("save")]
-        [HttpAuthorizeAccessRule(Rule = "DEPRTMADED")]
+        [HttpAuthorizeAccessRule(Rule = "DONATADDED")]
         public IHttpActionResult Save(DonationModel model)
         {
             var identity = (ClaimsIdentity)User.Identity;
@@ -161,7 +161,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
         }
         [HttpPost]
         [Route("receive")]
-        [HttpAuthorizeAccessRule(Rule = "DEPRTMRECE")]
+        [HttpAuthorizeAccessRule(Rule = "DONATRECE")]
         public IHttpActionResult Receive(DonationModel model)
         {
             var identity = (ClaimsIdentity)User.Identity;

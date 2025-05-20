@@ -109,6 +109,11 @@
             "timeStamp": null,
             "dateCreated": null
         });
+        setTimeout(function () {
+            // $('.select2').select2();
+            ComponentsSelect2.init(); // init todo page
+
+        }, 500);
     }
     $scope.deleteDonationItems = function (donationItem) {
         debugger;

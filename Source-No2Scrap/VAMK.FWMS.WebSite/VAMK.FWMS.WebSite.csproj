@@ -266,6 +266,7 @@
     <Compile Include="Controllers\CountryController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\DonationController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\RecipientController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\DonerController.cs" />
@@ -6320,6 +6321,7 @@
     <Content Include="Views\Request\Accept.cshtml" />
     <Content Include="Views\Request\AddEdit.cshtml" />
     <Content Include="Views\Request\Index.cshtml" />
+    <Content Include="Views\Request\Issue.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\FileUploads\" />
@@ -6370,11 +6372,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>59923</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:59923/</IISUrl>
+          <IISUrl>http://localhost:59925/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

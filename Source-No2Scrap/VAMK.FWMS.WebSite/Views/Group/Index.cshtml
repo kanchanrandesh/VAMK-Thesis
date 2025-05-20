@@ -102,26 +102,26 @@
                                     <th style="width:50px;"> </th>
                                     <th style="width:50px;"> </th>
                                     <th> Description </th>
-                                    <th> Full Control to Sales </th>
+                                    @*<th> Full Control to Sales </th>*@
                                     <th> Active </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="odd gradeX" ng-repeat="row in searchList">
                                     <td style="width:50px;">
-                                        <span style="cursor:pointer;" class="glyphicon glyphicon-edit" aria-hidden="true"
+                                        <span style="cursor:pointer;" class="glyphicon glyphicon-edit" aria-hidden="true" uib-tooltip="Edit" tooltip-placement="top"
                                               data-toggle="modal" ui-sref="groupAddEdit({pageTitle :'Edit Group', id : row.id })"></span>
                                     </td>
                                     <td style="text-align:center; width:50px;">
-                                        <span style="cursor:pointer;" class="icon icon-users" aria-hidden="true"
+                                        <span style="cursor:pointer;" class="icon icon-users" aria-hidden="true" uib-tooltip="User Allocation" tooltip-placement="top"
                                               data-toggle="modal" ui-sref="groupUsers({pageTitle :'Group Users', id : row.id })"></span>
                                     </td>
                                     <td style="text-align:center; width:50px;">
-                                        <span style="cursor:pointer;" class="icon icon-key" aria-hidden="true"
+                                        <span style="cursor:pointer;" class="icon icon-key" aria-hidden="true" uib-tooltip="Group Rule" tooltip-placement="top"
                                               data-toggle="modal" ui-sref="groupRules({pageTitle :'Group Rules', id : row.id })"></span>
                                     </td>
                                     <td>{{row.description}}</td>
-                                    <td>{{row.salesFullControl?'Yes':'No'}}</td>
+                                    @*<td>{{row.salesFullControl?'Yes':'No'}}</td>*@
                                     <td>{{row.isActive?'Yes':'No'}}</td>
                                 </tr>
                             </tbody>

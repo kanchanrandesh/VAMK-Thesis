@@ -18,13 +18,13 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
     {
         [HttpGet]
         [Route("getAll")]
-        [HttpAuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        [HttpAuthorizeAccessRule(Rule = "ITEMVIEW")]
         public IHttpActionResult GetAll()
         {
             var returnList = new List<ItemModel>();
             foreach (var item in BizObjectFactory.GetItemBO().GetAll())
             {
-                var modelObj = (ItemModel)item;                
+                var modelObj = (ItemModel)item;
                 returnList.Add(modelObj);
             }
 
@@ -46,7 +46,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
 
         [HttpPost]
         [Route("search")]
-        [HttpAuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        [HttpAuthorizeAccessRule(Rule = "ITEMVIEW")]
         public IHttpActionResult Search(ItemSearchQuery query)
         {
             if (query == null)
@@ -55,7 +55,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
             var returnList = new List<ItemModel>();
             foreach (var item in BizObjectFactory.GetItemBO().Search(query))
             {
-                var modelObj = (ItemModel)item;                
+                var modelObj = (ItemModel)item;
                 returnList.Add(modelObj);
             }
 
@@ -63,7 +63,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
         }
 
         [HttpGet]
-        [HttpAuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        [HttpAuthorizeAccessRule(Rule = "ITEMVIEW")]
         [Route("getById/{id}")]
         public IHttpActionResult GetById(int id)
         {
@@ -76,9 +76,9 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
 
         [HttpPost]
         [Route("save")]
-        [HttpAuthorizeAccessRule(Rule = "DEPRTMADED")]
+        [HttpAuthorizeAccessRule(Rule = "ITEMADDED")]
         public IHttpActionResult Save(ItemModel model)
-        {            
+        {
             var identity = (ClaimsIdentity)User.Identity;
             var userid = identity.FindFirst(ClaimTypes.Sid).Value.ToString();
             var user = BizObjectFactory.GetEmployeeBO().GetProxy(int.Parse(userid));

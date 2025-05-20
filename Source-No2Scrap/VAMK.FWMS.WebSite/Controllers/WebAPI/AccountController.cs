@@ -17,7 +17,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
         [Route("ChangePassword")]
         public IHttpActionResult ChangePassword(PasswordUpdateModel password)
         {
-            var transObject = new AccountFacade().ChangePassword(new SessionSetting().EmployeeDetail.ID.Value,password.currentPassword, password.newPassword,password.conformPassword);
+            var transObject = new AccountFacade().ChangePassword(new SessionSetting().EmployeeDetail.ID.Value, password.currentPassword, password.newPassword, password.conformPassword);
             return Ok(transObject.StatusInfo);
         }
 

@@ -16,7 +16,7 @@ namespace VAMK.FWMS.DataObjects
 
         public IList<GroupRule> GetAllFor(List<int> groupIds)
         {
-            return DbSet.AsQueryable().Include(r=>r.Rule).Where(t => groupIds.Any(i => t.GroupID == i)).ToList();
+            return DbSet.AsQueryable().Include(r => r.Rule).Where(t => groupIds.Any(i => t.GroupID == i)).ToList();
         }
 
         public System.Collections.Generic.IList<GroupRule> GetAllFor(Group groupObj)

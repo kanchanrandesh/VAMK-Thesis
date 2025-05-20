@@ -3,7 +3,7 @@
     $scope.$on('$viewContentLoaded', function () {
         App.initAjax();
     });
-    
+
     $scope.id = $stateParams.id;
     $scope.pageTitle = $stateParams.pageTitle;
     $scope.organizationId = $stateParams.organizationId;
@@ -108,7 +108,7 @@
     }
 
     $scope.cancel = function () {
-        $state.go('contactList', { accountManagerId: $stateParams.accountManagerId, organizationId: $stateParams.organizationId});
+        $state.go('contactList', { accountManagerId: $stateParams.accountManagerId, organizationId: $stateParams.organizationId });
     }
 
     $scope.$watch('contact.firstName', function (newValue, oldValue, scope) {

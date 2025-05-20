@@ -20,7 +20,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
     {
         [HttpGet]
         [Route("getAll")]
-        [HttpAuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        [HttpAuthorizeAccessRule(Rule = "RECPTVIEW")]
         public IHttpActionResult GetAll()
         {
             var returnList = new List<RecipientModel>();
@@ -35,7 +35,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
 
         [HttpPost]
         [Route("search")]
-        [HttpAuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        [HttpAuthorizeAccessRule(Rule = "RECPTVIEW")]
         public IHttpActionResult Search(RecipientSearchQuery query)
         {
             if (query == null)
@@ -52,7 +52,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
         }
 
         [HttpGet]
-        [HttpAuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        [HttpAuthorizeAccessRule(Rule = "RECPTVIEW")]
         [Route("getById/{id}")]
         public IHttpActionResult GetById(int id)
         {
@@ -67,7 +67,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
 
         [HttpPost]
         [Route("save")]
-        [HttpAuthorizeAccessRule(Rule = "DEPRTMADED")]
+        [HttpAuthorizeAccessRule(Rule = "RECPTADED")]
         public IHttpActionResult Save(RecipientModel model)
         {
             var identity = (ClaimsIdentity)User.Identity;
@@ -111,7 +111,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
 
         [HttpGet]
         [Route("getAllForDropdownForUser")]
-        [HttpAuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        [HttpAuthorizeAccessRule(Rule = "RECPTVIEW")]
         public IHttpActionResult GetAllForDropdownForUser()
         {
             var identity = (ClaimsIdentity)User.Identity;

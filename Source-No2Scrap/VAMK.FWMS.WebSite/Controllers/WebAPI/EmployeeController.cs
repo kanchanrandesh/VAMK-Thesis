@@ -19,7 +19,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
     {
         [HttpPost]
         [Route("search")]
-        [HttpAuthorizeAccessRule(Rule = "EMPLYEVIEW")]
+        [HttpAuthorizeAccessRule(Rule = "USERVIEW")]
         public IHttpActionResult Search(EmployeeSearchQuery query)
         {
             if (query == null)
@@ -34,7 +34,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
 
         [HttpGet]
         [Route("getById/{id}")]
-        [HttpAuthorizeAccessRule(Rule = "EMPLYEVIEW")]
+        [HttpAuthorizeAccessRule(Rule = "USERVIEW")]
         public IHttpActionResult GetById(int id)
         {
             var employee = new EmployeeModel();
@@ -44,11 +44,13 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
                 var dbEmployee = BizObjectFactory.GetEmployeeBO().GetSingle(id);
                 foreach (var employeeDoner in dbEmployee.EmployeeDoners)
                 {
-                    employeeDoner.Doner = BizObjectFactory.GetDonerBO().GetSingle(employeeDoner.DonerID.Value);
+                    if (employeeDoner.DonerID != null)
+                        employeeDoner.Doner = BizObjectFactory.GetDonerBO().GetSingle(employeeDoner.DonerID.Value);
                 }
                 foreach (var employeeRecipient in dbEmployee.EmployeeRecipients)
                 {
-                    employeeRecipient.Recipient = BizObjectFactory.GetRecipientBO().GetSingle(employeeRecipient.RecipientID.Value);
+                    if (employeeRecipient.RecipientID != null)
+                        employeeRecipient.Recipient = BizObjectFactory.GetRecipientBO().GetSingle(employeeRecipient.RecipientID.Value);
                 }
                 employee = (EmployeeModel)dbEmployee;
 
@@ -64,7 +66,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
 
         [HttpPost]
         [Route("save")]
-        [HttpAuthorizeAccessRule(Rule = "EMPLYEADED")]
+        [HttpAuthorizeAccessRule(Rule = "USERADED")]
         public IHttpActionResult Save(EmployeeModel model)
         {
             if (string.IsNullOrEmpty(model.code))
@@ -177,7 +179,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
 
         [HttpGet]
         [Route("getAll")]
-        [HttpAuthorizeAccessRule(Rule = "EMPLYEVIEW")]
+        [HttpAuthorizeAccessRule(Rule = "USERVIEW")]
         public IHttpActionResult GetAll()
         {
             var returnList = new List<EmployeeModel>();
@@ -187,12 +189,9 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
             return Ok(returnList.OrderBy(t => t.firstName).ToList());
         }
 
-
-
-
         [HttpPost]
         [Route("saveLockedEmployees")]
-        [HttpAuthorizeAccessRule(Rule = "EMPLYEVIEW")]
+        [HttpAuthorizeAccessRule(Rule = "USERVIEW")]
         public IHttpActionResult SaveLockedEmployees(EmployeeModel model)
         {
             var identity = (ClaimsIdentity)User.Identity;

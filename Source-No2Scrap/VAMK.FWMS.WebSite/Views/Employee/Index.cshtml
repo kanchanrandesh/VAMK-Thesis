@@ -97,11 +97,11 @@
                                     <th> </th>
                                     <th> Code </th>
                                     <th> Name </th>
-                                    <th> Extension </th>
+                                    @*<th> Extension </th>*@
                                     <th> Phone </th>
                                     <th> User Name </th>
                                     <th> Active </th>
-                                    <th>FM</th>
+                                    @*<th>FM</th>*@
                                     <th>Locked</th>
                                 </tr>
                             </thead>
@@ -113,14 +113,14 @@
                                     </td>
                                     <td>{{row.code}} </td>
                                     <td>{{row.firstName}} {{row.lastName}}</td>
-                                    <td>{{row.extension}}</td>
+                                    @*<td>{{row.extension}}</td>*@
                                     <td>{{row.phone}}</td>
                                     <td>{{row.userName}}</td>
                                     <td>{{row.isActive?"Yes":"No"}}</td>
-                                    <td style="width:50px; text-align:center;">
-                                        <span class="icon-users" aria-hidden="true" style="cursor:pointer;"
-                                              data-toggle="modal" ui-sref="employeeFamilyMemberAddEdit({pageTitle :'Family Member', employeeId : row.id })"></span>
-                                    </td>
+                                    @*<td style="width:50px; text-align:center;">
+                                          <span class="icon-users" aria-hidden="true" style="cursor:pointer;"
+                                                data-toggle="modal" ui-sref="employeeFamilyMemberAddEdit({pageTitle :'Family Member', employeeId : row.id })"></span>
+                                        </td>*@
                                     <td>
                                         <input type="checkbox" ng-model="row.isLocked" ng-change="updateLockedEmployee(row.id)">
                                     </td>

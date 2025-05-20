@@ -9,12 +9,12 @@
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' }
             }).
-            success(function (data, status, headers, config) {
-                deferred.resolve(data);
-            }).
-            error(function (data, status, headers, config) {
-                deferred.reject(status);
-            });
+                success(function (data, status, headers, config) {
+                    deferred.resolve(data);
+                }).
+                error(function (data, status, headers, config) {
+                    deferred.reject(status);
+                });
             return deferred.promise;
         },
 
@@ -26,12 +26,12 @@
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' }
             }).
-            success(function (data, status, headers, config) {
-                deferred.resolve(data);
-            }).
-            error(function (data, status, headers, config) {
-                deferred.reject(status);
-            });
+                success(function (data, status, headers, config) {
+                    deferred.resolve(data);
+                }).
+                error(function (data, status, headers, config) {
+                    deferred.reject(status);
+                });
             return deferred.promise;
         },
 
@@ -43,15 +43,15 @@
                 data: data,
                 headers: { 'Content-Type': 'application/json' }
             }).
-            success(function (data, status, headers, config) {
-                deferred.resolve(data);
-            }).
-            error(function (data, status, headers, config) {
-                deferred.reject(status);
-                if (status == "401") {
-                    notificationMsgService.showErrorMessage("You are not authorized to access this function");
-                }
-            });
+                success(function (data, status, headers, config) {
+                    deferred.resolve(data);
+                }).
+                error(function (data, status, headers, config) {
+                    deferred.reject(status);
+                    if (status == "401") {
+                        notificationMsgService.showErrorMessage("You are not authorized to access this function");
+                    }
+                });
             return deferred.promise;
         },
 
@@ -63,12 +63,12 @@
                 method: 'GET',
                 headers: { 'Content-Type': 'application/json' }
             }).
-            success(function (data, status, headers, config) {
-                deferred.resolve(data);
-            }).
-            error(function (data, status, headers, config) {
-                deferred.reject(status);
-            });
+                success(function (data, status, headers, config) {
+                    deferred.resolve(data);
+                }).
+                error(function (data, status, headers, config) {
+                    deferred.reject(status);
+                });
             return deferred.promise;
         },
     }

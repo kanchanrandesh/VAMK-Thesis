@@ -94,11 +94,13 @@
                 obj.jobCategoryId = null
 
             for (var i = 0; i < obj.employeeDoners.length; i++) {
-                $scope.employee.employeeDoners[i].donerId = $scope.employee.employeeDoners[i].selectedDoner.id;
+                if ($scope.employee.employeeDoners[i].selectedDoner)
+                    $scope.employee.employeeDoners[i].donerId = $scope.employee.employeeDoners[i].selectedDoner.id;
             }
 
             for (var i = 0; i < obj.employeeRecipients.length; i++) {
-                $scope.employee.employeeRecipients[i].recipientId = $scope.employee.employeeRecipients[i].selectedRecipient.id;
+                if ($scope.employee.employeeRecipients[i].selectedRecipient)
+                    $scope.employee.employeeRecipients[i].recipientId = $scope.employee.employeeRecipients[i].selectedRecipient.id;
             }
 
             employeeService.save(obj).then(function (res) {

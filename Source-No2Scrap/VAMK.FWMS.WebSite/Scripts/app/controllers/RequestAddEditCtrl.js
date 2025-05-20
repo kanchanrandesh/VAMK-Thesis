@@ -83,6 +83,12 @@
             "timeStamp": null,
             "dateCreated": null
         });
+
+        setTimeout(function () {
+            // $('.select2').select2();
+            ComponentsSelect2.init(); // init todo page
+
+        }, 500);
     }
     $scope.deleteRequestItems = function (requestItem) {
         var i = $scope.request.requestItemList.indexOf(requestItem);

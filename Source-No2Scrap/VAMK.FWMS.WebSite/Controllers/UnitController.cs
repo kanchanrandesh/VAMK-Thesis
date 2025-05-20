@@ -6,13 +6,13 @@ namespace VAMK.FWMS.WebSite.Controllers
     public class UnitController : Controller
     {
         // GET: Unit
-        [AuthorizeAccessRule(Rule = "UNITVIEWFN")]
+        [AuthorizeAccessRule(Rule = "UNITVIEW")]
         public ActionResult Index()
         {
             return View();
         }
 
-        [AuthorizeAccessRule(Rule = "UNITADDEDT")]
+        [AuthorizeAccessRule(Rule = "UNITADED")]
         public ActionResult AddEdit()
         {
             return View();

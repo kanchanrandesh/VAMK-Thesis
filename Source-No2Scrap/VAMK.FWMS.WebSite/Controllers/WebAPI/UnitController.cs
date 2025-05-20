@@ -17,7 +17,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
     {
         [HttpGet]
         [Route("getAll")]
-        [HttpAuthorizeAccessRule(Rule = "UNITVIEWFN")]
+        [HttpAuthorizeAccessRule(Rule = "UNITVIEW")]
         public IHttpActionResult GetAll()
         {
             var returnList = new List<UnitModel>();
@@ -32,7 +32,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
 
         [HttpPost]
         [Route("search")]
-        [HttpAuthorizeAccessRule(Rule = "UNITVIEWFN")]
+        [HttpAuthorizeAccessRule(Rule = "UNITVIEW")]
         public IHttpActionResult Search(UnitSearchQuery query)
         {
             if (query == null)
@@ -50,7 +50,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
 
         [HttpGet]
         [Route("getById/{id}")]
-        [HttpAuthorizeAccessRule(Rule = "UNITVIEWFN")]
+        [HttpAuthorizeAccessRule(Rule = "UNITVIEW")]
         public IHttpActionResult GetById(int id)
         {
             var unit = new UnitModel();
@@ -62,7 +62,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
 
         [HttpPost]
         [Route("save")]
-        [HttpAuthorizeAccessRule(Rule = "UNITADDEDT")]
+        [HttpAuthorizeAccessRule(Rule = "UNITADED")]
         public IHttpActionResult Save(UnitModel model)
         {
             var identity = (ClaimsIdentity)User.Identity;

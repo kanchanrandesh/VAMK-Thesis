@@ -14,7 +14,7 @@ using VAMK.FWMS.WebSite.Helpers;
 namespace VAMK.FWMS.WebSite.Controllers.WebAPI
 {
     [RoutePrefix("api/dashboard")]
-    [AuthorizeAccessRule(Rule = "GENERALACC")]
+    [AuthorizeAccessRule(Rule = "DASHBDVIEW")]
     public class DashboardController : ApiController
     {
         [HttpGet]

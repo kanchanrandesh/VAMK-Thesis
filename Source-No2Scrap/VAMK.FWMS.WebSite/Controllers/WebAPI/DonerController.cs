@@ -20,7 +20,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
     {
         [HttpGet]
         [Route("getAll")]
-        [HttpAuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        [HttpAuthorizeAccessRule(Rule = "DONERVIEW")]
         public IHttpActionResult GetAll()
         {
             var returnList = new List<DonerModel>();
@@ -35,7 +35,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
 
         [HttpPost]
         [Route("search")]
-        [HttpAuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        [HttpAuthorizeAccessRule(Rule = "DONERVIEW")]
         public IHttpActionResult Search(DonerSearchQuery query)
         {
             if (query == null)
@@ -52,7 +52,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
         }
 
         [HttpGet]
-        [HttpAuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        [HttpAuthorizeAccessRule(Rule = "DONERVIEW")]
         [Route("getById/{id}")]
         public IHttpActionResult GetById(int id)
         {
@@ -68,7 +68,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
 
         [HttpPost]
         [Route("save")]
-        [HttpAuthorizeAccessRule(Rule = "DEPRTMADED")]
+        [HttpAuthorizeAccessRule(Rule = "DONERADED")]
         public IHttpActionResult Save(DonerModel model)
         {
             var identity = (ClaimsIdentity)User.Identity;
@@ -114,7 +114,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
 
         [HttpGet]
         [Route("getAllForDropdownForUser")]
-        [HttpAuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        [HttpAuthorizeAccessRule(Rule = "DONERVIEW")]
         public IHttpActionResult GetAllForDropdownForUser()
         {
             var identity = (ClaimsIdentity)User.Identity;

@@ -8,19 +8,19 @@ namespace VAMK.FWMS.WebSite.Controllers
     public class DonationController : Controller
     {
         // GET: Donation
-        [AuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        [AuthorizeAccessRule(Rule = "DONATVIEW")]
         public ActionResult Index()
         {
             return View();
         }
 
-        [AuthorizeAccessRule(Rule = "DEPRTMRECE")]
+        [AuthorizeAccessRule(Rule = "DONATRECE")]
         public ActionResult Receive()
         {
             return View();
         }
 
-        [AuthorizeAccessRule(Rule = "DEPRTMADED")]
+        [AuthorizeAccessRule(Rule = "DONATADDED")]
         public ActionResult AddEdit()
         {
             var ItemList = new List<Models.SelectObjectModel>();

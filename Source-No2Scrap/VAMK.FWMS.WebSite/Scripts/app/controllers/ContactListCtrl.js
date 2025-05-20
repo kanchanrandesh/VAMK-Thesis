@@ -5,7 +5,7 @@
         App.initAjax();
     });
 
-    $scope.searchQuery = {};    
+    $scope.searchQuery = {};
     $scope.searchQuery.designationCategories = [];
     $scope.organizationId = $stateParams.organizationId;
     $scope.accountManagerId = $stateParams.accountManagerId;
@@ -86,7 +86,7 @@
             $scope.accountManagerId = srch.accountManager.id;
         else
             $scope.accountManagerId = null;
-        if (srch.jobRole) 
+        if (srch.jobRole)
             $scope.jobRole = srch.jobRole;
         else
             $scope.jobRole = null;

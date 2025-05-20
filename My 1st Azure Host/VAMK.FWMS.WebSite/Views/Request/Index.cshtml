@@ -1,0 +1,159 @@
+﻿
+@{
+    Layout = null;
+}
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a ui-sref="requestList">Requests</a>
+        </li>
+    </ul>
+    <div class="page-toolbar">
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" dropdown-menu-hover data-delay="1000" data-close-others="true">
+                Actions
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <ul class="dropdown-menu pull-right" role="menu">
+                <li>
+                    <a href="#">
+                        <i class="icon-film" style="color:red"></i>Export to PDF
+                        <span class="icon-printer"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div class="note note-success">
+    <h3>Requests</h3>
+    <p>
+        Kindly submit your food requests here
+    </p>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PORTLET-->
+        <div class="portlet box blue-hoki">
+            <div class="portlet-body form">
+                <!-- BEGIN FORM-->
+                <form action="#" id="form-requestIndex" class="form-horizontal form-bordered">
+                    <div class="form-body"></div>
+                    <div class="form-actions" style="border-top: 1px solid #869ab3">
+                        <div class="col-md-12">
+                            <div class="input-icon right input-group">
+                                <span class="input-group-addon" style="border-left:1px solid #ccc; border-right: none; background-color: lightseagreen;cursor:pointer;" id="new" data-toggle="modal" data-target="#exampleModal">
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true" style="display: inline!important; color: white" ui-sref="requestAddEdit({pageTitle :'Add Request', id : 0 })"></span>
+                                </span>
+                                <input type="text" class="form-control" ng-model="searchQuery.searchText" ng-keyup="search(searchQuery)">
+                                <span class="input-group-addon" style="cursor:pointer;" id="advanceSearch" data-toggle="collapse" href="#advanceSearchContainer" aria-expanded="true" aria-controls="collapseExample">
+                                    <span class="glyphicon glyphicon-filter" aria-hidden="false" style="display: inline!important;"></span>
+                                </span>
+                            </div>
+                            <div class="collapse" id="advanceSearchContainer" style="border:1px solid #869ab3; background-color:white">
+                                <div class="panel" style="padding-top:20px; padding-left:5px;padding-right:5px">
+                                    <div class="row">
+                                        <div style="padding-top:5px;padding-left:15px; padding-right:15px">
+                                            <div class="col-md-3">
+                                                <label>Date</label>
+                                                <p class="input-group" style="margin:0px;">
+                                                    <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy" ng-model="searchQuery.date" is-open="popupDate.opened"
+                                                           datepicker-options="dateOptions" close-text="Close" placeholder="DD/MM/YYYY" />
+                                                    <span class="input-group-btn">
+                                                        <button type="button" class="btn btn-sm" ng-click="openDatePickerDate()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                                    </span>
+                                                </p>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Transaction Number</label>
+                                                <input class="form-control" ng-model="searchQuery.transactionNumber" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Manual Ref Number </label>
+                                                <input class="form-control" ng-model="searchQuery.manualRefNumber" />
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Status</label>
+                                                <select class="form-control select2" ng-model="searchQuery.requestStatus">
+                                                    <option value="1">AllocationPending</option>
+                                                    <option value="2">Allocated</option>
+                                                    <option value="3">IssuancePending</option>
+                                                    <option value="4">Completed</option>
+                                                    <option value="0">ALL</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2" style="padding-left:15px;padding-top:10px;">
+                                                <button type="button" class="btn purple" ng-click="search(searchQuery)">Search</button>
+                                            </div>
+                                            <div class="col-md-9">
+                                            </div>
+                                            <div class="col-md-1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="portlet-body form-body">
+                    <div style="padding: 10px" class="datagrid">
+                        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="request_dataTable">
+                            <thead>
+                                <tr>
+                                    <th> </th>
+                                    <th> </th>
+                                    <th> </th>
+                                    <th> Date </th>
+                                    <th> Request By </th>
+                                    <th> Transaction Number</th>
+                                    <th> Manual Ref Number</th>
+                                    <th> Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="odd gradeX" ng-repeat="row in searchList">
+                                    <td style="width:50px; text-align:center;">
+                                        <span class="glyphicon glyphicon-edit" aria-hidden="true" style="cursor:pointer;" ng-hide="row.requestStatus != 'AllocationPending'" uib-tooltip="Edit" tooltip-placement="top"
+                                              data-toggle="modal" ui-sref="requestAddEdit({pageTitle :'Edit Request', id : row.id })"></span>
+                                    </td>
+                                    <td style="width:50px; text-align:center;">
+                                        <span class="glyphicon glyphicon-log-in" aria-hidden="true" style="cursor:pointer;" ng-hide="(row.requestStatus != 'AllocationPending' && row.requestStatus != 'Allocated')" uib-tooltip="Accept Allocation" tooltip-placement="top"
+                                              data-toggle="modal" ui-sref="requestAccept({pageTitle :'Accept Allocation', id : row.id })"></span>
+                                    </td>
+                                    <td style="width:50px; text-align:center;">
+                                        <span class="glyphicon glyphicon-adjust" aria-hidden="true" style="cursor:pointer;" ng-hide="row.requestStatus != 'IssuancePending'" uib-tooltip="Issue Foods" tooltip-placement="top"
+                                              data-toggle="modal" ui-sref="requestIssue({pageTitle :'Item Issue', id : row.id })"></span>
+                                    </td>
+                                    <td>{{row.date}}</td>
+                                    <td>{{row.recipientName}}</td>
+                                    <td>{{row.transacionNumber}}</td>
+                                    <td>{{row.manualRefNumber}}</td>
+                                    <td>{{row.requestStatus}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- END FORM-->
+            </div>
+        </div>
+        <!-- END PORTLET-->
+    </div>
+</div>
+<span ng-bind="name"></span>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS-->
+<script>
+    $('#advanceSearch').click(function () {
+        $('#advanceSearchArea').collapse('toggle');
+    });
+</script>
+<!-- BEGIN MAIN JS -->

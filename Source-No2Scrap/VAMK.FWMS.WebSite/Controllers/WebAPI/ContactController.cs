@@ -17,7 +17,7 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
     [RoutePrefix("api/ContactPerson")]
     public class ContactPersonController : ApiController
     {
-        
+
 
         [HttpGet]
         [Route("getById/{id}")]

@@ -1,0 +1,321 @@
+﻿/*.sessionStyle table {
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+}
+
+.sessionStyle {
+    font: normal 12px/150% Arial, Helvetica, sans-serif;
+    background: #fff;
+    overflow: hidden;
+    border: 1px solid #006699;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+    .sessionStyle table td, .sessionStyle table th {
+        padding: 3px 10px;
+    }
+
+    .sessionStyle table thead th {
+        background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #CBC9CF), color-stop(1, #CBC9CF) );
+        background: -moz-linear-gradient( center top, #CBC9CF 5%, #CBC9CF 100% );
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#CBC9CF', endColorstr='#CBC9CF');
+        background-color: #CBC9CF;
+        color: black;
+        font-size: 15px;
+        font-weight: bold;
+        border-left: 1px solid #CBC9CF;
+    }
+
+        .sessionStyle table thead th:first-child {
+            border: none;
+        }
+
+    .sessionStyle table tbody td {
+        color: #00496B;
+        border-left: 1px solid #E1EEF4;
+        font-size: 12px;
+        font-weight: normal;
+    }
+
+    .sessionStyle table tbody .alt td {
+        background: #E1EEF4;
+        color: #00496B;
+    }
+
+    .sessionStyle table tbody td:first-child {
+        border-left: none;
+    }
+
+    .sessionStyle table tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    .sessionStyle table tfoot td div {
+        border-top: 1px solid #006699;
+        background: #E1EEF4;
+    }
+
+    .sessionStyle table tfoot td {
+        padding: 0;
+        font-size: 12px;
+    }
+
+        .sessionStyle table tfoot td div {
+            padding: 2px;
+        }
+
+        .sessionStyle table tfoot td ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-align: right;
+        }
+
+    .sessionStyle table tfoot li {
+        display: inline;
+    }
+
+        .sessionStyle table tfoot li a {
+            text-decoration: none;
+            display: inline-block;
+            padding: 2px 8px;
+            margin: 1px;
+            color: #FFFFFF;
+            border: 1px solid #CBC9CF;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #CBC9CF), color-stop(1, #CBC9CF) );
+            background: -moz-linear-gradient( center top, #CBC9CF 5%, #CBC9CF 100% );
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#CBC9CF', endColorstr='#CBC9CF');
+            background-color: #CBC9CF;
+        }
+
+    .sessionStyle table tfoot ul.active, .sessionStyle table tfoot ul a:hover {
+        text-decoration: none;
+        border-color: #CBC9CF;
+        color: #FFFFFF;
+        background: none;
+        background-color: #CBC9CF;
+    }
+
+div.dhtmlx_window_active, div.dhx_modal_cover_dv {
+    position: fixed !important;
+}*/
+
+	/*  Define the background color for all the ODD table columns  */
+	.sessionStyle table tr td:nth-child(odd){ 
+		background: #ECEFFF;
+	}
+	/*  Define the background color for all the EVEN table columns  */
+	.sessionStyle table tr td:nth-child(even){
+		background: #F1EFFF;
+	}
+
+
+.sessionStyle table {
+    border: #808080 solid 1px;
+}
+.sessionStyle table thead {
+    background-color:#67809F;
+    color:#dae5f4;
+}
+.sessionStyle table thead input {
+    color:black;
+    font-weight:normal;
+}
+
+.sessionStyle tr:first-child{
+
+}
+
+.sessionStyle tr:nth-child(2) th{
+    border: none;
+}
+
+.sessionStyle tr:first-child th{
+    border: none;
+}
+
+.sessionStyle tr th:last-child{
+    border: none;
+}
+
+.sessionStyle tr td{
+    border-bottom: #808080 solid 1px !important;
+}
+
+.sessionStyle th td{
+    border: #808080 solid 1px !important;
+}
+
+.sessionStyle tr:nth-last-child(1) td{
+    
+}
+
+.sessionStyle tr:last-child td{
+    border: none;
+}
+
+.sessionStyle th {
+    padding:5px;
+    border: #808080 solid 1px;
+}
+
+.sessionStyle td {
+    padding:5px;
+}
+
+td.uib-time  {
+    border-bottom:none !important;
+}
+
+
+
+.eventSession {
+    display:flex;
+    flex-wrap: wrap;
+    /*flex-direction: row;*/
+    width:100%;
+}
+
+.eventSession {
+    margin-bottom:2px;
+}
+
+.eventSession ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.eventSession li{
+    list-style: none;
+}
+
+.eventtrack {
+        border: 1px solid #808080;
+        width:100%
+}
+
+.session {
+    padding:1em;
+    min-width:224px;
+}
+
+.sessionDetail ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sessionDetail li{
+    list-style: none;
+    display:inline;
+}
+
+
+/*@media (min-width:320px)  { 
+    .desktopTitle1 {
+        display: none;
+    }
+}
+@media (min-width:481px)  {
+    .desktopTitle1 {
+        display: none;
+    }
+}
+@media (min-width:641px)  {
+    .desktopTitle1 {
+        display: none;
+    }
+}
+@media (min-width:961px)  { 
+    .mobileTitle {
+    display: none;
+  }
+  .desktopTitle1 {
+        display: block;
+    }
+}*/
+
+/*@media (max-width:320px)  { 
+    .desktopTitle1 {
+        display: none;
+    }
+}
+@media (min-width:1025px) {
+    .mobileTitle {
+    display: none;
+  }
+  .desktopTitle1 {
+        display: block;
+    }
+}
+@media (min-width:1281px) { 
+    .mobileTitle {
+    display: none;
+  }
+  .desktopTitle1 {
+        display: block;
+    }
+}*/
+
+/* show it on small screens */
+/*@media screen and (min-width: 0px) and (max-width: 500px) {
+  .desktopTitle1 { display: block; }  
+  .mobileTitle { display:none }
+}*/
+
+/* hide it elsewhere */
+/*@media screen and (min-width: 501px) and (max-width: 1024px) {
+  .desktopTitle1 { display: none; }   
+  .mobileTitle { display:block }
+}*/
+
+@media (min-width:320px)  { 
+    /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+    .mobileTitle { display:block }
+    .desktopTitle1 {
+        display:none;
+    }
+}
+@media (min-width:480px)  { 
+    /* smartphones, Android phones, landscape iPhone */
+    .mobileTitle { display:block }
+}
+@media (min-width:600px)  { 
+    /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */
+    .mobileTitle { display:block }
+}
+@media (min-width:801px)  { 
+    /* tablet, landscape iPad, lo-res laptops ands desktops */
+    .mobileTitle { display:block }
+}
+@media (min-width:1025px) { 
+    /* big landscape tablets, laptops, and desktops */
+    .eventSession {
+        flex-wrap: nowrap;
+        flex-direction: row;
+        overflow:auto;
+    }
+    .desktopTitle1 {
+        display:block;
+    }
+    .mobileTitle { display:none }
+}
+@media (min-width:1281px) { 
+    /* hi-res laptops and desktops */
+    .eventSession {
+        flex-wrap: nowrap;
+        flex-direction: row;
+        overflow:auto;
+    }
+    .desktopTitle1 {
+        display:block;
+    }
+    .mobileTitle { display:none }
+}

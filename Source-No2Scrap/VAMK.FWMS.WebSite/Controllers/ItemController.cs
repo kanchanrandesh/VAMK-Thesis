@@ -6,13 +6,13 @@ namespace VAMK.FWMS.WebSite.Controllers
     public class ItemController : Controller
     {
         // GET: Item
-        [AuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        [AuthorizeAccessRule(Rule = "ITEMVIEW")]
         public ActionResult Index()
         {
             return View();
         }
 
-        [AuthorizeAccessRule(Rule = "DEPRTMADED")]
+        [AuthorizeAccessRule(Rule = "ITEMADDED")]
         public ActionResult AddEdit()
         {
             return View();

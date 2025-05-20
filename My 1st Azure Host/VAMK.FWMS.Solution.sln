@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.35731.53
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VAMK.FWMS.Common", "VAMK.FWMS.Common\VAMK.FWMS.Common.csproj", "{9C569784-8D94-466C-B13F-9A7B5D0E2132}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VAMK.FWMS.Models", "VAMK.FWMS.Models\VAMK.FWMS.Models.csproj", "{D3BE1510-3997-4CEE-803A-55876BA2B3EE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{9C569784-8D94-466C-B13F-9A7B5D0E2132} = {9C569784-8D94-466C-B13F-9A7B5D0E2132}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VAMK.FWMS.DataObjects", "VAMK.FWMS.DataObjects\VAMK.FWMS.DataObjects.csproj", "{6532C358-BC77-4585-ABA2-6C5DAF57A1B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VAMK.FWMS.BizObjects", "VAMK.FWMS.BizObjects\VAMK.FWMS.BizObjects.csproj", "{DD97C723-0753-4A6C-BB7A-EF428A34D352}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VAMK.FWMS.WebSite", "VAMK.FWMS.WebSite\VAMK.FWMS.WebSite.csproj", "{9D14CC01-8F8E-400E-9326-FB7ABB9801FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9C569784-8D94-466C-B13F-9A7B5D0E2132}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C569784-8D94-466C-B13F-9A7B5D0E2132}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C569784-8D94-466C-B13F-9A7B5D0E2132}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C569784-8D94-466C-B13F-9A7B5D0E2132}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3BE1510-3997-4CEE-803A-55876BA2B3EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3BE1510-3997-4CEE-803A-55876BA2B3EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3BE1510-3997-4CEE-803A-55876BA2B3EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3BE1510-3997-4CEE-803A-55876BA2B3EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6532C358-BC77-4585-ABA2-6C5DAF57A1B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6532C358-BC77-4585-ABA2-6C5DAF57A1B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6532C358-BC77-4585-ABA2-6C5DAF57A1B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6532C358-BC77-4585-ABA2-6C5DAF57A1B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD97C723-0753-4A6C-BB7A-EF428A34D352}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD97C723-0753-4A6C-BB7A-EF428A34D352}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD97C723-0753-4A6C-BB7A-EF428A34D352}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD97C723-0753-4A6C-BB7A-EF428A34D352}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D14CC01-8F8E-400E-9326-FB7ABB9801FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D14CC01-8F8E-400E-9326-FB7ABB9801FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D14CC01-8F8E-400E-9326-FB7ABB9801FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D14CC01-8F8E-400E-9326-FB7ABB9801FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1AAA830C-FE87-4F39-8096-09D3CBD880C1}
+	EndGlobalSection
+EndGlobal

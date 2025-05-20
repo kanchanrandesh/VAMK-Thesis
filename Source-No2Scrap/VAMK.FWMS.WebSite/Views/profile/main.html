@@ -11,13 +11,15 @@
     </ul>
     <div class="page-toolbar">
         <div class="btn-group pull-right">
-            <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true"> Actions
+            <button type="button" class="btn btn-sm btn-default dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000" data-close-others="true">
+                Actions
                 <i class="fa fa-angle-down"></i>
             </button>
             <ul class="dropdown-menu pull-right" role="menu">
                 <li>
                     <a href="#">
-                        <i class="icon-user"></i> New User </a>
+                        <i class="icon-user"></i> New User
+                    </a>
                 </li>
                 <li>
                     <a href="#">
@@ -27,7 +29,8 @@
                 </li>
                 <li>
                     <a href="#">
-                        <i class="icon-basket"></i> New order </a>
+                        <i class="icon-basket"></i> New order
+                    </a>
                 </li>
                 <li class="divider"> </li>
                 <li>
@@ -57,7 +60,8 @@
             <div class="portlet light profile-sidebar-portlet">
                 <!-- SIDEBAR USERPIC -->
                 <div class="profile-userpic">
-                    <img src="{{settings.assetsPath}}/pages/media/profile/profile_user.jpg" class="img-responsive" alt=""> </div>
+                    <img src="{{settings.assetsPath}}/pages/media/profile/profile_user.jpg" class="img-responsive" alt="">
+                </div>
                 <!-- END SIDEBAR USERPIC -->
                 <!-- SIDEBAR USER TITLE -->
                 <div class="profile-usertitle">
@@ -76,19 +80,23 @@
                     <ul class="nav">
                         <li ng-class="{active: $state.includes('profile.dashboard')}">
                             <a ui-sref="profile.dashboard">
-                                <i class="icon-home"></i> Overview </a>
+                                <i class="icon-home"></i> Overview
+                            </a>
                         </li>
                         <li ng-class="{active: $state.includes('profile.account')}">
                             <a ui-sref="profile.account">
-                                <i class="icon-settings"></i> Account Settings </a>
+                                <i class="icon-settings"></i> Account Settings
+                            </a>
                         </li>
                         <li>
                             <a href="#/todo">
-                                <i class="icon-check"></i> Tasks </a>
+                                <i class="icon-check"></i> Tasks
+                            </a>
                         </li>
                         <li ng-class="{active: $state.includes('profile.help')}">
                             <a ui-sref="profile.help">
-                                <i class="icon-info"></i> Help </a>
+                                <i class="icon-info"></i> Help
+                            </a>
                         </li>
                     </ul>
                 </div>

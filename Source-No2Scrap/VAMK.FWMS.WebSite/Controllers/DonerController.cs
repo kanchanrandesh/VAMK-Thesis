@@ -6,13 +6,13 @@ namespace VAMK.FWMS.WebSite.Controllers
     public class DonerController : Controller
     {
         // GET: Doner
-        [AuthorizeAccessRule(Rule = "DEPRTMVIEW")]
+        [AuthorizeAccessRule(Rule = "DONERVIEW")]
         public ActionResult Index()
         {
             return View();
         }
 
-        [AuthorizeAccessRule(Rule = "DEPRTMADED")]
+        [AuthorizeAccessRule(Rule = "DONERADED")]
         public ActionResult AddEdit()
         {
             return View();
