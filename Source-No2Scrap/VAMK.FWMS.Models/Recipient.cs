@@ -19,6 +19,7 @@ namespace VAMK.FWMS.Models
         }
         public string Name { get; set; }
         public string Address { get; set; }
+        public string Location { get; set; }
         public IList<ContactPerson> ContactPersonList { get; set; }
     }
 }

@@ -4,7 +4,7 @@
     {
         public Group Group { get; set; }
         public int? GroupID { get; set; }
-        public Employee Employee { get; set; }       
+        public SystemUser Employee { get; set; }       
         public int? EmployeeID { get; set; }
     }
 }

@@ -1,0 +1,86 @@
+﻿@{
+    Layout = null;
+}
+<style>
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+        display: none !important;
+    }
+</style>
+<!-- BEGIN PAGE HEADER-->
+<div class="page-bar">
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <a ui-sref="dashboard">Home</a>
+            <i class="fa fa-circle"></i>
+        </li>
+        <li>
+            <a ui-sref="reportStockFilter">Stock Count Report</a>
+            <i class="fa fa-circle"></i>
+        </li>
+    </ul>
+</div>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div class="note note-success">
+    <h3>Stock Count Report</h3>
+    <p>Used to generate Stock Count Item wise</p>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN PORTLET-->
+        <div class="portlet box blue-hoki">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i>Filter Details
+                    <input type="hidden" value="@ViewBag.EmployeeID" id="HiddenEmployeeID" />
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse"> </a>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <!-- BEGIN FORM-->
+                <form action="#" name="frmPettyCashReportFilter" class="form-horizontal form-bordered">
+                    <div class="form-body">                        
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Items</label>
+                            <div class="col-md-8">
+                                <ul style="padding-left:0px;">
+                                    <li style="list-style:none; font-size:12px; padding-bottom:10px;" ng-repeat="item in items">
+                                        <input type="checkbox" ng-model="com.hasSelected" checklist-value="cat.id" style="width:25px;">&nbsp;&nbsp;&nbsp;<span style="vertical-align:top;">{{item.name}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-offset-3 col-md-9">
+                                <button type="button" class="btn purple" ng-click="generate()">
+                                    <i class="fa fa-check"></i> Generate Report
+                                </button>
+                                <button type="button" class="btn default" ng-click="clear()">Clear Filter</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- END FORM-->
+            </div>
+        </div>
+        <!-- END PORTLET-->
+    </div>
+</div>
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS-->
+<script>
+    ComponentsFormTools.init(); // init todo page
+    ComponentsSelect2.init(); // init todo page
+    ComponentsBootstrapSelect.init(); // init todo page
+    window.onbeforeunload = function (e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+    }
+</script>
+<!-- BEGIN MAIN JS -->

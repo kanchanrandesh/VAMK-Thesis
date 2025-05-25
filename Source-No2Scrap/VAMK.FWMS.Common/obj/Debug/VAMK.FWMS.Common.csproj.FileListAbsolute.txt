@@ -24,3 +24,4 @@ C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\So
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.Common\obj\Debug\VAMK.FWMS.Common.csproj.CopyComplete
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.Common\obj\Debug\VAMK.FWMS.Common.dll
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.Common\obj\Debug\VAMK.FWMS.Common.pdb
+C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.Common\obj\Debug\VAMK.FWMS.Common.csproj.AssemblyReference.cache

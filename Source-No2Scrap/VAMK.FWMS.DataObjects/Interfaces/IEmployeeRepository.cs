@@ -4,20 +4,20 @@ using System.Collections.Generic;
 
 namespace VAMK.FWMS.DataObjects.Interfaces
 {
-    public interface IEmployeeRepository : IRepository<Employee>
+    public interface IEmployeeRepository : IRepository<SystemUser>
     {
         /// <summary>
         /// Search all Employees
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        IList<Employee> Search(EmployeeSearchQuery query);
+        IList<SystemUser> Search(EmployeeSearchQuery query);
 
         /// <summary>
         /// Get Employee by user name
         /// </summary>
         /// <param name="userName"></param>
         /// <returns></returns>
-        Employee GetEmployeeByUserName(string userName);
+        SystemUser GetEmployeeByUserName(string userName);
     }
 }

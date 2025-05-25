@@ -22,6 +22,7 @@ namespace VAMK.FWMS.Models
         }
 
         public decimal Quantity { get; set; } = 0;
+        public decimal AllocatedQuantity { get; set; } = 0;
 
     }
 }

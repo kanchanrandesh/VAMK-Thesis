@@ -5,7 +5,7 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace VAMK.FWMS.DataObjects.Mappers
 {
-    internal class EmployeeRecipientMapper : EntityTypeConfiguration<RecipientUser>
+    internal class EmployeeRecipientMapper : EntityTypeConfiguration<UserRecipient>
     {
         public EmployeeRecipientMapper()
         {
@@ -14,7 +14,7 @@ namespace VAMK.FWMS.DataObjects.Mappers
             HasKey(t => t.ID);
             ToTable("EmployeeRecipients");
            
-            Property(t => t.EmployeeID).HasColumnName("EmployeeID").HasColumnType("int");
+            Property(t => t.SystemUserID).HasColumnName("EmployeeID").HasColumnType("int");
             Property(t => t.RecipientID).HasColumnName("RecipientID").HasColumnType("int");
 
             Property(t => t.User).HasColumnName("UserCreated").HasColumnType("nvarchar").HasMaxLength(50);
@@ -23,7 +23,7 @@ namespace VAMK.FWMS.DataObjects.Mappers
             Property(t => t.DateModified).HasColumnName("DateModified").HasColumnType("datetime");
             Ignore(t => t.State);
             Ignore(t => t.AuditReference);
-
+            
             #endregion
 
 

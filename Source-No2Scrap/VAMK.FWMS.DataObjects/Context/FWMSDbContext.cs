@@ -40,8 +40,8 @@ namespace VAMK.FWMS.DataObjects.Context
             //modelBuilder.Configurations.Add(new TimeZoneMapper());
             //modelBuilder.Configurations.Add(new SystemConfigurationMapper());
             //modelBuilder.Configurations.Add(new CompanyMapper());
-            modelBuilder.Configurations.Add(new EmployeeMapper());
-            modelBuilder.Configurations.Add(new EmployeeDonerMapper());
+            //modelBuilder.Configurations.Add(new SystemUserMapper());
+            modelBuilder.Configurations.Add(new UserDonerMapper());
             modelBuilder.Configurations.Add(new EmployeeRecipientMapper());
             modelBuilder.Configurations.Add(new AuditTrailMapper());
             modelBuilder.Configurations.Add(new AuditTrailDetailMapper());
@@ -66,8 +66,7 @@ namespace VAMK.FWMS.DataObjects.Context
             modelBuilder.Configurations.Add(new RequestMapper());
             modelBuilder.Configurations.Add(new RequestItemMapper());
             modelBuilder.Configurations.Add(new CoordinatorIntentoryItemMapper());
-            modelBuilder.Configurations.Add(new SystemUserMapper());
-            modelBuilder.Configurations.Add(new UserRightsMapper());
+            modelBuilder.Configurations.Add(new SystemUserMapper());          
             modelBuilder.Configurations.Add(new SecureAccessFormMapper());
             modelBuilder.Configurations.Add(new SequenceNumberMapper());
             modelBuilder.Configurations.Add(new InventoryStockMapper());
@@ -76,9 +75,9 @@ namespace VAMK.FWMS.DataObjects.Context
         public IDbSet<TimeZone> TimeZones { get; set; }
         public IDbSet<SystemConfiguration> SystemConfiguration { get; set; }
         public IDbSet<Company> Companies { get; set; }
-        public IDbSet<Employee> Employees { get; set; }
-        public IDbSet<DonerUser> EmployeeDoners { get; set; }
-        public IDbSet<RecipientUser> EmployeeRecipients { get; set; }
+        //public IDbSet<SystemUser> Employees { get; set; }
+        public IDbSet<UserDoner> EmployeeDoners { get; set; }
+        public IDbSet<UserRecipient> EmployeeRecipients { get; set; }
         public IDbSet<AuditTrail> AuditTrails { get; set; }
         public IDbSet<AuditTrailDetail> AuditTrailDetails { get; set; }
         public IDbSet<Country> Countries { get; set; }
@@ -101,8 +100,7 @@ namespace VAMK.FWMS.DataObjects.Context
         public IDbSet<Request> Request { get; set; }
         public IDbSet<RequestItem> RequestItem { get; set; }
         public IDbSet<CoordinatorIntentoryItem> CoordinatorIntentoryItem { get; set; }
-        public IDbSet<SystemUser> SystemUser { get; set; }
-        public IDbSet<UserRights> UserRights { get; set; }
+        public IDbSet<SystemUser> SystemUser { get; set; }       
         public IDbSet<FormRule> SecureAccessForm { get; set; }
         public IDbSet<SequenceNumber> SequenceNumber { get; set; }
         public IDbSet<InventoryStock> InventoryStocks { get; set; }

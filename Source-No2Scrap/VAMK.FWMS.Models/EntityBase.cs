@@ -10,7 +10,7 @@ namespace VAMK.FWMS.Models
 
         public int? ID { get; set; }
         [JsonIgnore]
-        public string User { get; set; }
+        public string User { get; set; }       
         public byte[] TimeStamp { get; set; }
         [JsonIgnore]
         public State State { get { return _state; } set { _state = value; } }

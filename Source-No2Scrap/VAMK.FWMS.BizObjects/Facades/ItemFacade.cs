@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
+using VAMK.FWMS.DataObjects;
 
 namespace VAMK.FWMS.BizObjects.Facades
 {
@@ -14,8 +15,13 @@ namespace VAMK.FWMS.BizObjects.Facades
         public TransferObject<Item> Save(Item item)
         {
             AuditTrail auditTrail = null;
+            InventoryStock inventorystock = null;
             if (item.ID == null)
+            {
                 auditTrail = Resources.Utility.CreateAuditTrail(null, item, Models.Enums.AuditTrailAction.Insert, new List<string>(), 0);
+                inventorystock = new InventoryStock();
+            }
+
             else
             {
                 var dbItem = BizObjectFactory.GetItemBO().GetSingle(item.ID.Value);
@@ -38,7 +44,20 @@ namespace VAMK.FWMS.BizObjects.Facades
                     transferObject.StatusInfo = auditTO.StatusInfo;
                     return transferObject;
                 }
-
+                if (inventorystock != null)
+                {
+                    inventorystock.ItemID = item.ID;
+                    inventorystock.Quantity = 0;
+                    inventorystock.AllocatedQuantity = 0;
+                    inventorystock.User = item.User;
+                    inventorystock.DateCreated = item.DateCreated;
+                    var inventoryStockItem = BizObjectFactory.GetInventoryStockBO().Save(inventorystock);
+                    if (inventoryStockItem.StatusInfo.Status != Common.Enums.ServiceStatus.Success)
+                    {
+                        transferObject.StatusInfo = inventoryStockItem.StatusInfo;
+                        return transferObject;
+                    }
+                }
                 scope.Complete();
             }
             return transferObject;

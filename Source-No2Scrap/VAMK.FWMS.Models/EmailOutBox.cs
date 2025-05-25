@@ -6,7 +6,7 @@ namespace VAMK.FWMS.Models
     public class EmailOutBox : EntityBase
     {
         public int? CreatedByID { get; set; }
-        public Employee CreatedBy { get; set; }
+        public SystemUser CreatedBy { get; set; }
         public EmailSender Sender { get; set; }
         public string SenderDisplayName { get; set; }
         public string To { get; set; }

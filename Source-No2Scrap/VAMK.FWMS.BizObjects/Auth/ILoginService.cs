@@ -5,7 +5,7 @@ namespace VAMK.FWMS.BizObjects.Auth
 {
     public interface ILoginService
     {
-        TransferObject<Models.Employee> IsUserValid(string user, string password);
+        TransferObject<Models.SystemUser> IsUserValid(string user, string password);
         Common.Envelop.TransferObject<bool> IsRuleCodeAllowed(string User, string RuleCode);
     }
 }

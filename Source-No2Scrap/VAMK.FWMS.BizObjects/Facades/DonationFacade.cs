@@ -27,6 +27,8 @@ namespace VAMK.FWMS.BizObjects.Facades
         {
             var CoordinatorIntentoryItems = new List<CoordinatorIntentoryItem>();
             var InventoryStocks = new List<InventoryStock>();
+
+            var pendingRequests = BizObjectFactory.GetRequestBO().Search(new Models.SearchQueries.RequestSearchQuery { RequestStatus = RequestStatus.AllocationPending });
             if (donation.DonationSatus == Models.Enums.DonationSatus.Collected)
             {
                 foreach (var item in donation.DonationItemList)
@@ -62,6 +64,52 @@ namespace VAMK.FWMS.BizObjects.Facades
                         inventoryStockDbObj.User = donation.User;
                         inventoryStockDbObj.DateModified = DateTime.Now;
                         InventoryStocks.Add(inventoryStockDbObj);
+                    }
+
+                    foreach (var pendingRequest in pendingRequests)
+                    {
+                        if (inventoryStockDbObj.Quantity > 0)
+                        {
+                            var RequestItem = pendingRequest.RequestItemList.Where(x => x.ItemID == item.ItemID).FirstOrDefault();
+                            if (RequestItem != null)
+                            {
+                                decimal usedQty = 0;
+                                var balansQty = RequestItem.RequestedQty - RequestItem.AllocatedQty;
+                                if (inventoryStockDbObj.Quantity >= balansQty)
+                                {
+                                    RequestItem.AllocatedQty += balansQty;
+                                    inventoryStockDbObj.Quantity -= balansQty;
+                                    usedQty = balansQty;
+                                }
+                                else
+                                {
+                                    RequestItem.AllocatedQty += inventoryStockDbObj.Quantity;
+                                    inventoryStockDbObj.Quantity = 0;
+                                    usedQty = inventoryStockDbObj.Quantity;
+                                }
+                                CoordinatorIntentoryItems.Add(new CoordinatorIntentoryItem
+                                {
+                                    Date = DateTime.Now,
+                                    DateCreated = DateTime.Now,
+                                    EffectedQty = usedQty,
+                                    InventoryEffectedby = Models.Enums.InventoryEffectedby.Request,
+                                    EffectedTransacionID = pendingRequest.ID,
+                                    ItemID = item.ItemID,
+                                    User = donation.User,
+                                    State = Models.Interfaces.State.Added,
+                                    AuditReference = item.ItemID.ToString()
+                                });
+                                RequestItem.State = Models.Interfaces.State.Modified;
+                            }
+                            var requestStatus = Models.Enums.RequestStatus.IssuancePending;
+                            foreach (var requestItem in pendingRequest.RequestItemList)
+                            {
+                                if (requestItem.RequestedQty != requestItem.AllocatedQty)
+                                    requestStatus = Models.Enums.RequestStatus.AllocationPending;
+                            }
+                            pendingRequest.RequestStatus = requestStatus;
+                            pendingRequest.State = Models.Interfaces.State.Modified;
+                        }
                     }
                 }
             }
@@ -201,6 +249,16 @@ namespace VAMK.FWMS.BizObjects.Facades
                         if (emailTO.StatusInfo.Status != Common.Enums.ServiceStatus.Success)
                         {
                             transferObject.StatusInfo = emailTO.StatusInfo;
+                            return transferObject;
+                        }
+                    }
+
+                    foreach (var pendingRequest in pendingRequests)
+                    {
+                        var requestTo = BizObjectFactory.GetRequestBO().Save(pendingRequest);
+                        if (requestTo.StatusInfo.Status != Common.Enums.ServiceStatus.Success)
+                        {
+                            transferObject.StatusInfo = requestTo.StatusInfo;
                             return transferObject;
                         }
                     }

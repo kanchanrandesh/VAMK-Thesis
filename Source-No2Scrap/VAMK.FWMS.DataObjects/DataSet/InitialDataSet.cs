@@ -34,8 +34,11 @@ namespace VAMK.FWMS.DataObjects.DataSet
                     new Rule { Code = "RECPTADED", Description = "Recipient Add / Edit", User = "Seed", DateCreated = DateTime.Now, DateModified = DateTime.Now },
                     new Rule { Code = "REQUESVIEW", Description = "Request View", User = "Seed", DateCreated = DateTime.Now, DateModified = DateTime.Now },
                     new Rule { Code = "REQUESADED", Description = "Request Add / Edit", User = "Seed", DateCreated = DateTime.Now, DateModified = DateTime.Now },
+                    new Rule { Code = "REQUESACCE", Description = "Request Accept", User = "Seed", DateCreated = DateTime.Now, DateModified = DateTime.Now },
                     new Rule { Code = "UNITVIEW", Description = "Unit View", User = "Seed", DateCreated = DateTime.Now, DateModified = DateTime.Now },
-                    new Rule { Code = "UNITADED", Description = "Unit Add / Edit", User = "Seed", DateCreated = DateTime.Now, DateModified = DateTime.Now }
+                    new Rule { Code = "UNITADED", Description = "Unit Add / Edit", User = "Seed", DateCreated = DateTime.Now, DateModified = DateTime.Now },
+                    new Rule { Code = "STKCNTREPO", Description = "Stock Count Report", User = "Seed", DateCreated = DateTime.Now, DateModified = DateTime.Now }
+                    
                 };
             rules.ForEach(s => context.Rules.Add(s));
             context.SaveChanges();
@@ -55,11 +58,11 @@ namespace VAMK.FWMS.DataObjects.DataSet
 
             #region Users
 
-            var users = new List<VAMK.FWMS.Models.Employee>
+            var users = new List<VAMK.FWMS.Models.SystemUser>
                  {
-                    /* 01 */ new VAMK.FWMS.Models.Employee { Code = "KR", FirstName = "KRWA",         LastName = "Wickrama Arachchi",   UserName = "KR",       Password = "12193117185192241182168491951532261051193897", Email = "kanchan.arachchi@gmail.com",  Phone ="+94 77 32 33417", Mobile = "+94 77 32 33 417", CompanyID = 1, IsActive = true, User = "Seed", DateCreated = DateTime.Now, DateModified = DateTime.Now },
+                    /* 01 */ new VAMK.FWMS.Models.SystemUser { Code = "KR", FirstName = "KRWA",         LastName = "Wickrama Arachchi",   UserName = "KR",       Password = "12193117185192241182168491951532261051193897", Email = "kanchan.arachchi@gmail.com",  Phone ="+94 77 32 33417", Mobile = "+94 77 32 33 417", IsActive = true, User = "Seed", DateCreated = DateTime.Now, DateModified = DateTime.Now },
                    };
-            users.ForEach(s => context.Employees.Add(s));
+            users.ForEach(s => context.SystemUser.Add(s));
             context.SaveChanges();
 
             #endregion

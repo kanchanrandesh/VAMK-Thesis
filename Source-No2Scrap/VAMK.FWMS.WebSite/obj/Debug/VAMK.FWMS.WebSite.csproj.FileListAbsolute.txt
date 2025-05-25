@@ -234,7 +234,6 @@ C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\test 1\VAMK.FW
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\test 1\VAMK.FWMS.WebSite\obj\Debug\VAMK.FWMS.WebSite.csproj.CopyComplete
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\test 1\VAMK.FWMS.WebSite\obj\Debug\VAMK.FWMS.WebSite.dll
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\test 1\VAMK.FWMS.WebSite\obj\Debug\VAMK.FWMS.WebSite.pdb
-C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\itextsharp.xml
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\roslyn\csc.exe
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
@@ -308,6 +307,7 @@ C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\So
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\Common.Logging.Core.xml
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\EntityFramework.xml
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\EntityFramework.SqlServer.xml
+C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\itextsharp.xml
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\log4net.xml
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Driver\LECTURERS\Research and Development\DEV Sources Versions\VAMK-Thesis\Source-No2Scrap\VAMK.FWMS.WebSite\bin\Microsoft.AspNet.Identity.EntityFramework.xml

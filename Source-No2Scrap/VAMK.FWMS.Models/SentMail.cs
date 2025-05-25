@@ -6,7 +6,7 @@ namespace VAMK.FWMS.Models
     public class SentMail : EntityBase
     {
         public int? CreatedByID { get; set; }
-        public Models.Employee CreatedBy { get; set; }
+        public Models.SystemUser CreatedBy { get; set; }
         public EmailSender Sender { get; set; }
         public string Recipient { get; set; }
         public string MailContent { get; set; }

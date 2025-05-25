@@ -131,7 +131,7 @@
     <Compile Include="Mappers\ItemMapper.cs" />
     <Compile Include="Mappers\LogMapper.cs" />
     <Compile Include="Mappers\EmailOutBoxMapper.cs" />
-    <Compile Include="Mappers\EmployeeMapper.cs" />
+    <Compile Include="Mappers\UserMapper.cs" />
     <Compile Include="Mappers\GroupEmployeeMapper.cs" />
     <Compile Include="Mappers\GroupMapper.cs" />
     <Compile Include="Mappers\GroupRuleMapper.cs" />
@@ -143,14 +143,12 @@
     <Compile Include="Mappers\SentMailMapper.cs" />
     <Compile Include="Mappers\SequenceNumberMapper.cs" />
     <Compile Include="Mappers\SystemConfigurationMapper.cs" />
-    <Compile Include="Mappers\SystemUserMapper.cs" />
     <Compile Include="Mappers\TimeZoneMapper.cs" />
     <Compile Include="Mappers\UnitMapper.cs" />
     <Compile Include="Insfratructures\ContextManager.cs" />
     <Compile Include="Insfratructures\RepositoryContext.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IRepositoryContext.cs" />
-    <Compile Include="Mappers\UserRightsMapper.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecipientRepository.cs" />

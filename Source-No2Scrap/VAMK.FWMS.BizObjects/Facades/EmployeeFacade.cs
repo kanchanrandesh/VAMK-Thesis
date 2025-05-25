@@ -11,51 +11,51 @@ using System.Transactions;
 
 namespace VAMK.FWMS.BizObjects.Facades
 {
-    public class EmployeeFacade
+    public class UserFacade
     {
         WebSettings websettings;
 
-        public EmployeeFacade(WebSettings websettings)
+        public UserFacade(WebSettings websettings)
         {
             this.websettings = websettings;
         }
 
-        public TransferObject<Employee> Save(Employee employee)
+        public TransferObject<SystemUser> Save(SystemUser systemUser)
         {
             EmailOutBox emailOutBox = null;
-            var transferObject = new TransferObject<Employee>();
+            var transferObject = new TransferObject<SystemUser>();
             var options = new TransactionOptions();
             options.Timeout = TimeSpan.FromMinutes(1);
             options.IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted;
             bool isNewEmployee = false;
 
             AuditTrail auditTrail = null;
-            if (employee.ID == null)
+            if (systemUser.ID == null)
             {
                 CryptoProvider crypto = new CryptoProvider();
 
                 string tempPassword = System.Web.Security.Membership.GeneratePassword(6, 1);
-                employee.Password = tempPassword;
-                emailOutBox = GenerateEmailItem(employee, websettings.FunctionURLs);
+                systemUser.Password = tempPassword;
+                emailOutBox = GenerateEmailItem(systemUser, websettings.FunctionURLs);
 
-                employee.Password = crypto.GetHash(tempPassword);
+                systemUser.Password = crypto.GetHash(tempPassword);
                 isNewEmployee = true;
 
-                auditTrail = Resources.Utility.CreateAuditTrail(null, employee, Models.Enums.AuditTrailAction.Insert, new List<string>(), 0);
+                auditTrail = Resources.Utility.CreateAuditTrail(null, systemUser, Models.Enums.AuditTrailAction.Insert, new List<string>(), 0);
             }
             else
             {
-                var dbEmployee = BizObjectFactory.GetEmployeeBO().GetSingle(employee.ID.Value);
+                var dbEmployee = BizObjectFactory.GetEmployeeBO().GetSingle(systemUser.ID.Value);
 
                 var childListNames = new List<string>();
-                childListNames.Add("EmployeeDoners");
-                childListNames.Add("EmployeeRecipients");
-                auditTrail = Resources.Utility.CreateAuditTrail(dbEmployee, employee, Models.Enums.AuditTrailAction.Update, childListNames, 0);
+                childListNames.Add("UserDoners");
+                childListNames.Add("UserRecipients");
+                auditTrail = Resources.Utility.CreateAuditTrail(dbEmployee, systemUser, Models.Enums.AuditTrailAction.Update, childListNames, 0);
             }
 
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, options))
             {
-                transferObject = BizObjectFactory.GetEmployeeBO().Save(employee);
+                transferObject = BizObjectFactory.GetEmployeeBO().Save(systemUser);
                 if (transferObject.StatusInfo.Status != Common.Enums.ServiceStatus.Success)
                     return transferObject;
 
@@ -82,9 +82,9 @@ namespace VAMK.FWMS.BizObjects.Facades
             return transferObject;
         }
 
-        public TransferObject<Employee> SaveForAttempt(Employee employee)
+        public TransferObject<SystemUser> SaveForAttempt(SystemUser employee)
         {
-            var transferObject = new TransferObject<Employee>();
+            var transferObject = new TransferObject<SystemUser>();
             var options = new TransactionOptions();
             options.Timeout = TimeSpan.FromMinutes(1);
             options.IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted;
@@ -101,7 +101,7 @@ namespace VAMK.FWMS.BizObjects.Facades
             return transferObject;
         }
 
-        public EmailOutBox GenerateEmailItem(Employee employee, FunctionURLs FunctionURLs)
+        public EmailOutBox GenerateEmailItem(SystemUser employee, FunctionURLs FunctionURLs)
         {
             EmailOutBox email = new EmailOutBox();
             email.IsBodyHtml = true;
@@ -123,9 +123,9 @@ namespace VAMK.FWMS.BizObjects.Facades
             return email;
         }
 
-        public TransferObject<Employee> SaveLockedEmployees(Employee employee)
+        public TransferObject<SystemUser> SaveLockedEmployees(SystemUser employee)
         {
-            var transferObject = new TransferObject<Employee>();
+            var transferObject = new TransferObject<SystemUser>();
             var options = new TransactionOptions();
             options.Timeout = TimeSpan.FromMinutes(1);
             options.IsolationLevel = System.Transactions.IsolationLevel.ReadCommitted;

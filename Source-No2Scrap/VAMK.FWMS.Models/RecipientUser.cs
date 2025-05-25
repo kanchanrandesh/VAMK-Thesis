@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace VAMK.FWMS.Models
 {
-    public class RecipientUser : EntityBase
+    public class UserRecipient : EntityBase
     {
-        public Employee Employee { get; set; }
-        public int? EmployeeID { get; set; }
+        public SystemUser SystemUser { get; set; }
+        public int? SystemUserID { get; set; }
         public Recipient Recipient  { get; set; }
         public int? RecipientID { get; set; }
     }

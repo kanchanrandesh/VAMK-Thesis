@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace VAMK.FWMS.BizObjects.Impl
 {
-    public class EmployeeBO : BizObjectBase<Employee>, IEmployee
+    public class EmployeeBO : BizObjectBase<SystemUser>, IEmployee
     {
         #region Vars
 
@@ -15,9 +15,9 @@ namespace VAMK.FWMS.BizObjects.Impl
 
         #endregion
 
-        public override Employee Create()
+        public override SystemUser Create()
         {
-            return new Employee();
+            return new SystemUser();
         }
 
         #region Property Fileld
@@ -45,11 +45,11 @@ namespace VAMK.FWMS.BizObjects.Impl
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public IList<Employee> Search(Models.SearchQueries.EmployeeSearchQuery query)
+        public IList<SystemUser> Search(Models.SearchQueries.EmployeeSearchQuery query)
         {
             return Repository.Search(query);
         }
-        public Employee ValidateLoginCredential(string username, string password)
+        public SystemUser ValidateLoginCredential(string username, string password)
         {
             CryptoProvider crypto = new CryptoProvider();
             var user = Repository.GetProxy(c => c.UserName == username);
@@ -63,7 +63,7 @@ namespace VAMK.FWMS.BizObjects.Impl
 
         }
 
-        public Employee GetEmployeeByUserName(string username)
+        public SystemUser GetEmployeeByUserName(string username)
         {
             return Repository.GetEmployeeByUserName(username);
         }

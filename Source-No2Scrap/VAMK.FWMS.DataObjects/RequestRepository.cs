@@ -40,7 +40,7 @@ namespace VAMK.FWMS.DataObjects
                 if ((query.RequestStatus.ToString() != "ALL") && (query.RequestStatus.ToString() != "0"))
                     queryble = queryble.Where(t => (int)t.RequestStatus == (int)query.RequestStatus);
 
-            return queryble.Include(i => i.Recipient).OrderByDescending(x => x.Date).ThenByDescending(x => x.TransacionNumber).ToList();
+            return queryble.Include(i => i.Recipient).Include(i => i.RequestItemList).OrderByDescending(x => x.Date).ThenByDescending(x => x.TransacionNumber).ToList();
         }
 
         public override Request GetSingle(System.Linq.Expressions.Expression<System.Func<Request, bool>> whereCondition)

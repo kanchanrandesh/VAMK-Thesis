@@ -5,16 +5,16 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace VAMK.FWMS.DataObjects.Mappers
 {
-    internal class EmployeeDonerMapper : EntityTypeConfiguration<DonerUser>
+    internal class UserDonerMapper : EntityTypeConfiguration<UserDoner>
     {
-        public EmployeeDonerMapper()
+        public UserDonerMapper()
         {
             #region Properties
 
             HasKey(t => t.ID);
             ToTable("EmployeeDoners");
            
-            Property(t => t.EmployeeID).HasColumnName("EmployeeID").HasColumnType("int");
+            Property(t => t.SystemUserID).HasColumnName("EmployeeID").HasColumnType("int");
             Property(t => t.DonerID).HasColumnName("DonerID").HasColumnType("int");
 
             Property(t => t.User).HasColumnName("UserCreated").HasColumnType("nvarchar").HasMaxLength(50);

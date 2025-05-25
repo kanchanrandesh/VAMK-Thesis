@@ -16,7 +16,7 @@ namespace VAMK.FWMS.DataObjects.Mappers
             Property(t => t.Code).HasColumnName("Code").HasColumnType("nvarchar").HasMaxLength(20);
             Property(t => t.Name).HasColumnName("Name").HasColumnType("nvarchar").HasMaxLength(200);
             Property(t => t.Address).HasColumnName("Address").HasColumnType("nvarchar").HasMaxLength(500);
-
+            Property(t => t.Location).HasColumnName("Location").HasColumnType("nvarchar").HasMaxLength(200);
             Property(t => t.User).HasColumnName("UserCreated").HasColumnType("nvarchar").HasMaxLength(50);            
             Property(t => t.DateCreated).HasColumnName("DateCreated").HasColumnType("datetime");
             Property(t => t.DateModified).HasColumnName("DateModified").HasColumnType("datetime");

@@ -13,7 +13,7 @@
             }
         }
         public string Name { get; set; }
-        public Employee AuthorizedOfficer { get; set; }
+        public SystemUser AuthorizedOfficer { get; set; }
         public int? AuthorizedOfficerID { get; set; }
     }
 }

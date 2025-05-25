@@ -1,0 +1,64 @@
+﻿.fieldError {
+    color:darkred;
+}
+.colorList li:nth-child(even) {
+    background-color:#F3F0F7;
+}
+
+.colorList li:nth-child(odd) {
+    background-color:#FAF8FF;
+}
+
+.row-container{
+    border: 1px solid #efefef !important;
+    margin-bottom: 0.2em;
+}
+
+.row-container-close {
+    margin-top:-8px !important;
+    margin-right: 8px !important;
+}
+
+ul.track-header {
+    margin: 0;
+    padding: 5px;
+    overflow: hidden;
+}
+
+.track-header > li {
+    float: left;
+    list-style-type: none;
+}
+
+ul.session-info {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.session-info > li {
+    list-style-type: none;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+       display: none !important;
+   }
+
+.required:after { 
+    content:" *";
+
+}
+
+.modelPosition {
+    margin-top:20px;
+}
+
+.roundClose {
+    color:#CFD2D9;
+    border-radius: 143px 143px 143px 143px;
+    -moz-border-radius: 143px 143px 143px 143px;
+    -webkit-border-radius: 143px 143px 143px 143px;
+    border:1px solid #e1e5ec;
+}
+
+

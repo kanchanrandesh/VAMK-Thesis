@@ -1,0 +1,15 @@
+﻿{
+  "version": "2.3.0",
+  "output": "Message",
+  "ignore": [],
+  "options": {
+    "multivar": true,
+    "single": true,
+    "this": true,
+    "white": true
+  },
+  "globalVariables": [
+    "angular",
+    "$"
+  ]
+}

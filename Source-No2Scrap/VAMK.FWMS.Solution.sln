@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VAMK.FWMS.BizObjects", "VAM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VAMK.FWMS.WebSite", "VAMK.FWMS.WebSite\VAMK.FWMS.WebSite.csproj", "{9D14CC01-8F8E-400E-9326-FB7ABB9801FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VAMK.FWMS.WebSite.Coordinator", "VAMK.FWMS.WebSite.Coordinator\VAMK.FWMS.WebSite.Coordinator.csproj", "{44364F53-BA6D-4BD3-B882-C2EE8B5533D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,10 @@ Global
 		{9D14CC01-8F8E-400E-9326-FB7ABB9801FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D14CC01-8F8E-400E-9326-FB7ABB9801FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D14CC01-8F8E-400E-9326-FB7ABB9801FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44364F53-BA6D-4BD3-B882-C2EE8B5533D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44364F53-BA6D-4BD3-B882-C2EE8B5533D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44364F53-BA6D-4BD3-B882-C2EE8B5533D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44364F53-BA6D-4BD3-B882-C2EE8B5533D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

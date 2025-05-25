@@ -42,12 +42,12 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
             {
                 employee = (EmployeeModel)BizObjectFactory.GetEmployeeBO().GetSingle(id);
                 var dbEmployee = BizObjectFactory.GetEmployeeBO().GetSingle(id);
-                foreach (var employeeDoner in dbEmployee.EmployeeDoners)
+                foreach (var employeeDoner in dbEmployee.UserDoners)
                 {
                     if (employeeDoner.DonerID != null)
                         employeeDoner.Doner = BizObjectFactory.GetDonerBO().GetSingle(employeeDoner.DonerID.Value);
                 }
-                foreach (var employeeRecipient in dbEmployee.EmployeeRecipients)
+                foreach (var employeeRecipient in dbEmployee.UserRecipients)
                 {
                     if (employeeRecipient.RecipientID != null)
                         employeeRecipient.Recipient = BizObjectFactory.GetRecipientBO().GetSingle(employeeRecipient.RecipientID.Value);
@@ -121,17 +121,17 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
             var userid = identity.FindFirst(ClaimTypes.Sid).Value.ToString();
             var user = BizObjectFactory.GetEmployeeBO().GetProxy(int.Parse(userid));
 
-            Employee obj = model;
+            SystemUser obj = model;
 
 
-            Common.Envelop.TransferObject<Employee> transObject = null;
+            Common.Envelop.TransferObject<SystemUser> transObject = null;
             if (obj.ID == null)
             {
                 obj.State = State.Added;
                 obj.DateCreated = DateTime.Now;
-                obj.User = user.UserName;
+                obj.UserName = user.UserName;
 
-                transObject = new EmployeeFacade(WebSettingProvider.GetWebSettings()).Save(obj);
+                transObject = new UserFacade(WebSettingProvider.GetWebSettings()).Save(obj);
             }
             else
             {
@@ -144,28 +144,20 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
                 dbEmployee.Mobile = obj.Mobile;
                 dbEmployee.Email = obj.Email;
                 dbEmployee.UserName = obj.UserName;
-                dbEmployee.Password = obj.Password;
-                dbEmployee.Company = null;
-                dbEmployee.CompanyID = obj.CompanyID;
+                dbEmployee.Password = obj.Password;               
                 dbEmployee.IsActive = obj.IsActive;
                 dbEmployee.State = State.Modified;
                 dbEmployee.DateModified = DateTime.Now;
-                dbEmployee.User = user.UserName;
+                dbEmployee.UserName = user.UserName;
                 dbEmployee.IsLocked = obj.IsLocked;
                 dbEmployee.UnSuccessfulLoginAttempts = obj.UnSuccessfulLoginAttempts;
                 dbEmployee.IsDoner = obj.IsDoner;
-                dbEmployee.IsRecipient = obj.IsRecipient;
-                dbEmployee.IsSalesEngineer = obj.IsSalesEngineer;
-                dbEmployee.IsPreSaleEngineer = obj.IsPreSaleEngineer;
-                dbEmployee.IsProjectManager = obj.IsProjectManager;
-                dbEmployee.IsBizDeveloper = obj.IsBizDeveloper;
-                dbEmployee.IsTechnicalPerson = obj.IsTechnicalPerson;
-                dbEmployee.IsLeagalOfficer = obj.IsLeagalOfficer;
-                dbEmployee.EmployeeRecipients = obj.EmployeeRecipients;
-                dbEmployee.EmployeeDoners = obj.EmployeeDoners;
+                dbEmployee.IsRecipient = obj.IsRecipient;              
+                dbEmployee.UserRecipients = obj.UserRecipients;
+                dbEmployee.UserDoners = obj.UserDoners;
 
 
-                transObject = new EmployeeFacade(WebSettingProvider.GetWebSettings()).Save(dbEmployee);
+                transObject = new UserFacade(WebSettingProvider.GetWebSettings()).Save(dbEmployee);
             }
 
             model.status = transObject.StatusInfo.Status == Common.Enums.ServiceStatus.Success;
@@ -198,14 +190,14 @@ namespace VAMK.FWMS.WebSite.Controllers.WebAPI
             var userid = identity.FindFirst(ClaimTypes.Sid).Value.ToString();
             var user = BizObjectFactory.GetEmployeeBO().GetProxy(int.Parse(userid));
 
-            Employee obj = model;
+            SystemUser obj = model;
             if (!obj.IsLocked)
                 obj.UnSuccessfulLoginAttempts = 0;
             obj.State = State.Modified;
             obj.DateModified = DateTime.Now;
-            obj.User = user.UserName;
+            obj.UserName = user.UserName;
 
-            var transObject = new EmployeeFacade(WebSettingProvider.GetWebSettings()).SaveLockedEmployees(obj);
+            var transObject = new UserFacade(WebSettingProvider.GetWebSettings()).SaveLockedEmployees(obj);
             model.status = transObject.StatusInfo.Status == Common.Enums.ServiceStatus.Success;
             model.message = transObject.StatusInfo.Message;
             return Ok(model);

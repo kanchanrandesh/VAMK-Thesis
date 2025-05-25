@@ -86,6 +86,7 @@
     <Compile Include="Facades\EmployeeFacade.cs" />
     <Compile Include="Facades\GroupFacade.cs" />
     <Compile Include="Facades\RequestFacade.cs" />
+    <Compile Include="Facades\StockCountFacade.cs" />
     <Compile Include="Facades\UnitFacade.cs" />
     <Compile Include="ICoordinatorIntentoryItem.cs" />
     <Compile Include="IDepartment.cs" />

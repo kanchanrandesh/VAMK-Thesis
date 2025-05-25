@@ -26,7 +26,7 @@ namespace VAMK.FWMS.BizObjects.Facades
                         Date = DateTime.Now,
                         DateCreated = DateTime.Now,
                         EffectedQty = item.AllocatedQty,
-                        InventoryEffectedby = Models.Enums.InventoryEffectedby.Donation,
+                        InventoryEffectedby = Models.Enums.InventoryEffectedby.Request,
                         EffectedTransacionID = request.ID,
                         ItemID = item.ItemID,
                         User = request.User,
@@ -56,6 +56,7 @@ namespace VAMK.FWMS.BizObjects.Facades
                 }
             }
 
+
             var transferObject = new TransferObject<Request>();
             var options = new TransactionOptions();
             options.Timeout = TimeSpan.FromMinutes(1);
@@ -65,11 +66,36 @@ namespace VAMK.FWMS.BizObjects.Facades
             {
                 request.State = Models.Interfaces.State.Added;
 
+
+                request.RequestStatus = Models.Enums.RequestStatus.IssuancePending;
                 foreach (var item in request.RequestItemList)
                 {
                     item.State = Models.Interfaces.State.Added;
                     if (item.RequestedQty == item.AllocatedQty)
                         item.IsFullfilled = true;
+
+
+                    var inventoryStockDbObj = BizObjectFactory.GetInventoryStockBO().FindItemStock(item.ItemID.Value);
+                    if (inventoryStockDbObj != null)
+                    {
+                        var availableQty = inventoryStockDbObj.Quantity - inventoryStockDbObj.AllocatedQuantity;
+                        if (availableQty >= item.RequestedQty)
+                        {
+                            item.AllocatedQty = item.RequestedQty;
+                            inventoryStockDbObj.AllocatedQuantity += item.RequestedQty;
+                        }
+                        else if (availableQty > 0)
+                        {
+                            item.AllocatedQty = availableQty;
+                            inventoryStockDbObj.AllocatedQuantity += availableQty;
+                        }
+                        inventoryStockDbObj.State = Models.Interfaces.State.Modified;
+                        inventoryStockDbObj.User = request.User;
+                        inventoryStockDbObj.DateModified = DateTime.Now;
+                        InventoryStocks.Add(inventoryStockDbObj);
+                    }
+                    if (item.RequestedQty != item.AllocatedQty)
+                        request.RequestStatus = Models.Enums.RequestStatus.AllocationPending;
                 }
                 var auditTrail = Resources.Utility.CreateAuditTrail(null, request, Models.Enums.AuditTrailAction.Insert, new List<string>(), 0);
 
@@ -89,88 +115,6 @@ namespace VAMK.FWMS.BizObjects.Facades
                         }
                     }
 
-                    var auditTO = BizObjectFactory.GetAuditTrailBO().Save(auditTrail);
-                    if (auditTO.StatusInfo.Status != Common.Enums.ServiceStatus.Success)
-                    {
-                        transferObject.StatusInfo = auditTO.StatusInfo;
-                        return transferObject;
-                    }
-                    scope.Complete();
-                }
-            }
-            else
-            {
-                var dbRequest = BizObjectFactory.GetRequestBO().GetSingle(request.ID.Value);
-
-                var childListNames = new List<string>();
-                childListNames.Add("RequestItemList");
-
-                var auditTrail = Resources.Utility.CreateAuditTrail(dbRequest, request, Models.Enums.AuditTrailAction.Update, childListNames, 0);
-
-                dbRequest.Date = request.Date;
-                dbRequest.TransacionNumber = request.TransacionNumber;
-                dbRequest.ManualRefNumber = request.ManualRefNumber;
-                dbRequest.Description = request.Description;
-                dbRequest.RecipientID = request.RecipientID;
-                dbRequest.RequestStatus = request.RequestStatus;
-                if (dbRequest.RequestStatus == Models.Enums.RequestStatus.IssuancePending)
-                    dbRequest.DateAccepted = request.DateAccepted;
-                if (dbRequest.RequestStatus == Models.Enums.RequestStatus.Completed)
-                    dbRequest.DateIssued = request.DateIssued;
-                dbRequest.User = request.User;
-                dbRequest.State = Models.Interfaces.State.Modified;
-
-                foreach (var listItem in request.RequestItemList)
-                {
-                    var dbRequestItem = dbRequest.RequestItemList.Where(i => i.ID == listItem.ID && listItem.ID != null).FirstOrDefault();
-                    if (dbRequestItem != null)
-                    {
-                        dbRequestItem.Request = null;
-                        dbRequestItem.RequestID = listItem.RequestID;
-                        dbRequestItem.Item = null;
-                        dbRequestItem.ItemID = listItem.ItemID;
-                        dbRequestItem.User = listItem.User;
-                        dbRequestItem.State = Models.Interfaces.State.Modified;
-                        dbRequestItem.RequestedQty = listItem.RequestedQty;
-                        dbRequestItem.AllocatedQty = listItem.AllocatedQty;
-                        dbRequestItem.IsFullfilled = listItem.IsFullfilled;
-                    }
-                    else
-                    {
-                        dbRequest.RequestItemList.Add(new RequestItem()
-                        {
-                            RequestID = listItem.RequestID,
-                            ItemID = listItem.ItemID,
-                            User = listItem.User,
-                            State = Models.Interfaces.State.Added,
-                            IsFullfilled = listItem.IsFullfilled,
-                            AllocatedQty = listItem.AllocatedQty,
-                            RequestedQty = listItem.RequestedQty,
-                        });
-                    }
-                    if (listItem.RequestedQty == listItem.AllocatedQty)
-                        listItem.IsFullfilled = true;
-                }
-
-                var deletedList = dbRequest.RequestItemList.Where(p => request.RequestItemList.All(p2 => p2.ID != p.ID && p.ID != null));
-                foreach (var item in deletedList)
-                    item.State = Models.Interfaces.State.Deleted;
-
-                using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, options))
-                {
-                    transferObject = BizObjectFactory.GetRequestBO().Save(dbRequest);
-                    if (transferObject.StatusInfo.Status != Common.Enums.ServiceStatus.Success)
-                        return transferObject;
-
-                    foreach (var coordinatorIntentoryItem in CoordinatorIntentoryItems)
-                    {
-                        var coordinatorIntentoryItemTO = BizObjectFactory.GetCoordinatorIntentoryItemBO().Save(coordinatorIntentoryItem);
-                        if (coordinatorIntentoryItemTO.StatusInfo.Status != Common.Enums.ServiceStatus.Success)
-                        {
-                            transferObject.StatusInfo = coordinatorIntentoryItemTO.StatusInfo;
-                            return transferObject;
-                        }
-                    }
                     foreach (var inventoryStock in InventoryStocks)
                     {
                         var inventoryStockTO = BizObjectFactory.GetInventoryStockBO().Save(inventoryStock);
@@ -180,15 +124,159 @@ namespace VAMK.FWMS.BizObjects.Facades
                             return transferObject;
                         }
                     }
+
                     var auditTO = BizObjectFactory.GetAuditTrailBO().Save(auditTrail);
                     if (auditTO.StatusInfo.Status != Common.Enums.ServiceStatus.Success)
                     {
                         transferObject.StatusInfo = auditTO.StatusInfo;
                         return transferObject;
                     }
+
                     scope.Complete();
                 }
             }
+            else
+            {
+                if (request.RequestStatus != Models.Enums.RequestStatus.Cancelled)
+                {
+                    var dbRequest = BizObjectFactory.GetRequestBO().GetSingle(request.ID.Value);
+
+                    var childListNames = new List<string>();
+                    childListNames.Add("RequestItemList");
+
+                    var auditTrail = Resources.Utility.CreateAuditTrail(dbRequest, request, Models.Enums.AuditTrailAction.Update, childListNames, 0);
+
+                    dbRequest.Date = request.Date;
+                    dbRequest.TransacionNumber = request.TransacionNumber;
+                    dbRequest.ManualRefNumber = request.ManualRefNumber;
+                    dbRequest.Description = request.Description;
+                    dbRequest.RecipientID = request.RecipientID;
+                    dbRequest.RequestStatus = request.RequestStatus;
+                    if (dbRequest.RequestStatus == Models.Enums.RequestStatus.IssuancePending)
+                        dbRequest.DateAccepted = request.DateAccepted;
+                    if (dbRequest.RequestStatus == Models.Enums.RequestStatus.Completed)
+                        dbRequest.DateIssued = request.DateIssued;
+                    dbRequest.User = request.User;
+                    dbRequest.State = Models.Interfaces.State.Modified;
+
+                    foreach (var listItem in request.RequestItemList)
+                    {
+                        var dbRequestItem = dbRequest.RequestItemList.Where(i => i.ID == listItem.ID && listItem.ID != null).FirstOrDefault();
+                        if (dbRequestItem != null)
+                        {
+                            dbRequestItem.Request = null;
+                            dbRequestItem.RequestID = listItem.RequestID;
+                            dbRequestItem.Item = null;
+                            dbRequestItem.ItemID = listItem.ItemID;
+                            dbRequestItem.User = listItem.User;
+                            dbRequestItem.State = Models.Interfaces.State.Modified;
+                            dbRequestItem.RequestedQty = listItem.RequestedQty;
+                            dbRequestItem.AllocatedQty = listItem.AllocatedQty;
+                            dbRequestItem.IsFullfilled = listItem.IsFullfilled;
+                        }
+                        else
+                        {
+                            dbRequest.RequestItemList.Add(new RequestItem()
+                            {
+                                RequestID = listItem.RequestID,
+                                ItemID = listItem.ItemID,
+                                User = listItem.User,
+                                State = Models.Interfaces.State.Added,
+                                IsFullfilled = listItem.IsFullfilled,
+                                AllocatedQty = listItem.AllocatedQty,
+                                RequestedQty = listItem.RequestedQty,
+                            });
+                        }
+                        if (listItem.RequestedQty == listItem.AllocatedQty)
+                            listItem.IsFullfilled = true;
+                    }
+
+                    var deletedList = dbRequest.RequestItemList.Where(p => request.RequestItemList.All(p2 => p2.ID != p.ID && p.ID != null));
+                    foreach (var item in deletedList)
+                        item.State = Models.Interfaces.State.Deleted;
+
+                    using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, options))
+                    {
+                        transferObject = BizObjectFactory.GetRequestBO().Save(dbRequest);
+                        if (transferObject.StatusInfo.Status != Common.Enums.ServiceStatus.Success)
+                            return transferObject;
+
+                        foreach (var coordinatorIntentoryItem in CoordinatorIntentoryItems)
+                        {
+                            var coordinatorIntentoryItemTO = BizObjectFactory.GetCoordinatorIntentoryItemBO().Save(coordinatorIntentoryItem);
+                            if (coordinatorIntentoryItemTO.StatusInfo.Status != Common.Enums.ServiceStatus.Success)
+                            {
+                                transferObject.StatusInfo = coordinatorIntentoryItemTO.StatusInfo;
+                                return transferObject;
+                            }
+                        }
+                        foreach (var inventoryStock in InventoryStocks)
+                        {
+                            var inventoryStockTO = BizObjectFactory.GetInventoryStockBO().Save(inventoryStock);
+                            if (inventoryStockTO.StatusInfo.Status != Common.Enums.ServiceStatus.Success)
+                            {
+                                transferObject.StatusInfo = inventoryStockTO.StatusInfo;
+                                return transferObject;
+                            }
+                        }
+                        var auditTO = BizObjectFactory.GetAuditTrailBO().Save(auditTrail);
+                        if (auditTO.StatusInfo.Status != Common.Enums.ServiceStatus.Success)
+                        {
+                            transferObject.StatusInfo = auditTO.StatusInfo;
+                            return transferObject;
+                        }
+                        scope.Complete();
+                    }
+
+
+                }
+                else
+                {
+                    foreach (var item in request.RequestItemList)
+                    {
+                        item.State = Models.Interfaces.State.Modified;
+
+                        var inventoryStockDbObj = BizObjectFactory.GetInventoryStockBO().FindItemStock(item.ItemID.Value);
+                        if (inventoryStockDbObj != null)
+                        {
+                            item.AllocatedQty = 0;
+                            inventoryStockDbObj.AllocatedQuantity -= item.AllocatedQty;
+                            inventoryStockDbObj.State = Models.Interfaces.State.Modified;
+                            inventoryStockDbObj.User = request.User;
+                            inventoryStockDbObj.DateModified = DateTime.Now;
+                            InventoryStocks.Add(inventoryStockDbObj);
+                        }
+                    }
+                    var auditTrail = Resources.Utility.CreateAuditTrail(null, request, Models.Enums.AuditTrailAction.Insert, new List<string>(), 0);
+
+                    using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required, options))
+                    {
+                        transferObject = BizObjectFactory.GetRequestBO().Save(request);
+                        if (transferObject.StatusInfo.Status != Common.Enums.ServiceStatus.Success)
+                            return transferObject;
+
+                        foreach (var inventoryStock in InventoryStocks)
+                        {
+                            var inventoryStockTO = BizObjectFactory.GetInventoryStockBO().Save(inventoryStock);
+                            if (inventoryStockTO.StatusInfo.Status != Common.Enums.ServiceStatus.Success)
+                            {
+                                transferObject.StatusInfo = inventoryStockTO.StatusInfo;
+                                return transferObject;
+                            }
+                        }
+
+                        var auditTO = BizObjectFactory.GetAuditTrailBO().Save(auditTrail);
+                        if (auditTO.StatusInfo.Status != Common.Enums.ServiceStatus.Success)
+                        {
+                            transferObject.StatusInfo = auditTO.StatusInfo;
+                            return transferObject;
+                        }
+
+                        scope.Complete();
+                    }
+                }
+            }
+
             return transferObject;
         }
 

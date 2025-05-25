@@ -7,13 +7,13 @@ using System.Data.Entity;
 
 namespace VAMK.FWMS.DataObjects
 {
-    public class EmployeeRepository : RepositoryBase<Employee>, IEmployeeRepository
+    public class EmployeeRepository : RepositoryBase<SystemUser>, IEmployeeRepository
     {
         public EmployeeRepository() : this(new RepositoryContext()) { }
 
         public EmployeeRepository(IRepositoryContext context) : base(context) { }
 
-        public IList<Employee> Search(Models.SearchQueries.EmployeeSearchQuery query)
+        public IList<SystemUser> Search(Models.SearchQueries.EmployeeSearchQuery query)
         {
             if (query == null)
                 return null;
@@ -34,24 +34,20 @@ namespace VAMK.FWMS.DataObjects
             if (query.IsActive != null)
                 queryble = queryble.Where(t => t.IsActive == query.IsActive);
 
-            if (query.Company != null)
-                queryble = queryble.Where(t => t.CompanyID == query.Company.ID);
-
-            if (query.CompanyID != null)
-                queryble = queryble.Where(t => t.CompanyID == query.CompanyID);
+           
 
             return queryble.OrderBy(t => t.FirstName).ToList();
         }
 
-        public override Employee GetSingle(System.Linq.Expressions.Expression<System.Func<Employee, bool>> whereCondition)
+        public override SystemUser GetSingle(System.Linq.Expressions.Expression<System.Func<SystemUser, bool>> whereCondition)
         {
             var returnVal = this.DbSet.Where(whereCondition)
-                .Include(i => i.EmployeeDoners).Include(i => i.EmployeeRecipients)
+                .Include(i => i.UserDoners).Include(i => i.UserRecipients)
                 .FirstOrDefault();
             return returnVal;
         }
 
-        public Employee GetEmployeeByUserName(string userName)
+        public SystemUser GetEmployeeByUserName(string userName)
         {
             return this.DbSet.FirstOrDefault(t => t.UserName == userName);
         }

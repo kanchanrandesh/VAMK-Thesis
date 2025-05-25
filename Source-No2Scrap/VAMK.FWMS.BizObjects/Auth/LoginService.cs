@@ -36,7 +36,7 @@ namespace VAMK.FWMS.BizObjects.Auth
             _transferObject.StatusInfo.Message = Resources.MessageDictionary.USER_AUTHORIZATION_ERROR;//HACK:Get using resource file..
             _transferObject.ReturnValue = false;
 
-            Employee employee = null;
+            SystemUser employee = null;
             employee = _employeeRepository.GetEmployeeByUserName(User);
             if (employee == null)
             {
@@ -52,7 +52,7 @@ namespace VAMK.FWMS.BizObjects.Auth
             //_searchQuery.IncludeProperties.Add("Group");
             //_searchQuery.Employee = employee;
             //_searchQuery.DomainID = domainId;
-            IList<VAMK.FWMS.Models.Employee> groupEmployeeList = VAMK.FWMS.BizObjects.BizObjectFactory.GetEmployeeBO().Search(_searchQuery);
+            IList<VAMK.FWMS.Models.SystemUser> groupEmployeeList = VAMK.FWMS.BizObjects.BizObjectFactory.GetEmployeeBO().Search(_searchQuery);
             if (groupEmployeeList == null)
             {
                 _transferObject.ReturnValue = false;

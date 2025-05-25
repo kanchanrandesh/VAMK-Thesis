@@ -9,10 +9,10 @@ namespace VAMK.FWMS.BizObjects.Facades
 {
     public class AccountFacade
     {
-        public TransferObject<Employee> ChangePassword(int employeeId, string currentPassword, string newPassword, string conformPassword)
+        public TransferObject<SystemUser> ChangePassword(int employeeId, string currentPassword, string newPassword, string conformPassword)
         {
             CryptoProvider crypto = new CryptoProvider();
-            var transferObject = new TransferObject<Employee>();
+            var transferObject = new TransferObject<SystemUser>();
 
             var employee = BizObjectFactory.GetEmployeeBO().GetSingle(employeeId);
 

@@ -15,6 +15,7 @@ namespace VAMK.FWMS.DataObjects.Mappers
 
             Property(t => t.ItemID).HasColumnName("ItemID").HasColumnType("int").IsOptional();
             Property(t => t.Quantity).HasColumnName("Quantity").HasColumnType("decimal").IsOptional();
+            Property(t => t.AllocatedQuantity).HasColumnName("AllocatedQuantity").HasColumnType("decimal").IsOptional();
 
             Property(t => t.User).HasColumnName("UserCreated").HasColumnType("nvarchar").HasMaxLength(50);
             Property(t => t.DateCreated).HasColumnName("DateCreated").HasColumnType("datetime");
